@@ -3,7 +3,8 @@ import sys
 import webbrowser
 import signal
 from threading import Timer
-from flask import Flask, render_template, request
+from PIL import Image
+from flask import Flask, render_template, request, jsonify
 from waitress import serve
 
 # --- Path setup for PyInstaller ---

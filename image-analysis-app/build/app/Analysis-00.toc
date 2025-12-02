@@ -1,6 +1,6 @@
 (['C:\\Users\\RYZEN5 '
-  '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\app.py'],
- ['C:\\Users\\RYZEN5 5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app'],
+  '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\app.py'],
+ ['C:\\Users\\RYZEN5 5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app'],
  [],
  [('C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\numpy\\_pyinstaller',
@@ -23,15 +23,15 @@
  [],
  [('static\\css\\style.css',
    'C:\\Users\\RYZEN5 '
-   '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\css\\style.css',
+   '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\css\\style.css',
    'DATA'),
   ('static\\js\\script.js',
    'C:\\Users\\RYZEN5 '
-   '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\js\\script.js',
+   '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\js\\script.js',
    'DATA'),
   ('templates\\index.html',
    'C:\\Users\\RYZEN5 '
-   '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\templates\\index.html',
+   '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\templates\\index.html',
    'DATA')],
  '3.10.11 (tags/v3.10.11:7d4cc5a, Apr  5 2023, 00:38:17) [MSC v.1929 64 bit '
  '(AMD64)]',
@@ -559,10 +559,6 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\__init__.py',
    'PYMODULE'),
-  ('ctypes.wintypes',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\wintypes.py',
-   'PYMODULE'),
   ('ctypes._endian',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\_endian.py',
@@ -627,17 +623,17 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\multiprocessing\\__init__.py',
    'PYMODULE'),
-  ('stringprep',
+  ('_py_abc',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stringprep.py',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
    'PYMODULE'),
   ('tracemalloc',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('_py_abc',
+  ('stringprep',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stringprep.py',
    'PYMODULE'),
   ('waitress',
    'C:\\Users\\RYZEN5 '
@@ -926,6 +922,10 @@
   ('colorama.win32',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\colorama\\win32.py',
+   'PYMODULE'),
+  ('ctypes.wintypes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\wintypes.py',
    'PYMODULE'),
   ('click._winconsole',
    'C:\\Users\\RYZEN5 '
@@ -1488,6 +1488,1083 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\__future__.py',
    'PYMODULE'),
+  ('PIL.Image',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\Image.py',
+   'PYMODULE'),
+  ('PIL.XpmImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\XpmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XbmImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\XbmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XVThumbImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.WmfImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\WmfImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.WebPImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\WebPImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.TgaImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\TgaImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SunImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\SunImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SpiderImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\SpiderImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageTk',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageTk.py',
+   'PYMODULE'),
+  ('PIL.SgiImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\SgiImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.QoiImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\QoiImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PsdImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PsdImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PixarImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PixarImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PdfImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PdfImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.features',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\features.py',
+   'PYMODULE'),
+  ('PIL.PdfParser',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PdfParser.py',
+   'PYMODULE'),
+  ('PIL.ImageSequence',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageSequence.py',
+   'PYMODULE'),
+  ('PIL.PcxImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PcxImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PcdImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PalmImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PalmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MspImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MspImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MpoImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MpoImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MpegImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MpegImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MicImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.McIdasImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\McIdasImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.Jpeg2KImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IptcImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\IptcImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImtImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImtImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcoImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcnsImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\IcnsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.Hdf5StubImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.GribStubImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GribStubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.GbrImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FtexImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FtexImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FpxImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FpxImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FliImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FitsImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FitsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.EpsImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\EpsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.DdsImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\DdsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.DcxImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\DcxImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.CurImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\CurImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BufrStubImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BlpImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.AvifImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\AvifImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageShow',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageShow.py',
+   'PYMODULE'),
+  ('PIL.ImageColor',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageColor.py',
+   'PYMODULE'),
+  ('colorsys',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\colorsys.py',
+   'PYMODULE'),
+  ('PIL.ImageCms',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageCms.py',
+   'PYMODULE'),
+  ('PIL.ImageWin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageWin.py',
+   'PYMODULE'),
+  ('PIL.PngImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PngImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageChops',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageChops.py',
+   'PYMODULE'),
+  ('PIL.PpmImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PpmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.JpegImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\JpegImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.JpegPresets',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\JpegPresets.py',
+   'PYMODULE'),
+  ('PIL.GifImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GifImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageOps',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageOps.py',
+   'PYMODULE'),
+  ('PIL.ImageMath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageMath.py',
+   'PYMODULE'),
+  ('PIL.BmpImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\BmpImagePlugin.py',
+   'PYMODULE'),
+  ('PIL._typing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_typing.py',
+   'PYMODULE'),
+  ('numpy.typing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\typing\\__init__.py',
+   'PYMODULE'),
+  ('numpy',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\__init__.py',
+   'PYMODULE'),
+  ('numpy._core._dtype_ctypes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_dtype_ctypes.py',
+   'PYMODULE'),
+  ('numpy.strings',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\strings\\__init__.py',
+   'PYMODULE'),
+  ('numpy._core.strings',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\strings.py',
+   'PYMODULE'),
+  ('numpy._core.umath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\umath.py',
+   'PYMODULE'),
+  ('numpy._core.overrides',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\overrides.py',
+   'PYMODULE'),
+  ('numpy._utils._inspect',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_utils\\_inspect.py',
+   'PYMODULE'),
+  ('numpy._utils',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_utils\\__init__.py',
+   'PYMODULE'),
+  ('numpy._utils._convertions',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_utils\\_convertions.py',
+   'PYMODULE'),
+  ('numpy._core.multiarray',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\multiarray.py',
+   'PYMODULE'),
+  ('numpy.core',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\core\\__init__.py',
+   'PYMODULE'),
+  ('numpy.core._utils',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\core\\_utils.py',
+   'PYMODULE'),
+  ('numpy.char',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\char\\__init__.py',
+   'PYMODULE'),
+  ('numpy._core.defchararray',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\defchararray.py',
+   'PYMODULE'),
+  ('numpy._core.numeric',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\numeric.py',
+   'PYMODULE'),
+  ('numpy._core._asarray',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_asarray.py',
+   'PYMODULE'),
+  ('numpy._core.arrayprint',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\arrayprint.py',
+   'PYMODULE'),
+  ('numpy._core.fromnumeric',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\fromnumeric.py',
+   'PYMODULE'),
+  ('numpy._core._methods',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_methods.py',
+   'PYMODULE'),
+  ('numpy._core._exceptions',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_exceptions.py',
+   'PYMODULE'),
+  ('numpy._core._ufunc_config',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_ufunc_config.py',
+   'PYMODULE'),
+  ('numpy._core.shape_base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\shape_base.py',
+   'PYMODULE'),
+  ('numpy._core.numerictypes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\numerictypes.py',
+   'PYMODULE'),
+  ('numpy._core._dtype',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_dtype.py',
+   'PYMODULE'),
+  ('numpy._core._type_aliases',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_type_aliases.py',
+   'PYMODULE'),
+  ('numpy._core._string_helpers',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_string_helpers.py',
+   'PYMODULE'),
+  ('numpy.rec',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\rec\\__init__.py',
+   'PYMODULE'),
+  ('numpy._core.records',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\records.py',
+   'PYMODULE'),
+  ('numpy.f2py',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\__init__.py',
+   'PYMODULE'),
+  ('numpy.f2py.diagnose',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\diagnose.py',
+   'PYMODULE'),
+  ('numpy.f2py.f2py2e',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\f2py2e.py',
+   'PYMODULE'),
+  ('numpy.f2py._backends',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\__init__.py',
+   'PYMODULE'),
+  ('numpy.f2py._backends._distutils',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\_distutils.py',
+   'PYMODULE'),
+  ('numpy.f2py._backends._backend',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\_backend.py',
+   'PYMODULE'),
+  ('numpy.f2py._backends._meson',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\_meson.py',
+   'PYMODULE'),
+  ('numpy.f2py.auxfuncs',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\auxfuncs.py',
+   'PYMODULE'),
+  ('numpy.f2py.f90mod_rules',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\f90mod_rules.py',
+   'PYMODULE'),
+  ('numpy.f2py.rules',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\rules.py',
+   'PYMODULE'),
+  ('numpy.f2py.use_rules',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\use_rules.py',
+   'PYMODULE'),
+  ('numpy.f2py.common_rules',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\common_rules.py',
+   'PYMODULE'),
+  ('numpy.f2py.func2subr',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\func2subr.py',
+   'PYMODULE'),
+  ('numpy.f2py._isocbind',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_isocbind.py',
+   'PYMODULE'),
+  ('numpy.f2py.crackfortran',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\crackfortran.py',
+   'PYMODULE'),
+  ('charset_normalizer',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\__init__.py',
+   'PYMODULE'),
+  ('charset_normalizer.version',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\version.py',
+   'PYMODULE'),
+  ('charset_normalizer.utils',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\utils.py',
+   'PYMODULE'),
+  ('charset_normalizer.constant',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\constant.py',
+   'PYMODULE'),
+  ('charset_normalizer.models',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\models.py',
+   'PYMODULE'),
+  ('charset_normalizer.cd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\cd.py',
+   'PYMODULE'),
+  ('charset_normalizer.legacy',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\legacy.py',
+   'PYMODULE'),
+  ('charset_normalizer.api',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\api.py',
+   'PYMODULE'),
+  ('fileinput',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\fileinput.py',
+   'PYMODULE'),
+  ('numpy.f2py.symbolic',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\symbolic.py',
+   'PYMODULE'),
+  ('numpy.f2py.cb_rules',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\cb_rules.py',
+   'PYMODULE'),
+  ('numpy.f2py.capi_maps',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\capi_maps.py',
+   'PYMODULE'),
+  ('numpy.f2py.cfuncs',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\cfuncs.py',
+   'PYMODULE'),
+  ('numpy.f2py.__version__',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\__version__.py',
+   'PYMODULE'),
+  ('numpy.matlib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\matlib.py',
+   'PYMODULE'),
+  ('numpy.matrixlib.defmatrix',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\matrixlib\\defmatrix.py',
+   'PYMODULE'),
+  ('numpy.testing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\__init__.py',
+   'PYMODULE'),
+  ('numpy.testing.overrides',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\overrides.py',
+   'PYMODULE'),
+  ('numpy.lib.recfunctions',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\recfunctions.py',
+   'PYMODULE'),
+  ('numpy.lib._iotools',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_iotools.py',
+   'PYMODULE'),
+  ('numpy.ma.mrecords',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\mrecords.py',
+   'PYMODULE'),
+  ('numpy.testing._private.extbuild',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\_private\\extbuild.py',
+   'PYMODULE'),
+  ('numpy.testing._private.utils',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\_private\\utils.py',
+   'PYMODULE'),
+  ('doctest',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\doctest.py',
+   'PYMODULE'),
+  ('pdb',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pdb.py',
+   'PYMODULE'),
+  ('bdb',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bdb.py',
+   'PYMODULE'),
+  ('numpy._core.tests._natype',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\tests\\_natype.py',
+   'PYMODULE'),
+  ('numpy._core.tests', '-', 'PYMODULE'),
+  ('numpy._typing._ufunc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_ufunc.py',
+   'PYMODULE'),
+  ('unittest.case',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\case.py',
+   'PYMODULE'),
+  ('unittest._log',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\_log.py',
+   'PYMODULE'),
+  ('unittest.util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\util.py',
+   'PYMODULE'),
+  ('unittest.result',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\result.py',
+   'PYMODULE'),
+  ('numpy.testing._private',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\_private\\__init__.py',
+   'PYMODULE'),
+  ('unittest',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\__init__.py',
+   'PYMODULE'),
+  ('unittest.async_case',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\async_case.py',
+   'PYMODULE'),
+  ('unittest.signals',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\signals.py',
+   'PYMODULE'),
+  ('unittest.main',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\main.py',
+   'PYMODULE'),
+  ('unittest.runner',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\runner.py',
+   'PYMODULE'),
+  ('unittest.loader',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\loader.py',
+   'PYMODULE'),
+  ('unittest.suite',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\suite.py',
+   'PYMODULE'),
+  ('numpy.exceptions',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\exceptions.py',
+   'PYMODULE'),
+  ('numpy.ctypeslib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ctypeslib.py',
+   'PYMODULE'),
+  ('numpy._core._internal',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_internal.py',
+   'PYMODULE'),
+  ('numpy.ma',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\__init__.py',
+   'PYMODULE'),
+  ('numpy.ma.extras',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\extras.py',
+   'PYMODULE'),
+  ('numpy.lib.array_utils',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\array_utils.py',
+   'PYMODULE'),
+  ('numpy.lib._array_utils_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_array_utils_impl.py',
+   'PYMODULE'),
+  ('numpy.ma.core',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\core.py',
+   'PYMODULE'),
+  ('numpy.polynomial',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\__init__.py',
+   'PYMODULE'),
+  ('numpy.polynomial._polybase',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\_polybase.py',
+   'PYMODULE'),
+  ('numpy.polynomial.laguerre',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\laguerre.py',
+   'PYMODULE'),
+  ('numpy.polynomial.hermite_e',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\hermite_e.py',
+   'PYMODULE'),
+  ('numpy.polynomial.hermite',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\hermite.py',
+   'PYMODULE'),
+  ('numpy.polynomial.legendre',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\legendre.py',
+   'PYMODULE'),
+  ('numpy.polynomial.chebyshev',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\chebyshev.py',
+   'PYMODULE'),
+  ('numpy.polynomial.polynomial',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\polynomial.py',
+   'PYMODULE'),
+  ('numpy.polynomial.polyutils',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\polyutils.py',
+   'PYMODULE'),
+  ('numpy.random',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\__init__.py',
+   'PYMODULE'),
+  ('numpy.random._pickle',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_pickle.py',
+   'PYMODULE'),
+  ('numpy.dtypes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\dtypes.py',
+   'PYMODULE'),
+  ('numpy.fft',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\__init__.py',
+   'PYMODULE'),
+  ('numpy.fft.helper',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\helper.py',
+   'PYMODULE'),
+  ('numpy.fft._helper',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\_helper.py',
+   'PYMODULE'),
+  ('numpy.fft._pocketfft',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\_pocketfft.py',
+   'PYMODULE'),
+  ('numpy.linalg',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\linalg\\__init__.py',
+   'PYMODULE'),
+  ('numpy.linalg.linalg',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\linalg\\linalg.py',
+   'PYMODULE'),
+  ('numpy.linalg._linalg',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\linalg\\_linalg.py',
+   'PYMODULE'),
+  ('numpy._array_api_info',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_array_api_info.py',
+   'PYMODULE'),
+  ('numpy.matrixlib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\matrixlib\\__init__.py',
+   'PYMODULE'),
+  ('numpy.lib._index_tricks_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_index_tricks_impl.py',
+   'PYMODULE'),
+  ('numpy.lib.stride_tricks',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\stride_tricks.py',
+   'PYMODULE'),
+  ('numpy.lib._npyio_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_npyio_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._datasource',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_datasource.py',
+   'PYMODULE'),
+  ('numpy.lib.format',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\format.py',
+   'PYMODULE'),
+  ('numpy.lib._polynomial_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_polynomial_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._stride_tricks_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_stride_tricks_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._utils_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_utils_impl.py',
+   'PYMODULE'),
+  ('threadpoolctl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\threadpoolctl.py',
+   'PYMODULE'),
+  ('ctypes.util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\util.py',
+   'PYMODULE'),
+  ('ctypes._aix',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\_aix.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dyld',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\dyld.py',
+   'PYMODULE'),
+  ('ctypes.macholib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\__init__.py',
+   'PYMODULE'),
+  ('ctypes.macholib.dylib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\dylib.py',
+   'PYMODULE'),
+  ('ctypes.macholib.framework',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\framework.py',
+   'PYMODULE'),
+  ('numpy.lib._arraypad_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_arraypad_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._ufunclike_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_ufunclike_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._arraysetops_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_arraysetops_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._type_check_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_type_check_impl.py',
+   'PYMODULE'),
+  ('numpy._core.getlimits',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\getlimits.py',
+   'PYMODULE'),
+  ('numpy._core._machar',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_machar.py',
+   'PYMODULE'),
+  ('numpy.lib._shape_base_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_shape_base_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._twodim_base_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_twodim_base_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._function_base_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_function_base_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._nanfunctions_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_nanfunctions_impl.py',
+   'PYMODULE'),
+  ('numpy.lib._histograms_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_histograms_impl.py',
+   'PYMODULE'),
+  ('numpy.lib.scimath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\scimath.py',
+   'PYMODULE'),
+  ('numpy.lib._scimath_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_scimath_impl.py',
+   'PYMODULE'),
+  ('numpy.lib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\__init__.py',
+   'PYMODULE'),
+  ('numpy._core.function_base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\function_base.py',
+   'PYMODULE'),
+  ('numpy.lib._version',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_version.py',
+   'PYMODULE'),
+  ('numpy.lib._arrayterator_impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_arrayterator_impl.py',
+   'PYMODULE'),
+  ('numpy.lib.npyio',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\npyio.py',
+   'PYMODULE'),
+  ('numpy.lib.mixins',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\mixins.py',
+   'PYMODULE'),
+  ('numpy.lib.introspect',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\introspect.py',
+   'PYMODULE'),
+  ('numpy._core.printoptions',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\printoptions.py',
+   'PYMODULE'),
+  ('numpy._core.memmap',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\memmap.py',
+   'PYMODULE'),
+  ('numpy._core',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\__init__.py',
+   'PYMODULE'),
+  ('numpy._core._add_newdocs_scalars',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_add_newdocs_scalars.py',
+   'PYMODULE'),
+  ('numpy._core._add_newdocs',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_add_newdocs.py',
+   'PYMODULE'),
+  ('numpy._core.einsumfunc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\einsumfunc.py',
+   'PYMODULE'),
+  ('numpy.__config__',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\__config__.py',
+   'PYMODULE'),
+  ('yaml',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\__init__.py',
+   'PYMODULE'),
+  ('yaml.cyaml',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\cyaml.py',
+   'PYMODULE'),
+  ('yaml.resolver',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\resolver.py',
+   'PYMODULE'),
+  ('yaml.representer',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\representer.py',
+   'PYMODULE'),
+  ('yaml.serializer',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\serializer.py',
+   'PYMODULE'),
+  ('yaml.constructor',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\constructor.py',
+   'PYMODULE'),
+  ('yaml.dumper',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\dumper.py',
+   'PYMODULE'),
+  ('yaml.emitter',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\emitter.py',
+   'PYMODULE'),
+  ('yaml.loader',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\loader.py',
+   'PYMODULE'),
+  ('yaml.composer',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\composer.py',
+   'PYMODULE'),
+  ('yaml.parser',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\parser.py',
+   'PYMODULE'),
+  ('yaml.scanner',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\scanner.py',
+   'PYMODULE'),
+  ('yaml.reader',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\reader.py',
+   'PYMODULE'),
+  ('yaml.nodes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\nodes.py',
+   'PYMODULE'),
+  ('yaml.events',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\events.py',
+   'PYMODULE'),
+  ('yaml.tokens',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\tokens.py',
+   'PYMODULE'),
+  ('yaml.error',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\error.py',
+   'PYMODULE'),
+  ('numpy._distributor_init',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_distributor_init.py',
+   'PYMODULE'),
+  ('numpy.version',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\version.py',
+   'PYMODULE'),
+  ('numpy._expired_attrs_2_0',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_expired_attrs_2_0.py',
+   'PYMODULE'),
+  ('numpy._globals',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_globals.py',
+   'PYMODULE'),
+  ('numpy._pytesttester',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_pytesttester.py',
+   'PYMODULE'),
+  ('numpy._typing._add_docstring',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_add_docstring.py',
+   'PYMODULE'),
+  ('numpy._typing._array_like',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_array_like.py',
+   'PYMODULE'),
+  ('numpy._typing._shape',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_shape.py',
+   'PYMODULE'),
+  ('numpy._typing._nested_sequence',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_nested_sequence.py',
+   'PYMODULE'),
+  ('numpy._typing._nbit_base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_nbit_base.py',
+   'PYMODULE'),
+  ('numpy._typing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\__init__.py',
+   'PYMODULE'),
+  ('numpy._typing._dtype_like',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_dtype_like.py',
+   'PYMODULE'),
+  ('numpy._typing._scalars',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_scalars.py',
+   'PYMODULE'),
+  ('numpy._typing._char_codes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_char_codes.py',
+   'PYMODULE'),
+  ('numpy._typing._nbit',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_nbit.py',
+   'PYMODULE'),
+  ('PIL.TiffImagePlugin',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\TiffImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageQt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageQt.py',
+   'PYMODULE'),
+  ('PIL.ImagePalette',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImagePalette.py',
+   'PYMODULE'),
+  ('PIL.PaletteFile',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PaletteFile.py',
+   'PYMODULE'),
+  ('PIL.GimpPaletteFile',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GimpPaletteFile.py',
+   'PYMODULE'),
+  ('PIL.GimpGradientFile',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GimpGradientFile.py',
+   'PYMODULE'),
+  ('PIL.ImageFilter',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageFilter.py',
+   'PYMODULE'),
+  ('PIL.ImageFile',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageFile.py',
+   'PYMODULE'),
+  ('xml.etree.ElementTree',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\ElementTree.py',
+   'PYMODULE'),
+  ('xml.etree.cElementTree',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\cElementTree.py',
+   'PYMODULE'),
+  ('xml.etree.ElementInclude',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\ElementInclude.py',
+   'PYMODULE'),
+  ('xml.etree.ElementPath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\ElementPath.py',
+   'PYMODULE'),
+  ('xml.etree',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\__init__.py',
+   'PYMODULE'),
+  ('PIL._util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_util.py',
+   'PYMODULE'),
+  ('PIL._deprecate',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_deprecate.py',
+   'PYMODULE'),
+  ('PIL._binary',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_binary.py',
+   'PYMODULE'),
+  ('PIL.TiffTags',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\TiffTags.py',
+   'PYMODULE'),
+  ('PIL.ImageMode',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageMode.py',
+   'PYMODULE'),
+  ('PIL.ExifTags',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ExifTags.py',
+   'PYMODULE'),
+  ('PIL',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\__init__.py',
+   'PYMODULE'),
+  ('PIL._version',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_version.py',
+   'PYMODULE'),
   ('threading',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\threading.py',
@@ -1507,6 +2584,14 @@
  [('python310.dll',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\python310.dll',
+   'BINARY'),
+  ('numpy.libs\\libscipy_openblas64_-13e2df515630b4a41f92893938845698.dll',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy.libs\\libscipy_openblas64_-13e2df515630b4a41f92893938845698.dll',
+   'BINARY'),
+  ('numpy.libs\\msvcp140-263139962577ecda4cd9469ca360a746.dll',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy.libs\\msvcp140-263139962577ecda4cd9469ca360a746.dll',
    'BINARY'),
   ('select.pyd',
    'C:\\Users\\RYZEN5 '
@@ -1572,9 +2657,101 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\markupsafe\\_speedups.cp310-win_amd64.pyd',
    'EXTENSION'),
+  ('PIL\\_webp.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_webp.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('PIL\\_imagingtk.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_imagingtk.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('PIL\\_imagingcms.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_imagingcms.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('PIL\\_imagingmath.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_imagingmath.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\_core\\_multiarray_tests.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_multiarray_tests.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\_core\\_multiarray_umath.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_multiarray_umath.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('charset_normalizer\\md__mypyc.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\md__mypyc.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('charset_normalizer\\md.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\md.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\linalg\\_umath_linalg.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\mtrand.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\mtrand.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_sfc64.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_sfc64.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_philox.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_philox.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_pcg64.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_pcg64.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_mt19937.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_mt19937.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\bit_generator.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\bit_generator.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_generator.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_generator.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_bounded_integers.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_bounded_integers.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_common.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_common.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\fft\\_pocketfft_umath.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\_pocketfft_umath.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('yaml\\_yaml.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\_yaml.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('_elementtree.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_elementtree.pyd',
+   'EXTENSION'),
+  ('PIL\\_imaging.cp310-win_amd64.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_imaging.cp310-win_amd64.pyd',
+   'EXTENSION'),
   ('VCRUNTIME140.dll',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('VCRUNTIME140_1.dll',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\VCRUNTIME140_1.dll',
    'BINARY'),
   ('libcrypto-1_1.dll',
    'C:\\Users\\RYZEN5 '
@@ -1592,63 +2769,135 @@
  [],
  [('static\\css\\style.css',
    'C:\\Users\\RYZEN5 '
-   '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\css\\style.css',
+   '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\css\\style.css',
    'DATA'),
   ('static\\js\\script.js',
    'C:\\Users\\RYZEN5 '
-   '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\js\\script.js',
+   '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\static\\js\\script.js',
    'DATA'),
   ('templates\\index.html',
    'C:\\Users\\RYZEN5 '
-   '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\templates\\index.html',
-   'DATA'),
-  ('click-8.3.1.dist-info\\METADATA',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\METADATA',
+   '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\templates\\index.html',
    'DATA'),
   ('MarkupSafe-3.0.2.dist-info\\top_level.txt',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\top_level.txt',
    'DATA'),
-  ('itsdangerous-2.2.0.dist-info\\LICENSE.txt',
+  ('flask-3.1.2.dist-info\\INSTALLER',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\LICENSE.txt',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\INSTALLER',
    'DATA'),
-  ('werkzeug-3.1.3.dist-info\\RECORD',
+  ('MarkupSafe-3.0.2.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\RECORD',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\WHEEL',
    'DATA'),
-  ('click-8.3.1.dist-info\\RECORD',
+  ('werkzeug-3.1.3.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\RECORD',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\WHEEL',
    'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\RECORD',
+  ('itsdangerous-2.2.0.dist-info\\METADATA',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\RECORD',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\METADATA',
    'DATA'),
-  ('werkzeug-3.1.3.dist-info\\LICENSE.txt',
+  ('MarkupSafe-3.0.2.dist-info\\METADATA',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\LICENSE.txt',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
-   'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\INSTALLER',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\METADATA',
    'DATA'),
   ('click-8.3.1.dist-info\\licenses\\LICENSE.txt',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\licenses\\LICENSE.txt',
    'DATA'),
+  ('numpy-2.2.6.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\RECORD',
+   'DATA'),
+  ('itsdangerous-2.2.0.dist-info\\INSTALLER',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\WHEEL',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\WHEEL',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\INSTALLER',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\INSTALLER',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\WHEEL',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\WHEEL',
+   'DATA'),
+  ('MarkupSafe-3.0.2.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\RECORD',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\entry_points.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\entry_points.txt',
+   'DATA'),
+  ('MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\METADATA',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\METADATA',
+   'DATA'),
+  ('werkzeug-3.1.3.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\RECORD',
+   'DATA'),
+  ('werkzeug-3.1.3.dist-info\\METADATA',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\METADATA',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\LICENSE.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\METADATA',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\METADATA',
+   'DATA'),
   ('click-8.3.1.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\WHEEL',
    'DATA'),
+  ('click-8.3.1.dist-info\\INSTALLER',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\INSTALLER',
+   'DATA'),
   ('flask-3.1.2.dist-info\\entry_points.txt',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\entry_points.txt',
+   'DATA'),
+  ('MarkupSafe-3.0.2.dist-info\\INSTALLER',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\INSTALLER',
+   'DATA'),
+  ('werkzeug-3.1.3.dist-info\\LICENSE.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\REQUESTED',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\REQUESTED',
+   'DATA'),
+  ('click-8.3.1.dist-info\\METADATA',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\METADATA',
+   'DATA'),
+  ('itsdangerous-2.2.0.dist-info\\LICENSE.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('itsdangerous-2.2.0.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\RECORD',
    'DATA'),
   ('itsdangerous-2.2.0.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
@@ -1658,67 +2907,123 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\RECORD',
    'DATA'),
-  ('itsdangerous-2.2.0.dist-info\\INSTALLER',
+  ('click-8.3.1.dist-info\\RECORD',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\INSTALLER',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\INSTALLER',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\RECORD',
    'DATA'),
   ('werkzeug-3.1.3.dist-info\\INSTALLER',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\INSTALLER',
    'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
+  ('numpy-2.2.6.dist-info\\DELVEWHEEL',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
-   'DATA'),
-  ('itsdangerous-2.2.0.dist-info\\METADATA',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\METADATA',
-   'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\WHEEL',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\WHEEL',
-   'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\METADATA',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\METADATA',
-   'DATA'),
-  ('werkzeug-3.1.3.dist-info\\WHEEL',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\WHEEL',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\METADATA',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\METADATA',
-   'DATA'),
-  ('werkzeug-3.1.3.dist-info\\METADATA',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\METADATA',
-   'DATA'),
-  ('itsdangerous-2.2.0.dist-info\\RECORD',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\RECORD',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\REQUESTED',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\REQUESTED',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\WHEEL',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\WHEEL',
-   'DATA'),
-  ('click-8.3.1.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\INSTALLER',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\DELVEWHEEL',
    'DATA'),
   ('base_library.zip',
    'C:\\Users\\RYZEN5 '
-   '5500\\desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\build\\app\\base_library.zip',
+   '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\build\\app\\base_library.zip',
    'DATA')],
- [('encodings.zlib_codec',
+ [('stat',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stat.py',
+   'PYMODULE'),
+  ('_collections_abc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_collections_abc.py',
+   'PYMODULE'),
+  ('genericpath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\genericpath.py',
+   'PYMODULE'),
+  ('sre_constants',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_constants.py',
+   'PYMODULE'),
+  ('collections.abc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\collections\\abc.py',
+   'PYMODULE'),
+  ('collections',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\collections\\__init__.py',
+   'PYMODULE'),
+  ('abc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\abc.py',
+   'PYMODULE'),
+  ('weakref',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\weakref.py',
+   'PYMODULE'),
+  ('copyreg',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\copyreg.py',
+   'PYMODULE'),
+  ('functools',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\functools.py',
+   'PYMODULE'),
+  ('heapq',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\heapq.py',
+   'PYMODULE'),
+  ('_weakrefset',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_weakrefset.py',
+   'PYMODULE'),
+  ('linecache',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\linecache.py',
+   'PYMODULE'),
+  ('operator',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\operator.py',
+   'PYMODULE'),
+  ('locale',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\locale.py',
+   'PYMODULE'),
+  ('posixpath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\posixpath.py',
+   'PYMODULE'),
+  ('keyword',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\keyword.py',
+   'PYMODULE'),
+  ('sre_compile',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_compile.py',
+   'PYMODULE'),
+  ('enum',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\enum.py',
+   'PYMODULE'),
+  ('sre_parse',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_parse.py',
+   'PYMODULE'),
+  ('warnings',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\warnings.py',
+   'PYMODULE'),
+  ('codecs',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\codecs.py',
+   'PYMODULE'),
+  ('ntpath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ntpath.py',
+   'PYMODULE'),
+  ('types',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\types.py',
+   'PYMODULE'),
+  ('reprlib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\reprlib.py',
+   'PYMODULE'),
+  ('encodings.zlib_codec',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\encodings\\zlib_codec.py',
    'PYMODULE'),
@@ -2206,117 +3511,17 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\encodings\\__init__.py',
    'PYMODULE'),
-  ('_collections_abc',
+  ('io',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_collections_abc.py',
-   'PYMODULE'),
-  ('linecache',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\linecache.py',
-   'PYMODULE'),
-  ('keyword',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\keyword.py',
-   'PYMODULE'),
-  ('locale',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\locale.py',
-   'PYMODULE'),
-  ('heapq',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\heapq.py',
-   'PYMODULE'),
-  ('sre_parse',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_parse.py',
-   'PYMODULE'),
-  ('codecs',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\codecs.py',
-   'PYMODULE'),
-  ('posixpath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\posixpath.py',
-   'PYMODULE'),
-  ('enum',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\enum.py',
-   'PYMODULE'),
-  ('reprlib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\reprlib.py',
-   'PYMODULE'),
-  ('warnings',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\warnings.py',
-   'PYMODULE'),
-  ('abc',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\abc.py',
-   'PYMODULE'),
-  ('_weakrefset',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_weakrefset.py',
-   'PYMODULE'),
-  ('functools',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\functools.py',
-   'PYMODULE'),
-  ('sre_compile',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_compile.py',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\io.py',
    'PYMODULE'),
   ('re',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\re.py',
    'PYMODULE'),
-  ('types',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\types.py',
-   'PYMODULE'),
-  ('copyreg',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\copyreg.py',
-   'PYMODULE'),
-  ('genericpath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\genericpath.py',
-   'PYMODULE'),
-  ('collections.abc',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\collections\\abc.py',
-   'PYMODULE'),
-  ('collections',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\collections\\__init__.py',
-   'PYMODULE'),
-  ('io',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\io.py',
-   'PYMODULE'),
-  ('ntpath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ntpath.py',
-   'PYMODULE'),
-  ('operator',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\operator.py',
-   'PYMODULE'),
-  ('sre_constants',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_constants.py',
-   'PYMODULE'),
   ('traceback',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\traceback.py',
-   'PYMODULE'),
-  ('stat',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stat.py',
-   'PYMODULE'),
-  ('weakref',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\weakref.py',
    'PYMODULE'),
   ('os',
    'C:\\Users\\RYZEN5 '
