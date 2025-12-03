@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sharpenModeBtn = document.getElementById('sharpenModeBtn');
     const measureModeBtn = document.getElementById('measureModeBtn');
     const particleSizeModeBtn = document.getElementById('particleSizeModeBtn');
-    const percentageResizeModeBtn = document.getElementById('percentageResizeModeBtn');
+    const roiSelectModeBtn = document.getElementById('roiSelectModeBtn');
     const downloadBtn = document.getElementById('downloadBtn');
     const resetBtn = document.getElementById('resetBtn');
 
@@ -18,6 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Off-screen canvas for pre-processing
     const tempCanvas = document.createElement('canvas');
     const tempCtx = tempCanvas.getContext('2d');
+
+    // Modal Elements
+    const cropResultModalEl = document.getElementById('cropResultModal');
+    const cropResultModal = new bootstrap.Modal(cropResultModalEl);
+    const canvasCroppedModal = document.getElementById('canvas-cropped-modal');
+    const ctxCroppedModal = canvasCroppedModal.getContext('2d');
+    const setCroppedAsNewBtnModal = document.getElementById('setCroppedAsNewBtnModal');
 
     // Controls - Contrast
     const contrastControls = document.getElementById('contrast-controls');
@@ -43,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const particleSizeControls = document.getElementById('particle-size-controls');
     const thresholdSlider = document.getElementById('thresholdSlider');
     const thresholdValue = document.getElementById('thresholdValue');
+    const resetThresholdBtn = document.getElementById('resetThresholdBtn'); // Add this line
     const analyzeParticlesBtn = document.getElementById('analyzeParticlesBtn');
     const particleCount = document.getElementById('particleCount');
     const averageDiameterPx = document.getElementById('averageDiameterPx');
@@ -54,12 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const roiRealLength = document.getElementById('roiRealLength');
     const roiRealUnit = document.getElementById('roiRealUnit');
     const analyzeMultipleParticlesBtn = document.getElementById('analyzeMultipleParticlesBtn');
-
-    // Controls - Percentage Resize
-    const percentageResizeControls = document.getElementById('percentage-resize-controls');
-    const percentageSlider = document.getElementById('percentageSlider');
-    const percentageValue = document.getElementById('percentageValue');
-    const resetPercentageBtn = document.getElementById('resetPercentageBtn');
 
     // Controls - Particle Size Scale
     const particleScaleLengthInput = document.getElementById('particleScaleLengthInput');
@@ -77,21 +79,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== State =====
     let originalImage = null;
-    let currentMode = 'contrast'; // 'contrast', 'sharpen', 'measure', 'particle_size', 'percentage_resize'
+    let currentMode = 'contrast'; // 'contrast', 'sharpen', 'measure', 'particle_size', 'roi_select'
     let measurementPoints = [];
     let scale = { pixels: null, realLength: null, unit: null };
     let particles = [];
 
     let originalImageWidth = 0;
     let originalImageHeight = 0;
-    let baseResizeWidth = 0; // The 100% width reference for percentage resize
-    let baseResizeHeight = 0; // The 100% height reference for percentage resize
 
     let calibrationState = 'idle';
     let measurementState = 'idle';
     let particleCalibrationState = 'idle';
     let particleMeasurementState = 'idle';
     let particleScale = { pixels: null, realLength: null, unit: null };
+
+    // New State for ROI Selection
+    let isSelecting = false;
+    let selectionRect = { startX: 0, startY: 0, endX: 0, endY: 0 };
+    let croppedImageData = null;
 
 
     // ===== LOGIC & HELPER FUNCTIONS =====
@@ -182,25 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4. Put the processed data onto the temp canvas
         tempCtx.putImageData(processedImageData, 0, 0);
 
-        // 5. Handle resizing based on current mode
-        if (currentMode === 'percentage_resize') {
-            const percentage = parseInt(percentageSlider.value);
-            const newWidth = Math.round(baseResizeWidth * (percentage / 100));
-            const newHeight = Math.round(baseResizeHeight * (percentage / 100));
+        // 5. For all other modes, ensure 'after' canvas has original dimensions
+        canvasAfter.width = originalImageWidth;
+        canvasAfter.height = originalImageHeight;
+        // Draw the processed image from the temp canvas
+        ctxAfter.drawImage(tempCanvas, 0, 0);
 
-            canvasAfter.width = newWidth;
-            canvasAfter.height = newHeight;
-            
-            // Clear and draw the scaled image from the temp canvas
-            ctxAfter.clearRect(0, 0, newWidth, newHeight);
-            ctxAfter.drawImage(tempCanvas, 0, 0, newWidth, newHeight);
-        } else {
-            // For all other modes, ensure 'after' canvas has original dimensions
-            canvasAfter.width = originalImageWidth;
-            canvasAfter.height = originalImageHeight;
-            // Draw the processed image from the temp canvas
-            ctxAfter.drawImage(tempCanvas, 0, 0);
-        }
 
         // 6. Handle mode-specific overlays or further processing on 'after' canvas
         if (currentMode === 'particle_size') {
@@ -229,6 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 drawLine(measurementPoints[0], measurementPoints[1], markerColor);
             }
         }
+
+        // Draw ROI selection rectangle
+        if (isSelecting) {
+            ctxAfter.strokeStyle = 'red';
+            ctxAfter.lineWidth = 4;
+            const { x, y, w, h } = getSelectionRect();
+            ctxAfter.strokeRect(x, y, w, h);
+        }
     }
 
     function resetMeasurementState() {
@@ -255,13 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
         redrawAfterCanvas();
     }
     
-    function resetPercentageResizeState() {
-        if (!originalImage) return;
-        percentageSlider.value = 100;
-        percentageValue.textContent = 100;
-        redrawAfterCanvas();
-    }
-
     function resetApp() {
         if (!originalImage) return;
         
@@ -281,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resetSharpeningState();
         resetMeasurementState();
         resetParticleSizeState();
-        resetPercentageResizeState();
+        resetCroppedImageState();
         
         // Default to contrast mode and redraw
         switchMode('contrast');
@@ -296,14 +289,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function switchMode(mode) {
+        // Toggle behavior for roi_select
+        if (currentMode === 'roi_select' && mode === 'roi_select') {
+            switchMode('contrast'); // Default back to contrast mode
+            return;
+        }
+
         currentMode = mode;
         // Hide all control groups
         const allControls = document.querySelectorAll('.control-group');
         allControls.forEach(c => c.classList.add('d-none'));
 
         // Reset all mode buttons to secondary
-        const allModeBtns = [contrastModeBtn, sharpenModeBtn, measureModeBtn, particleSizeModeBtn, percentageResizeModeBtn];
-        allModeBtns.forEach(btn => btn.classList.replace('btn-primary', 'btn-secondary'));
+        const allModeBtns = [contrastModeBtn, sharpenModeBtn, measureModeBtn, particleSizeModeBtn, roiSelectModeBtn];
+        allModeBtns.forEach(btn => {
+            btn.classList.replace('btn-primary', 'btn-secondary');
+            if (btn.id === 'roiSelectModeBtn') btn.textContent = '範囲選択';
+        });
 
         // Default to responsive canvas, remove for specific modes
         canvasAfter.classList.add('img-fluid');
@@ -311,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show the active control group and set button to primary
         let activeControls = null;
         let activeButton = null;
+        let isRoiMode = false;
 
         if (mode === 'contrast') {
             activeControls = contrastControls;
@@ -324,15 +327,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (mode === 'particle_size') {
             activeControls = particleSizeControls;
             activeButton = particleSizeModeBtn;
-        } else if (mode === 'percentage_resize') {
-            activeControls = percentageResizeControls;
-            activeButton = percentageResizeModeBtn;
-            canvasAfter.classList.remove('img-fluid'); // Allow overflow for enlarging
+        } else if (mode === 'roi_select') {
+            activeButton = roiSelectModeBtn;
+            activeButton.textContent = '選択中（ドラッグで選択）';
+            isRoiMode = true;
         }
         
         if (activeControls) activeControls.classList.remove('d-none');
         if (activeButton) activeButton.classList.replace('btn-secondary', 'btn-primary');
         
+        canvasAfter.style.cursor = isRoiMode ? 'crosshair' : 'default';
+
         // Redraw canvas to reflect the state of the new mode
         if (originalImage) {
             redrawAfterCanvas();
@@ -392,6 +397,64 @@ document.addEventListener('DOMContentLoaded', () => {
         redrawAfterCanvas(); 
     }
 
+    // ===== NEW ROI FUNCTIONS =====
+    function getSelectionRect() {
+        const x = Math.min(selectionRect.startX, selectionRect.endX);
+        const y = Math.min(selectionRect.startY, selectionRect.endY);
+        const w = Math.abs(selectionRect.startX - selectionRect.endX);
+        const h = Math.abs(selectionRect.startY - selectionRect.endY);
+        return { x, y, w, h };
+    }
+
+    function cropImageAndShowModal() {
+        if (!originalImage) return;
+        const rect = getSelectionRect();
+        if (rect.w < 1 || rect.h < 1) {
+            resetCroppedImageState();
+            return;
+        }
+
+        // Crop from the original 'before' canvas
+        croppedImageData = ctxBefore.getImageData(rect.x, rect.y, rect.w, rect.h);
+        
+        canvasCroppedModal.width = rect.w;
+        canvasCroppedModal.height = rect.h;
+        ctxCroppedModal.putImageData(croppedImageData, 0, 0);
+        
+        cropResultModal.show();
+    }
+    
+    function resetCroppedImageState() {
+        croppedImageData = null;
+        ctxCroppedModal.clearRect(0, 0, canvasCroppedModal.width, canvasCroppedModal.height);
+    }
+    
+    function setCroppedAsNew() {
+        if (!croppedImageData) return;
+        
+        cropResultModal.hide(); // Hide the modal first
+
+        const newImage = new Image();
+        const tempCropCanvas = document.createElement('canvas');
+        tempCropCanvas.width = croppedImageData.width;
+        tempCropCanvas.height = croppedImageData.height;
+        tempCropCanvas.getContext('2d').putImageData(croppedImageData, 0, 0);
+
+        newImage.onload = () => {
+            originalImage = newImage; // Set the cropped image as the new original
+            originalImageWidth = originalImage.width;
+            originalImageHeight = originalImage.height;
+
+            canvasBefore.width = originalImageWidth;
+            canvasBefore.height = originalImageHeight;
+            ctxBefore.drawImage(originalImage, 0, 0);
+            
+            resetApp();
+        };
+        newImage.src = tempCropCanvas.toDataURL();
+    }
+
+
     // ===== EVENT LISTENERS =====
 
     imageLoader.addEventListener('change', e => {
@@ -408,13 +471,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctxBefore.drawImage(originalImage, 0, 0);
                 
                 resetApp();
-
-                // After initial render, get the responsive size to use as a baseline
-                setTimeout(() => {
-                    const canvasRect = canvasAfter.getBoundingClientRect();
-                    baseResizeWidth = canvasRect.width;
-                    baseResizeHeight = canvasRect.height;
-                }, 100);
             };
             originalImage.src = event.target.result;
         };
@@ -425,11 +481,16 @@ document.addEventListener('DOMContentLoaded', () => {
     sharpenModeBtn.addEventListener('click', () => switchMode('sharpen'));
     measureModeBtn.addEventListener('click', () => switchMode('measure'));
     particleSizeModeBtn.addEventListener('click', () => switchMode('particle_size'));
-    percentageResizeModeBtn.addEventListener('click', () => switchMode('percentage_resize'));
+    roiSelectModeBtn.addEventListener('click', () => switchMode('roi_select'));
     
     resetBtn.addEventListener('click', resetApp);
     clearMeasurementBtn.addEventListener('click', clearMeasurements);
     clearParticlesBtn.addEventListener('click', resetParticleSizeState);
+
+    // New Listeners for Modal
+    setCroppedAsNewBtnModal.addEventListener('click', setCroppedAsNew);
+    cropResultModalEl.addEventListener('hidden.bs.modal', resetCroppedImageState);
+
 
     resetContrastBtn.addEventListener('click', () => {
         if (!originalImage) return;
@@ -439,12 +500,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     resetSharpenBtn.addEventListener('click', resetSharpeningState);
-    resetPercentageBtn.addEventListener('click', resetPercentageResizeState);
 
-    // --- Percentage Resize Controls ---
-    percentageSlider.addEventListener('input', e => {
+    resetThresholdBtn.addEventListener('click', () => {
         if (!originalImage) return;
-        percentageValue.textContent = e.target.value;
+        thresholdSlider.value = 128;
+        thresholdValue.textContent = 128;
         redrawAfterCanvas();
     });
 
@@ -532,16 +592,53 @@ document.addEventListener('DOMContentLoaded', () => {
         redrawAfterCanvas();
     });
 
-    // --- Canvas Click Handler ---
-
-    canvasAfter.addEventListener('click', e => {
-        if (!originalImage) return;
-
+    // --- Canvas Click & Drag Handler ---
+    
+    function getCanvasCoordinates(e) {
         const rect = canvasAfter.getBoundingClientRect();
         const scaleX = canvasAfter.width / rect.width;
         const scaleY = canvasAfter.height / rect.height;
         const x = (e.clientX - rect.left) * scaleX;
         const y = (e.clientY - rect.top) * scaleY;
+        return { x, y };
+    }
+
+    canvasAfter.addEventListener('mousedown', e => {
+        if (currentMode === 'roi_select') {
+            if (!originalImage) return;
+            const { x, y } = getCanvasCoordinates(e);
+            isSelecting = true;
+            selectionRect.startX = x;
+            selectionRect.startY = y;
+            selectionRect.endX = x;
+            selectionRect.endY = y;
+        }
+    });
+    
+    canvasAfter.addEventListener('mousemove', e => {
+        if (currentMode === 'roi_select' && isSelecting) {
+            const { x, y } = getCanvasCoordinates(e);
+            selectionRect.endX = x;
+            selectionRect.endY = y;
+            redrawAfterCanvas();
+        }
+    });
+
+    canvasAfter.addEventListener('mouseup', e => {
+        if (currentMode === 'roi_select') {
+            if (!originalImage || !isSelecting) return;
+            isSelecting = false;
+            cropImageAndShowModal();
+            redrawAfterCanvas(); // Clear the selection rectangle
+        }
+    });
+
+
+    canvasAfter.addEventListener('click', e => {
+        if (!originalImage) return;
+        if (isSelecting) return; // Prevent click from firing right after a drag
+
+        const { x, y } = getCanvasCoordinates(e);
 
         if (currentMode === 'measure') {
             if (calibrationState !== 'in_progress' && measurementState !== 'in_progress') return;
@@ -652,6 +749,8 @@ document.addEventListener('DOMContentLoaded', () => {
         contrastValue.textContent = e.target.value;
         redrawAfterCanvas();
     });
+
+
 
     sharpenSlider.addEventListener('input', e => {
         if (!originalImage) return;
@@ -834,4 +933,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-

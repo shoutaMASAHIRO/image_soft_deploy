@@ -35,7 +35,7 @@
                             <button class="btn btn-secondary" id="sharpenModeBtn">画像鮮明化</button>
                             <button class="btn btn-secondary" id="measureModeBtn">寸法測定</button>
                             <button class="btn btn-secondary" id="particleSizeModeBtn">粒径測定</button>
-                            <button class="btn btn-secondary" id="percentageResizeModeBtn">パーセンテージリサイズ</button>
+                            <button class="btn btn-secondary" id="roiSelectModeBtn">範囲選択</button>
                         </div>
                         <hr>
                         <!-- 各モードの操作エリア -->
@@ -95,6 +95,7 @@
                                                                 <div class="mb-3">
                                                                     <label for="thresholdSlider" class="form-label">二値化閾値: <span id="thresholdValue">128</span></label>
                                                                     <input type="range" class="form-range" min="0" max="255" value="128" id="thresholdSlider">
+                                                                    <button class="btn btn-sm btn-outline-secondary w-100 mt-2" id="resetThresholdBtn">閾値をリセット</button>
                                                                 </div>
                                                                 <hr>
                                                                 <!-- スケール設定 (粒径測定用) -->
@@ -136,13 +137,6 @@
                                     <p>平均直径 (<span id="averageDiameterUnit">未設定</span>): <strong id="averageDiameterReal">未設定</strong></p>
                                 </div>
                             </div>
-                            <!-- パーセンテージリサイズ -->
-                            <div id="percentage-resize-controls" class="control-group d-none">
-                                <h6 class="mb-2">パーセンテージリサイズ</h6>
-                                <label for="percentageSlider" class="form-label">サイズ: <span id="percentageValue">100</span>%</label>
-                                <input type="range" class="form-range" min="1" max="200" value="100" id="percentageSlider">
-                                <button class="btn btn-sm btn-outline-secondary w-100 mt-2" id="resetPercentageBtn">リセット</button>
-                            </div>
                         </div>
                          <hr>
                         <div class="d-grid gap-2 mt-3">
@@ -175,10 +169,31 @@
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
-    </main>
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+                                    </section>
+                                </div>
+                            </main>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="cropResultModal" tabindex="-1" aria-labelledby="cropResultModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content bg-dark">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="cropResultModalLabel">選択範囲</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body text-center">
+                                    <canvas id="canvas-cropped-modal" class="img-fluid mb-3"></canvas>
+                                    <p class="form-text mt-0 mb-2">この範囲を新しい操作対象として設定しますか？</p>
+                                  </div>
+                                  <div class="modal-footer justify-content-center border-0">
+                                    <button type="button" class="btn btn-primary" id="setCroppedAsNewBtnModal">元画像に設定</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                            <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+                            </body>
+                            </html>
