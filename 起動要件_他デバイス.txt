@@ -1,0 +1,22 @@
+﻿ビルド手順のまとめ:
+
+1.  **アプリケーションディレクトリへの移動:**
+    ```powershell
+    cd image-analysis-app
+    ```
+2.  **依存関係のインストール:** (まだ実行していない場合、または環境をセットアップする場合)
+    ```powershell
+    pip install -r requirements.txt（Flask、Pillow）
+    ```
+3.  **PyInstaller のインストール:** (もしインストールされていない場合、または `pyinstaller` コマンドが見つからない場合)
+    ```powershell
+    pip install pyinstaller
+    ```
+4.  **PyInstaller を Python モジュールとして実行し、ビルド:**
+    `pyinstaller` コマンドが直接認識されない問題を解決するため、Python インタープリタ経由で PyInstaller モジュールを実行しました。
+    ```powershell
+    python -m PyInstaller app.spec
+    ```
+
+これらの手順で `app.exe` のビルドが完了します。
+

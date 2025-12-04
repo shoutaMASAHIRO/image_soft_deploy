@@ -1,4 +1,239 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ===== Generic Weighing Calculation =====
+
+    const ATOMIC_WEIGHTS = {
+        H: 1.008, He: 4.0026, Li: 6.94, Be: 9.0122, B: 10.81, C: 12.011, N: 14.007, O: 15.999, F: 18.998, Ne: 20.180,
+        Na: 22.990, Mg: 24.305, Al: 26.982, Si: 28.085, P: 30.974, S: 32.06, Cl: 35.45, Ar: 39.948, K: 39.098, Ca: 40.078,
+        Sc: 44.956, Ti: 47.867, V: 50.942, Cr: 51.996, Mn: 54.938, Fe: 55.845, Co: 58.933, Ni: 58.693, Cu: 63.546, Zn: 65.38,
+        Ga: 69.723, Ge: 72.630, As: 74.922, Se: 78.971, Br: 79.904, Kr: 83.798, Rb: 85.468, Sr: 87.62, Y: 88.906, Zr: 91.224,
+        Nb: 92.906, Mo: 95.96, Tc: 98, Ru: 101.07, Rh: 102.91, Pd: 106.42, Ag: 107.87, Cd: 112.41, In: 114.82, Sn: 118.71,
+        Sb: 121.76, Te: 127.60, I: 126.90, Xe: 131.29, Cs: 132.91, Ba: 137.33, La: 138.91, Ce: 140.12, Pr: 140.91, Nd: 144.24,
+        Pm: 145, Sm: 150.36, Eu: 151.96, Gd: 157.25, Tb: 158.93, Dy: 162.50, Ho: 164.93, Er: 167.26, Tm: 168.93, Yb: 173.05,
+        Lu: 174.97, Hf: 178.49, Ta: 180.95, W: 183.84, Re: 186.21, Os: 190.23, Ir: 192.22, Pt: 195.08, Au: 196.97, Hg: 200.59,
+        Tl: 204.38, Pb: 207.2, Bi: 208.98, Po: 209, At: 210, Rn: 222, Fr: 223, Ra: 226, Ac: 227, Th: 232.04, Pa: 231.04, U: 238.03
+    };
+
+    const weighingElements = {
+        productFormula: document.getElementById('productFormula'),
+        reactantInputs: document.querySelectorAll('[name="reactantFormula"]'),
+        x_val: document.getElementById('smComposition'), // Re-using the ID, but it's just 'x' now
+        amount: document.getElementById('productAmount'),
+        amountLabel: document.getElementById('productAmountLabel'),
+        modeMass: document.getElementById('modeMass'),
+        modeMol: document.getElementById('modeMol'),
+        calculateBtn: document.getElementById('calculateWeighingBtn'),
+        
+        // Result containers
+        resProdFormula: document.getElementById('res-prod-formula'),
+        resProdMolarMass: document.getElementById('res-prod-molar-mass'),
+        resProdMoles: document.getElementById('res-prod-moles'),
+        resProdMass: document.getElementById('res-prod-mass'),
+        reactantResultsContainer: document.getElementById('reactant-results-container'),
+    };
+
+    function updateAmountLabel() {
+        if (weighingElements.modeMass.checked) {
+            weighingElements.amountLabel.textContent = '質量 (g)';
+        } else {
+            weighingElements.amountLabel.textContent = 'モル数 (mol)';
+        }
+    }
+
+    function evaluateCoefficient(coeff, x) {
+        if (!isNaN(coeff)) {
+            return parseFloat(coeff);
+        }
+        try {
+            // Using a Function constructor is safer than eval
+            const func = new Function('x', `return ${coeff}`);
+            const result = func(x);
+            if (typeof result !== 'number' || isNaN(result)) {
+                return 0;
+            }
+            return result;
+        } catch (e) {
+            console.error(`Could not evaluate coefficient: "${coeff}"`, e);
+            return 0; // Return 0 or throw an error if evaluation fails
+        }
+    }
+
+    function parseFormula(formula) {
+        const elements = {};
+        const regex = /([A-Z][a-z]*)(\([^)]+\)|\d*\.?\d*)?/g;
+        
+        const sanitizedFormula = formula.replace(/\s/g, '');
+        if (!sanitizedFormula) return null;
+
+        let match;
+        while ((match = regex.exec(sanitizedFormula)) !== null) {
+            const element = match[1];
+            let count = match[2];
+
+            if (count === undefined) {
+                count = '1';
+            }
+            if (count.startsWith('(')) {
+                count = count.substring(1, count.length - 1);
+            }
+            
+            if (!ATOMIC_WEIGHTS[element]) {
+                throw new Error(`認識できない元素記号です: ${element}`);
+            }
+
+            if (elements[element]) {
+                throw new Error(`元素 ${element} が複数回出現します。このパーサーは(NH4)2SO4のような形式には未対応です。`);
+            }
+            elements[element] = count;
+        }
+        return elements;
+    }
+
+    function calculateMolarMass(parsedFormula, x_val) {
+        let totalMass = 0;
+        for (const element in parsedFormula) {
+            const coeff = parsedFormula[element];
+            const count = evaluateCoefficient(coeff, x_val);
+            totalMass += ATOMIC_WEIGHTS[element] * count;
+        }
+        return totalMass;
+    }
+
+    function runGenericCalculation() {
+        try {
+            // 1. Get Inputs
+            const productFormulaStr = weighingElements.productFormula.value;
+            const reactantFormulaStrs = Array.from(weighingElements.reactantInputs)
+                .map(input => input.value.trim())
+                .filter(val => val !== '');
+            const x_val = parseFloat(weighingElements.x_val.value);
+            const amount = parseFloat(weighingElements.amount.value);
+            const mode = weighingElements.modeMass.checked ? 'mass' : 'mol';
+
+            // 2. Validation
+            if (!productFormulaStr) { alert('生成物の化学式を入力してください。'); return; }
+            if (reactantFormulaStrs.length === 0) { alert('少なくとも1つの原料を入力してください。'); return; }
+            if (isNaN(x_val)) { alert('変数 x の値は数値を入力してください。'); return; }
+            if (isNaN(amount) || amount <= 0) { alert('量には0より大きい数値を入力してください。'); return; }
+
+            // 3. Parse Formulas
+            const parsedProduct = parseFormula(productFormulaStr);
+            const parsedReactants = reactantFormulaStrs.map(formula => ({
+                formula,
+                elements: parseFormula(formula)
+            }));
+
+            // 4. Calculate Molar Masses
+            const productMolarMass = calculateMolarMass(parsedProduct, x_val);
+            const reactantMolarMasses = parsedReactants.map(r => calculateMolarMass(r.elements, x_val));
+
+            // 5. Determine Product Moles
+            let n_prod, mass_prod;
+            if (mode === 'mass') {
+                mass_prod = amount;
+                if (productMolarMass === 0) { alert('生成物のモル質量が0です。計算できません。'); return; }
+                n_prod = mass_prod / productMolarMass;
+            } else {
+                n_prod = amount;
+                mass_prod = n_prod * productMolarMass;
+            }
+
+            // 6. Determine Stoichiometry and Calculate Reactant Needs
+            const reactantResults = [];
+            const targetElements = Object.keys(parsedProduct);
+
+            for (const el of targetElements) {
+                // Find which reactant supplies this element
+                const supplyingReactant = parsedReactants.find(r => r.elements[el]);
+                if (!supplyingReactant) continue; // Element assumed to come from air, etc.
+
+                const prodCoeff = evaluateCoefficient(parsedProduct[el], x_val);
+                const reactantCoeff = evaluateCoefficient(supplyingReactant.elements[el], x_val);
+                
+                if (reactantCoeff === 0) throw new Error(`原料 ${supplyingReactant.formula} 中の元素 ${el} の量が0です。`);
+                
+                const molarRatio = prodCoeff / reactantCoeff;
+                const n_reactant = n_prod * molarRatio;
+                const m_reactant = n_reactant * calculateMolarMass(supplyingReactant.elements, x_val);
+
+                // Avoid duplicating results if a reactant supplies multiple target elements
+                if (!reactantResults.some(r => r.formula === supplyingReactant.formula)) {
+                     reactantResults.push({
+                        formula: supplyingReactant.formula,
+                        moles: n_reactant,
+                        mass: m_reactant
+                    });
+                }
+            }
+            
+            // 7. Display Results
+            weighingElements.resProdFormula.textContent = productFormulaStr;
+            weighingElements.resProdMolarMass.textContent = productMolarMass.toFixed(4);
+            weighingElements.resProdMoles.textContent = n_prod.toFixed(6);
+            weighingElements.resProdMass.textContent = mass_prod.toFixed(4);
+
+            const container = weighingElements.reactantResultsContainer;
+            container.innerHTML = ''; // Clear previous results
+            reactantResults.forEach(res => {
+                const resultHtml = `
+                    <p class="mb-1 mt-2"><strong>原料: ${res.formula}</strong></p>
+                    <ul class="list-group list-group-flush mb-2">
+                        <li class="list-group-item py-1">必要モル数: <span>${res.moles.toFixed(6)}</span> mol</li>
+                        <li class="list-group-item py-1">必要質量: <span>${res.mass.toFixed(4)}</span> g</li>
+                    </ul>
+                `;
+                container.insertAdjacentHTML('beforeend', resultHtml);
+            });
+
+        } catch (e) {
+            alert(`エラー: ${e.message}`);
+        }
+    }
+
+    // Event Listeners for Weighing Tab
+    weighingElements.modeMass.addEventListener('change', updateAmountLabel);
+    weighingElements.modeMol.addEventListener('change', updateAmountLabel);
+    weighingElements.calculateBtn.addEventListener('click', runGenericCalculation);
+
+    // Initial call
+    updateAmountLabel();
+    runGenericCalculation();
+
+    // ===== Tab Switching =====
+    const sidebarTabs = document.getElementById('sidebar-tabs');
+    const tabContents = document.querySelectorAll('[data-tab-content]');
+
+    sidebarTabs.addEventListener('click', e => {
+        e.preventDefault();
+        const clickedTab = e.target;
+        // Ensure we're clicking on a link within the tab container
+        if (clickedTab.tagName !== 'A' || !clickedTab.dataset.tab) {
+            return;
+        }
+
+        const targetContentId = clickedTab.dataset.tab;
+
+        if (clickedTab.classList.contains('active')) {
+            return; // Exit if already active
+        }
+
+        // Deactivate all tabs and hide all content
+        sidebarTabs.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
+        tabContents.forEach(content => {
+            if (!content.classList.contains('d-none')) {
+                content.classList.add('d-none');
+            }
+        });
+
+        // Activate the clicked tab and show its content
+        clickedTab.classList.add('active');
+        const targetContent = document.getElementById(targetContentId);
+        if (targetContent) {
+            targetContent.classList.remove('d-none');
+        }
+    });
+
+    const ASPECT_RATIO_THRESHOLD = 1.2; // Particles with aspect ratio between 1/1.2 (approx 0.83) and 1.2
+
     // ===== DOM Elements =====
     const imageLoader = document.getElementById('imageLoader');
     const contrastModeBtn = document.getElementById('contrastModeBtn');
@@ -63,6 +298,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const roiRealUnit = document.getElementById('roiRealUnit');
     const analyzeMultipleParticlesBtn = document.getElementById('analyzeMultipleParticlesBtn');
 
+
+
     // Controls - Particle Size Scale
     const particleScaleLengthInput = document.getElementById('particleScaleLengthInput');
     const particleScaleUnitInput = document.getElementById('particleScaleUnitInput');
@@ -97,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isSelecting = false;
     let selectionRect = { startX: 0, startY: 0, endX: 0, endY: 0 };
     let croppedImageData = null;
-
+    let currentProcessedImageData = null; // New state variable
 
     // ===== LOGIC & HELPER FUNCTIONS =====
 
@@ -171,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function redrawAfterCanvas() {
-        if (!originalImage) return;
+        if (!originalImage) return null; // Return null if no image
 
         // 1. Prepare temp canvas with original image dimensions
         tempCanvas.width = originalImageWidth;
@@ -195,8 +432,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // 6. Handle mode-specific overlays or further processing on 'after' canvas
+        // NOTE: applyThreshold is no longer called here directly for particle_size mode
         if (currentMode === 'particle_size') {
-            applyThreshold(parseInt(thresholdSlider.value));
+            // Apply threshold visually to ctxAfter
+            let visualProcessedImageData = ctxBefore.getImageData(0, 0, originalImageWidth, originalImageHeight);
+            visualProcessedImageData = applyThresholdContrast(visualProcessedImageData, contrastSlider.value);
+            visualProcessedImageData = applySharpening(visualProcessedImageData, sharpenSlider.value);
+
+            let visualThresholdedImageData = applyThreshold(visualProcessedImageData, parseInt(thresholdSlider.value));
+            ctxAfter.putImageData(visualThresholdedImageData, 0, 0);
+
+            // Draw particle outlines on top
             drawParticlesOutlines(particles);
         }
         
@@ -229,6 +475,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const { x, y, w, h } = getSelectionRect();
             ctxAfter.strokeRect(x, y, w, h);
         }
+
+        return processedImageData; // Return the processed image data
     }
 
     function resetMeasurementState() {
@@ -362,10 +610,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drawParticlesOutlines(particlesToDraw) {
         if (!originalImage || !particlesToDraw || particlesToDraw.length === 0) return;
+
+
+
         particlesToDraw.forEach(p => {
-            ctxAfter.strokeStyle = '#00FF00';
-            ctxAfter.lineWidth = 1;
-            ctxAfter.strokeRect(p.minX, p.minY, p.maxX - p.minX + 1, p.maxY - p.minY + 1);
+            const aspectRatio = Math.max(p.width, p.height) / Math.min(p.width, p.height);
+            
+            if (aspectRatio <= ASPECT_RATIO_THRESHOLD) {
+                ctxAfter.strokeStyle = '#00FF00';
+                ctxAfter.lineWidth = 1;
+                ctxAfter.strokeRect(p.minX, p.minY, p.maxX - p.minX + 1, p.maxY - p.minY + 1);
+            }
         });
     }
 
@@ -546,7 +801,7 @@ document.addEventListener('DOMContentLoaded', () => {
         measurementPoints = [];
         analyzeParticlesBtn.textContent = '測定中';
         remapParticlesContainer.classList.add('d-none');
-        redrawAfterCanvas();
+        currentProcessedImageData = redrawAfterCanvas();
     });
 
     analyzeMultipleParticlesBtn.addEventListener('click', () => {
@@ -734,7 +989,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 analyzeParticlesBtn.textContent = '測定完了';
                 remapParticlesContainer.classList.remove('d-none');
                 
-                analyzeParticlesInRegion(p1, p2);
+                analyzeParticlesInRegion(p1, p2, currentProcessedImageData);
                 drawLine(p1, p2, '#0000FF');
                 drawMarker(p1.x, p1.y, '#0000FF');
                 drawMarker(p2.x, p2.y, '#0000FF');
@@ -757,6 +1012,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sharpenValue.textContent = e.target.value;
         redrawAfterCanvas();
     });
+
+
 
     downloadBtn.addEventListener('click', () => {
         if (!originalImage) return;
@@ -788,12 +1045,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return imageData;
     }
 
-    function applyThreshold(threshold) {
-        if (!originalImage) return;
-        let imageData = ctxAfter.getImageData(0, 0, canvasAfter.width, canvasAfter.height);
-        imageData = grayscale(imageData);
+    function applyThreshold(imageData, threshold) {
+        if (!imageData) return null;
+        let processedImageData = new ImageData(new Uint8ClampedArray(imageData.data), imageData.width, imageData.height);
+        processedImageData = grayscale(processedImageData); // Operate on the copy
 
-        const data = imageData.data;
+        const data = processedImageData.data;
         for (let i = 0; i < data.length; i += 4) {
             const brightness = data[i];
             const value = brightness > threshold ? 255 : 0;
@@ -801,7 +1058,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data[i + 1] = value;
             data[i + 2] = value;
         }
-        ctxAfter.putImageData(imageData, 0, 0);
+        return processedImageData; // Return the new ImageData
     }
 
     function analyzeAllParticles() {
@@ -816,14 +1073,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const p1 = { x: 0, y: 0 };
         const p2 = { x: canvasAfter.width, y: canvasAfter.height };
 
-        analyzeParticlesInRegion(p1, p2);
+        // Ensure canvas is redrawn with processed image and get the ImageData for analysis
+        const processedImageData = redrawAfterCanvas(); // Get processed ImageData
+        if (!processedImageData) return;
 
+        analyzeParticlesInRegion(p1, p2, processedImageData); // Pass processedImageData to analysis function
+
+        // Redraw again to include particle outlines
         redrawAfterCanvas(); 
         drawParticlesOutlines(particles); 
     }
     
-    function analyzeParticlesInRegion(p1, p2) {
-        if (!originalImage) {
+    function analyzeParticlesInRegion(p1, p2, processedImageData) { // Added processedImageData argument
+        if (!originalImage || !processedImageData) { // Check processedImageData
             alert('画像を読み込んでください。');
             return;
         }
@@ -833,12 +1095,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const roiMinY = Math.min(p1.y, p2.y);
         const roiMaxY = Math.max(p1.y, p2.y);
 
-        applyThreshold(parseInt(thresholdSlider.value));
-
-        let imageData = ctxAfter.getImageData(0, 0, canvasAfter.width, canvasAfter.height);
-        const width = imageData.width;
-        const height = imageData.height;
-        const pixels = imageData.data;
+        // Apply threshold to the provided processedImageData
+        let thresholdedImageData = applyThreshold(processedImageData, parseInt(thresholdSlider.value));
+        const width = thresholdedImageData.width;
+        const height = thresholdedImageData.height;
+        const pixels = thresholdedImageData.data; // Use data from thresholdedImageData
 
         const visited = new Uint8Array(width * height);
         particles = [];
@@ -852,6 +1113,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const queue = [{ x: startX, y: startY }];
             let minX = startX, maxX = startX, minY = startY, maxY = startY;
             let pixelCount = 0;
+            let perimeterCount = 0;
+
+            const pixelsInBlob = [];
 
             while (queue.length > 0) {
                 const { x, y } = queue.shift();
@@ -864,6 +1128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 visited[index] = 1;
                 pixelCount++;
+                pixelsInBlob.push({x, y});
 
                 minX = Math.min(minX, x);
                 maxX = Math.max(maxX, x);
@@ -876,16 +1141,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 queue.push({ x: x, y: y - 1 });
             }
             if (pixelCount > 0) {
+                pixelsInBlob.forEach(({x, y}) => {
+                    if (getPixel(x + 1, y) === 0) perimeterCount++;
+                    if (getPixel(x - 1, y) === 0) perimeterCount++;
+                    if (getPixel(x, y + 1) === 0) perimeterCount++;
+                    if (getPixel(x, y - 1) === 0) perimeterCount++;
+                });
+
                 const particleWidth = maxX - minX + 1;
                 const particleHeight = maxY - minY + 1;
-                const diameterPx = (particleWidth + particleHeight) / 2; 
                 particles.push({
                     x: (minX + maxX) / 2,
                     y: (minY + maxY) / 2,
                     width: particleWidth,
                     height: particleHeight,
-                    diameterPx: diameterPx,
+                    diameterPx: 0, // Will be calculated later
                     pixelCount: pixelCount,
+                    perimeter: perimeterCount,
                     minX: minX,
                     minY: minY,
                     maxX: maxX,
@@ -904,12 +1176,81 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         const minPixelCount = 5;
-        const maxAspectRatio = 1.5;
+        let rawParticles = particles.filter(p => p.pixelCount >= minPixelCount);
+
+        const circularityThreshold = 1.0;
+        const goodParticles = [];
+        const mergedBlobs = [];
+
+        // First pass: Calculate properties and separate good circles from merged blobs
+        rawParticles.forEach(p => {
+            if (p.perimeter === 0) {
+                p.circularity = 0;
+            } else {
+                p.circularity = (4 * Math.PI * p.pixelCount) / (p.perimeter * p.perimeter);
+            }
+            
+            // New diameter calculation based on area (equivalent circular diameter)
+            p.diameterPx = 2 * Math.sqrt(p.pixelCount / Math.PI);
+
+            // 厳密に円に近いものだけをピックアップするため、アスペクト比の条件を削除し、円形度のみで判定
+            if (p.circularity >= circularityThreshold) {
+                goodParticles.push(p);
+            } else {
+                mergedBlobs.push(p);
+            }
+        });
+
+        let finalParticles = [...goodParticles];
+
+        if (goodParticles.length > 0) {
+            let totalGoodArea = 0;
+            goodParticles.forEach(p => { totalGoodArea += p.pixelCount; });
+            const avgGoodParticleArea = totalGoodArea / goodParticles.length;
+
+            mergedBlobs.forEach(blob => {
+                const estimatedNumParticles = Math.round(blob.pixelCount / avgGoodParticleArea);
+                
+                if (estimatedNumParticles > 1) {
+                    const estimatedSingleArea = blob.pixelCount / estimatedNumParticles;
+                    const estimatedDiameter = 2 * Math.sqrt(estimatedSingleArea / Math.PI);
+                    
+                    for (let i = 0; i < estimatedNumParticles; i++) {
+                        finalParticles.push({
+                            ...blob,
+                            diameterPx: estimatedDiameter,
+                            pixelCount: estimatedSingleArea,
+                            isVirtual: true
+                        });
+                    }
+                } else {
+                    finalParticles.push(blob);
+                }
+            });
+        } else {
+            finalParticles = [...rawParticles];
+        }
+
+        particles = finalParticles;
+
+        // 外れ値の除去：平均から標準偏差の2倍以上離れているものを除外する
+        if (particles.length > 5) {
+            const diameters = particles.map(p => p.diameterPx);
+            const sum = diameters.reduce((a, b) => a + b, 0);
+            const mean = sum / diameters.length;
+            const stdDev = Math.sqrt(diameters.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b, 0) / diameters.length);
+
+            const outlierFactor = 2;
+            const lowerBound = mean - outlierFactor * stdDev;
+            const upperBound = mean + outlierFactor * stdDev;
+
+            particles = particles.filter(p => p.diameterPx >= lowerBound && p.diameterPx <= upperBound);
+        }
+
+        // アスペクト比によるフィルタリング
         particles = particles.filter(p => {
-            if (p.pixelCount < minPixelCount) return false;
-            if (p.width === 0 || p.height === 0) return false;
             const aspectRatio = Math.max(p.width, p.height) / Math.min(p.width, p.height);
-            return aspectRatio <= maxAspectRatio;
+            return aspectRatio <= ASPECT_RATIO_THRESHOLD;
         });
 
         let totalDiameterPx = 0;

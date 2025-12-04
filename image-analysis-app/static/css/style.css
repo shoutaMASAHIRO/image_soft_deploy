@@ -73,6 +73,10 @@ body {
     background-color: var(--twitter-dark-card) !important; /* Darker navbar */
     border-bottom: 1px solid var(--twitter-border-color);
     padding: 0.5rem 1rem;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* Ensure it stays above other content */
 }
 
 .navbar-brand {
@@ -134,4 +138,13 @@ strong {
     --bs-alert-color: var(--twitter-blue);
     --bs-alert-border-color: rgba(29, 161, 242, 0.4);
     border-radius: 8px;
+}
+
+/* Styles for the sticky image display area */
+#image-display-area {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 20px; /* Adjust this value to set the distance from the top */
+    align-self: flex-start; /* Prevents stretching in the flex container */
+    height: calc(100vh - 40px); /* Optional: ensures it doesn't cause parent to overflow if content is taller than viewport */
 }

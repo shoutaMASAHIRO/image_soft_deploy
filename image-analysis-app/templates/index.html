@@ -20,9 +20,16 @@
             <aside class="col-md-3">
                 <div class="card">
                     <div class="card-header">
-                        操作パネル
+                        <ul class="nav nav-tabs card-header-tabs" id="sidebar-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="true" href="#" data-tab="operation-panel-content">操作パネル</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-tab="weighing-calc-content">秤量計算</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="operation-panel-content" data-tab-content>
                         <div class="mb-3">
                             <label for="imageLoader" class="form-label">画像を選択</label>
                             <input class="form-control" type="file" id="imageLoader" accept="image/*">
@@ -132,6 +139,7 @@
                                     <p>選択範囲の長さ (<span id="roiRealUnit">未設定</span>): <strong id="roiRealLength">未設定</strong></p>
                                     <button class="btn btn-warning btn-sm w-100" id="clearParticlesBtn">結果をクリア</button>
                                     <button class="btn btn-primary btn-sm w-100 mt-2" id="analyzeMultipleParticlesBtn">粒径を複数測定する</button>
+
                                     <p class="mt-2">粒子数: <strong id="particleCount">0</strong></p>
                                     <p>平均直径 (px): <strong id="averageDiameterPx">0.00</strong></p>
                                     <p>平均直径 (<span id="averageDiameterUnit">未設定</span>): <strong id="averageDiameterReal">未設定</strong></p>
@@ -144,11 +152,80 @@
                              <button class="btn btn-danger" id="resetBtn">画像と設定をリセット</button>
                         </div>
                     </div>
+                    <div class="card-body d-none" id="weighing-calc-content" data-tab-content>
+                        <h5>汎用秤量計算</h5>
+
+                        <!-- Inputs -->
+                        <div class="mb-3">
+                            <label for="productFormula" class="form-label">生成物の組成式(例)：Ca(2-x)Sm(x)MnO4</label>
+                            <input type="text" class="form-control" id="productFormula" value="Ca(2-x)Sm(x)MnO4">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">原料の化学式</label>
+                            <div id="reactant-inputs">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" value="CaCO3">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Sm2O3">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Mn2O3">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" placeholder="(オプション)">
+                                <input type="text" class="form-control" name="reactantFormula" placeholder="(オプション)">
+                            </div>
+                            <small class="form-text text-muted">目的元素を含む原料を1つずつ入力します。</small>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="smComposition" class="form-label">変数 x の値</label>
+                                    <input type="number" class="form-control" id="smComposition" value="0.5" step="0.1">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="productAmount" class="form-label" id="productAmountLabel">量</label>
+                                    <input type="number" class="form-control" id="productAmount" value="1.0" step="0.1" min="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">計算モード</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="calcMode" id="modeMass" value="mass" checked>
+                                <label class="form-check-label" for="modeMass">質量 (g) から</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="calcMode" id="modeMol" value="mol">
+                                <label class="form-check-label" for="modeMol">モル数 (mol) から</label>
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary" id="calculateWeighingBtn">計算実行</button>
+                        </div>
+
+                        <hr>
+
+                        <!-- Results -->
+                        <h5>計算結果</h5>
+                        <div id="weighing-results">
+                            <!-- Product results (static structure, dynamic content) -->
+                            <p class="mb-1"><strong>生成物 (<span id="res-prod-formula"></span>):</strong></p>
+                            <ul class="list-group list-group-flush mb-2">
+                                <li class="list-group-item py-1">モル質量: <span id="res-prod-molar-mass">-</span> g/mol</li>
+                                <li class="list-group-item py-1">生成モル数: <span id="res-prod-moles">-</span> mol</li>
+                                <li class="list-group-item py-1">生成質量: <span id="res-prod-mass">-</span> g</li>
+                            </ul>
+
+                            <!-- Reactant results (will be generated dynamically) -->
+                            <div id="reactant-results-container"></div>
+                        </div>
+                    </div>
                 </div>
             </aside>
 
             <!-- ===== 画像表示エリア ===== -->
-            <section class="col-md-9">
+            <section class="col-md-9" id="image-display-area">
                 <div class="row">
                     <!-- Before -->
                     <div class="col-6">
