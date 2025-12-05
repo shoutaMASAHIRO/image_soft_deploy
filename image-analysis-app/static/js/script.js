@@ -1,4 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ===== NEW: Weighing History Functions =====
+
+    async function loadFormulaHistory() {
+        try {
+            const response = await fetch('/api/formulas');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch history: ${response.statusText}`);
+            }
+            const data = await response.json();
+
+            const productDatalist = document.getElementById('product-formula-list');
+            const reactantDatalist = document.getElementById('reactant-formula-list');
+
+            if (productDatalist) {
+                productDatalist.innerHTML = ''; // Clear existing options
+                data.products.forEach(formula => {
+                    const option = document.createElement('option');
+                    option.value = formula;
+                    productDatalist.appendChild(option);
+                });
+            }
+
+            if (reactantDatalist) {
+                reactantDatalist.innerHTML = ''; // Clear existing options
+                data.reactants.forEach(formula => {
+                    const option = document.createElement('option');
+                    option.value = formula;
+                    reactantDatalist.appendChild(option);
+                });
+            }
+        } catch (error) {
+            console.error("Error loading formula history:", error);
+        }
+    }
+
+    async function saveFormulaHistory(product, reactants) {
+        // Filter out any empty/whitespace-only reactant strings
+        const validReactants = reactants.map(r => r.trim()).filter(r => r);
+        if (!product.trim() && validReactants.length === 0) {
+            return; // Nothing to save
+        }
+
+        try {
+            const response = await fetch('/api/formulas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ product: product.trim(), reactants: validReactants }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to save history: ${response.statusText}`);
+            }
+
+            // Refresh the datalists with the newly added items
+            await loadFormulaHistory();
+
+        } catch (error) {
+            console.error("Error saving formula history:", error);
+        }
+    }
+
     // ===== Generic Weighing Calculation =====
 
     const ATOMIC_WEIGHTS = {
@@ -184,6 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.insertAdjacentHTML('beforeend', resultHtml);
             });
 
+            // ===== NEW: Save history on successful calculation =====
+            saveFormulaHistory(productFormulaStr, reactantFormulaStrs);
+
         } catch (e) {
             alert(`エラー: ${e.message}`);
         }
@@ -194,7 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
     weighingElements.modeMol.addEventListener('change', updateAmountLabel);
     weighingElements.calculateBtn.addEventListener('click', runGenericCalculation);
 
-    // Initial call
+    // ===== NEW: Initial Load =====
+    loadFormulaHistory();
     updateAmountLabel();
     runGenericCalculation();
 

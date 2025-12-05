@@ -158,18 +158,20 @@
                         <!-- Inputs -->
                         <div class="mb-3">
                             <label for="productFormula" class="form-label">生成物の組成式(例)：Ca(2-x)Sm(x)MnO4</label>
-                            <input type="text" class="form-control" id="productFormula" value="Ca(2-x)Sm(x)MnO4">
+                            <input type="text" class="form-control" id="productFormula" value="Ca(2-x)Sm(x)MnO4" list="product-formula-list">
+                            <datalist id="product-formula-list"></datalist>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">原料の化学式</label>
+                            <label class="form-label">原料の化学式(例)：CaCO3</label>
                             <div id="reactant-inputs">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" value="CaCO3">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Sm2O3">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Mn2O3">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" placeholder="(オプション)">
-                                <input type="text" class="form-control" name="reactantFormula" placeholder="(オプション)">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" value="CaCO3" list="reactant-formula-list">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Sm2O3" list="reactant-formula-list">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Mn2O3" list="reactant-formula-list">
+                                <input type="text" class="form-control mb-1" name="reactantFormula" placeholder="(オプション)" list="reactant-formula-list">
+                                <input type="text" class="form-control" name="reactantFormula" placeholder="(オプション)" list="reactant-formula-list">
                             </div>
+                            <datalist id="reactant-formula-list"></datalist>
                             <small class="form-text text-muted">目的元素を含む原料を1つずつ入力します。</small>
                         </div>
 

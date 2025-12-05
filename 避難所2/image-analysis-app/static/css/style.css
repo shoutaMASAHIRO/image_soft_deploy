@@ -1,0 +1,137 @@
+:root {
+    --twitter-blue: #1DA1F2;
+    --twitter-dark-bg: #15202B;
+    --twitter-dark-card: #192734;
+    --twitter-text-color: #E0E0E0;
+    --twitter-border-color: #38444D;
+}
+
+body {
+    font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: var(--twitter-dark-bg) !important; /* Ensure dark background */
+    color: var(--twitter-text-color);
+}
+
+/* Override Bootstrap variables for a Twitter-like theme */
+.btn-primary {
+    --bs-btn-bg: var(--twitter-blue);
+    --bs-btn-border-color: var(--twitter-blue);
+    --bs-btn-hover-bg: #1A91DA; /* Slightly darker blue */
+    --bs-btn-hover-border-color: #1A91DA;
+    --bs-btn-active-bg: #1A91DA;
+    --bs-btn-active-border-color: #1A91DA;
+    --bs-btn-disabled-bg: var(--twitter-blue);
+    --bs-btn-disabled-border-color: var(--twitter-blue);
+    border-radius: 9999px; /* Pill-shaped buttons */
+}
+
+.btn-info {
+    --bs-btn-bg: var(--twitter-blue); /* Twitter primary blue for info */
+    --bs-btn-border-color: var(--twitter-blue);
+    --bs-btn-hover-bg: #1A91DA;
+    --bs-btn-hover-border-color: #1A91DA;
+    --bs-btn-active-bg: #1A91DA;
+    --bs-btn-active-border-color: #1A91DA;
+    border-radius: 9999px;
+}
+
+.btn-success { /* For measurement and download action */
+    --bs-btn-bg: #17BF63; /* A twitter-like green */
+    --bs-btn-border-color: #17BF63;
+    --bs-btn-hover-bg: #15A557;
+    --bs-btn-hover-border-color: #15A557;
+    border-radius: 9999px;
+}
+
+.btn-warning { /* For clear buttons */
+    --bs-btn-bg: #FFAD1F; /* A twitter-like yellow/orange */
+    --bs-btn-border-color: #FFAD1F;
+    --bs-btn-hover-bg: #E0981A;
+    --bs-btn-hover-border-color: #E0981A;
+    color: var(--twitter-dark-bg); /* Dark text on warning */
+    border-radius: 9999px;
+}
+
+.btn-danger { /* For reset all */
+    --bs-btn-bg: #E0245E; /* A twitter-like red */
+    --bs-btn-border-color: #E0245E;
+    --bs-btn-hover-bg: #C71F52;
+    --bs-btn-hover-border-color: #C71F52;
+    border-radius: 9999px;
+}
+
+.btn-secondary { /* For reset scale */
+    --bs-btn-bg: #536471; /* A neutral gray */
+    --bs-btn-border-color: #536471;
+    --bs-btn-hover-bg: #475560;
+    --bs-btn-hover-border-color: #475560;
+    border-radius: 9999px;
+}
+
+/* Navbar adjustments */
+.navbar {
+    background-color: var(--twitter-dark-card) !important; /* Darker navbar */
+    border-bottom: 1px solid var(--twitter-border-color);
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    color: var(--twitter-blue) !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Card adjustments */
+.card {
+    background-color: var(--twitter-dark-card) !important;
+    border: 1px solid var(--twitter-border-color);
+    border-radius: 16px; /* More rounded than default Bootstrap */
+    box-shadow: none; /* Remove default shadow */
+}
+
+.card-header {
+    background-color: var(--twitter-dark-card) !important;
+    border-bottom: 1px solid var(--twitter-border-color);
+    color: var(--twitter-text-color);
+    font-weight: bold;
+}
+
+.card-body {
+    color: var(--twitter-text-color);
+}
+
+/* Form controls */
+.form-control, .form-select {
+    background-color: var(--twitter-dark-bg);
+    color: var(--twitter-text-color);
+    border: 1px solid var(--twitter-border-color);
+    border-radius: 8px;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--twitter-dark-bg);
+    color: var(--twitter-text-color);
+    border-color: var(--twitter-blue);
+    box-shadow: 0 0 0 0.25rem rgba(29, 161, 242, 0.25); /* Twitter blue glow */
+}
+
+/* Text and links */
+a {
+    color: var(--twitter-blue);
+}
+
+strong {
+    color: var(--twitter-blue); /* Highlight important text with blue */
+}
+
+/* Specific for measure section */
+#measureResult {
+    color: var(--twitter-blue);
+}
+
+.alert-primary {
+    --bs-alert-bg: rgba(29, 161, 242, 0.2);
+    --bs-alert-color: var(--twitter-blue);
+    --bs-alert-border-color: rgba(29, 161, 242, 0.4);
+    border-radius: 8px;
+}

@@ -627,13 +627,13 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\tracemalloc.py',
    'PYMODULE'),
-  ('_py_abc',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
-   'PYMODULE'),
   ('stringprep',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stringprep.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_py_abc.py',
    'PYMODULE'),
   ('waitress',
    'C:\\Users\\RYZEN5 '
@@ -2573,6 +2573,18 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_threading_local.py',
    'PYMODULE'),
+  ('sqlite3',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sqlite3\\__init__.py',
+   'PYMODULE'),
+  ('sqlite3.dump',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sqlite3\\dump.py',
+   'PYMODULE'),
+  ('sqlite3.dbapi2',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sqlite3\\dbapi2.py',
+   'PYMODULE'),
   ('signal',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\signal.py',
@@ -2745,33 +2757,10 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_imaging.cp310-win_amd64.pyd',
    'EXTENSION'),
-  ('api-ms-win-crt-time-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-time-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-math-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-math-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-runtime-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-runtime-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-string-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-string-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-environment-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-environment-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-convert-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-convert-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-heap-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-heap-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-locale-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-locale-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-process-l1-1-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-process-l1-1-0.dll',
-   'BINARY'),
+  ('_sqlite3.pyd',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\_sqlite3.pyd',
+   'EXTENSION'),
   ('VCRUNTIME140.dll',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\VCRUNTIME140.dll',
@@ -2779,8 +2768,35 @@
   ('api-ms-win-crt-filesystem-l1-1-0.dll',
    'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-filesystem-l1-1-0.dll',
    'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-math-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-math-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
   ('api-ms-win-crt-stdio-l1-1-0.dll',
    'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-process-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-environment-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-environment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-runtime-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-crt-utility-l1-1-0.dll',
    'C:\\texlive\\2025\\bin\\windows\\api-ms-win-crt-utility-l1-1-0.dll',
@@ -2801,18 +2817,22 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\libffi-7.dll',
    'BINARY'),
+  ('sqlite3.dll',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\DLLs\\sqlite3.dll',
+   'BINARY'),
   ('ucrtbase.dll', 'C:\\texlive\\2025\\bin\\windows\\ucrtbase.dll', 'BINARY'),
+  ('api-ms-win-core-synch-l1-2-0.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-core-synch-l1-2-0.dll',
+   'BINARY'),
   ('api-ms-win-core-file-l1-2-0.dll',
    'C:\\texlive\\2025\\bin\\windows\\api-ms-win-core-file-l1-2-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-processthreads-l1-1-1.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-core-processthreads-l1-1-1.dll',
    'BINARY'),
   ('api-ms-win-core-timezone-l1-1-0.dll',
    'C:\\texlive\\2025\\bin\\windows\\api-ms-win-core-timezone-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-synch-l1-2-0.dll',
-   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-core-synch-l1-2-0.dll',
+  ('api-ms-win-core-processthreads-l1-1-1.dll',
+   'C:\\texlive\\2025\\bin\\windows\\api-ms-win-core-processthreads-l1-1-1.dll',
    'BINARY'),
   ('api-ms-win-core-localization-l1-2-0.dll',
    'C:\\texlive\\2025\\bin\\windows\\api-ms-win-core-localization-l1-2-0.dll',
@@ -2834,53 +2854,109 @@
    'C:\\Users\\RYZEN5 '
    '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\templates\\index.html',
    'DATA'),
-  ('flask-3.1.2.dist-info\\REQUESTED',
+  ('numpy-2.2.6.dist-info\\INSTALLER',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\REQUESTED',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\INSTALLER',
    'DATA'),
-  ('werkzeug-3.1.3.dist-info\\WHEEL',
+  ('MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\WHEEL',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
    'DATA'),
-  ('numpy-2.2.6.dist-info\\entry_points.txt',
+  ('numpy-2.2.6.dist-info\\LICENSE.txt',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\entry_points.txt',
-   'DATA'),
-  ('numpy-2.2.6.dist-info\\RECORD',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\RECORD',
-   'DATA'),
-  ('click-8.3.1.dist-info\\WHEEL',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\WHEEL',
-   'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\top_level.txt',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\top_level.txt',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\LICENSE.txt',
    'DATA'),
   ('itsdangerous-2.2.0.dist-info\\RECORD',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\RECORD',
    'DATA'),
-  ('click-8.3.1.dist-info\\RECORD',
+  ('itsdangerous-2.2.0.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\RECORD',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\WHEEL',
    'DATA'),
-  ('click-8.3.1.dist-info\\METADATA',
+  ('flask-3.1.2.dist-info\\METADATA',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\METADATA',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\METADATA',
    'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\METADATA',
+  ('MarkupSafe-3.0.2.dist-info\\top_level.txt',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\METADATA',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\top_level.txt',
+   'DATA'),
+  ('click-8.3.1.dist-info\\INSTALLER',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\INSTALLER',
    'DATA'),
   ('numpy-2.2.6.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\WHEEL',
    'DATA'),
-  ('numpy-2.2.6.dist-info\\LICENSE.txt',
+  ('flask-3.1.2.dist-info\\INSTALLER',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\LICENSE.txt',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\INSTALLER',
+   'DATA'),
+  ('MarkupSafe-3.0.2.dist-info\\WHEEL',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\WHEEL',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\RECORD',
+   'DATA'),
+  ('werkzeug-3.1.3.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\RECORD',
+   'DATA'),
+  ('itsdangerous-2.2.0.dist-info\\METADATA',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\METADATA',
+   'DATA'),
+  ('MarkupSafe-3.0.2.dist-info\\INSTALLER',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\INSTALLER',
+   'DATA'),
+  ('MarkupSafe-3.0.2.dist-info\\METADATA',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\METADATA',
+   'DATA'),
+  ('click-8.3.1.dist-info\\WHEEL',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\WHEEL',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\REQUESTED',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\REQUESTED',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\entry_points.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\entry_points.txt',
+   'DATA'),
+  ('itsdangerous-2.2.0.dist-info\\INSTALLER',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\METADATA',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\METADATA',
+   'DATA'),
+  ('flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\entry_points.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\entry_points.txt',
+   'DATA'),
+  ('werkzeug-3.1.3.dist-info\\LICENSE.txt',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\LICENSE.txt',
+   'DATA'),
+  ('MarkupSafe-3.0.2.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\RECORD',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\DELVEWHEEL',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\DELVEWHEEL',
    'DATA'),
   ('flask-3.1.2.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
@@ -2890,157 +2966,45 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\licenses\\LICENSE.txt',
    'DATA'),
-  ('flask-3.1.2.dist-info\\RECORD',
+  ('click-8.3.1.dist-info\\METADATA',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\RECORD',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\METADATA',
    'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\WHEEL',
+  ('click-8.3.1.dist-info\\RECORD',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\WHEEL',
-   'DATA'),
-  ('werkzeug-3.1.3.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\INSTALLER',
-   'DATA'),
-  ('werkzeug-3.1.3.dist-info\\LICENSE.txt',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\LICENSE.txt',
-   'DATA'),
-  ('itsdangerous-2.2.0.dist-info\\WHEEL',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\WHEEL',
-   'DATA'),
-  ('numpy-2.2.6.dist-info\\DELVEWHEEL',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\DELVEWHEEL',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\RECORD',
    'DATA'),
   ('werkzeug-3.1.3.dist-info\\METADATA',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\METADATA',
    'DATA'),
-  ('flask-3.1.2.dist-info\\INSTALLER',
+  ('werkzeug-3.1.3.dist-info\\WHEEL',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\INSTALLER',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\WHEEL',
+   'DATA'),
+  ('numpy-2.2.6.dist-info\\RECORD',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\RECORD',
    'DATA'),
   ('itsdangerous-2.2.0.dist-info\\LICENSE.txt',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\LICENSE.txt',
    'DATA'),
-  ('numpy-2.2.6.dist-info\\METADATA',
+  ('werkzeug-3.1.3.dist-info\\INSTALLER',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\METADATA',
-   'DATA'),
-  ('werkzeug-3.1.3.dist-info\\RECORD',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\RECORD',
-   'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\LICENSE.txt',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\entry_points.txt',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\entry_points.txt',
-   'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\RECORD',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\RECORD',
-   'DATA'),
-  ('itsdangerous-2.2.0.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\INSTALLER',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\licenses\\LICENSE.txt',
-   'DATA'),
-  ('flask-3.1.2.dist-info\\METADATA',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\flask-3.1.2.dist-info\\METADATA',
-   'DATA'),
-  ('itsdangerous-2.2.0.dist-info\\METADATA',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\itsdangerous-2.2.0.dist-info\\METADATA',
-   'DATA'),
-  ('numpy-2.2.6.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy-2.2.6.dist-info\\INSTALLER',
-   'DATA'),
-  ('MarkupSafe-3.0.2.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\MarkupSafe-3.0.2.dist-info\\INSTALLER',
-   'DATA'),
-  ('click-8.3.1.dist-info\\INSTALLER',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click-8.3.1.dist-info\\INSTALLER',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\werkzeug-3.1.3.dist-info\\INSTALLER',
    'DATA'),
   ('base_library.zip',
    'C:\\Users\\RYZEN5 '
    '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\build\\app\\base_library.zip',
    'DATA')],
- [('sre_parse',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_parse.py',
-   'PYMODULE'),
-  ('copyreg',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\copyreg.py',
-   'PYMODULE'),
-  ('codecs',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\codecs.py',
-   'PYMODULE'),
-  ('re',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\re.py',
-   'PYMODULE'),
-  ('sre_constants',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_constants.py',
-   'PYMODULE'),
-  ('io',
+ [('io',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\io.py',
    'PYMODULE'),
-  ('functools',
+  ('ntpath',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\functools.py',
-   'PYMODULE'),
-  ('operator',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\operator.py',
-   'PYMODULE'),
-  ('heapq',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\heapq.py',
-   'PYMODULE'),
-  ('traceback',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\traceback.py',
-   'PYMODULE'),
-  ('_weakrefset',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_weakrefset.py',
-   'PYMODULE'),
-  ('_collections_abc',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_collections_abc.py',
-   'PYMODULE'),
-  ('linecache',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\linecache.py',
-   'PYMODULE'),
-  ('keyword',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\keyword.py',
-   'PYMODULE'),
-  ('locale',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\locale.py',
-   'PYMODULE'),
-  ('genericpath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\genericpath.py',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ntpath.py',
    'PYMODULE'),
   ('types',
    'C:\\Users\\RYZEN5 '
@@ -3050,30 +3014,6 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\warnings.py',
    'PYMODULE'),
-  ('stat',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stat.py',
-   'PYMODULE'),
-  ('ntpath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ntpath.py',
-   'PYMODULE'),
-  ('posixpath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\posixpath.py',
-   'PYMODULE'),
-  ('sre_compile',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_compile.py',
-   'PYMODULE'),
-  ('abc',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\abc.py',
-   'PYMODULE'),
-  ('reprlib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\reprlib.py',
-   'PYMODULE'),
   ('collections.abc',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\collections\\abc.py',
@@ -3081,6 +3021,46 @@
   ('collections',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\collections\\__init__.py',
+   'PYMODULE'),
+  ('operator',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\operator.py',
+   'PYMODULE'),
+  ('linecache',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\linecache.py',
+   'PYMODULE'),
+  ('enum',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\enum.py',
+   'PYMODULE'),
+  ('_weakrefset',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_weakrefset.py',
+   'PYMODULE'),
+  ('re',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\re.py',
+   'PYMODULE'),
+  ('genericpath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\genericpath.py',
+   'PYMODULE'),
+  ('stat',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\stat.py',
+   'PYMODULE'),
+  ('sre_constants',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_constants.py',
+   'PYMODULE'),
+  ('heapq',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\heapq.py',
+   'PYMODULE'),
+  ('sre_parse',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_parse.py',
    'PYMODULE'),
   ('encodings.zlib_codec',
    'C:\\Users\\RYZEN5 '
@@ -3570,13 +3550,53 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\encodings\\__init__.py',
    'PYMODULE'),
-  ('enum',
+  ('_collections_abc',
    'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\enum.py',
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\_collections_abc.py',
    'PYMODULE'),
   ('weakref',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\weakref.py',
+   'PYMODULE'),
+  ('locale',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\locale.py',
+   'PYMODULE'),
+  ('reprlib',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\reprlib.py',
+   'PYMODULE'),
+  ('posixpath',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\posixpath.py',
+   'PYMODULE'),
+  ('keyword',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\keyword.py',
+   'PYMODULE'),
+  ('traceback',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\traceback.py',
+   'PYMODULE'),
+  ('codecs',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\codecs.py',
+   'PYMODULE'),
+  ('abc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\abc.py',
+   'PYMODULE'),
+  ('functools',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\functools.py',
+   'PYMODULE'),
+  ('sre_compile',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sre_compile.py',
+   'PYMODULE'),
+  ('copyreg',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\copyreg.py',
    'PYMODULE'),
   ('os',
    'C:\\Users\\RYZEN5 '
