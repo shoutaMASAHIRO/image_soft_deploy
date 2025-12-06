@@ -992,6 +992,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (error) {
                 console.error('Error saving image:', error);
                 alert('元の画像をデータベースに保存できませんでした。');
+                return; // Stop execution if saving fails
             }
             // --- END NEW ---
 
