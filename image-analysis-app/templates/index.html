@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar bg-body-tertiary shadow-sm">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">画像解析ツール</span>
+            <span class="navbar-brand mb-0 h1" id="navbar-title">画像解析ツール</span>
         </div>
     </nav>
 
@@ -22,7 +22,7 @@
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="sidebar-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="true" href="#" data-tab="operation-panel-content">操作パネル</a>
+                                <a class="nav-link active" aria-current="true" href="#" data-tab="operation-panel-content">画像解析</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-tab="weighing-calc-content">秤量計算</a>
@@ -158,18 +158,46 @@
                         <!-- Inputs -->
                         <div class="mb-3">
                             <label for="productFormula" class="form-label">生成物の組成式(例)：Ca(2-x)Sm(x)MnO4</label>
-                            <input type="text" class="form-control" id="productFormula" value="Ca(2-x)Sm(x)MnO4" list="product-formula-list">
+                            <!-- Search for Product Formula -->
+                            <div class="mb-2">
+                                <input type="text" class="form-control" id="productSearch" placeholder="履歴から生成物を検索...">
+                                <div id="productSearchResults" class="search-results-container"></div>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="productFormula" value="Ca(2-x)Sm(x)MnO4" list="product-formula-list">
+                                <button class="btn btn-outline-secondary btn-clear-input" type="button" title="入力内容をクリア">×</button>
+                            </div>
                             <datalist id="product-formula-list"></datalist>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">原料の化学式(例)：CaCO3</label>
+                            <!-- Search for Reactant Formula -->
+                            <div class="mb-2">
+                                <input type="text" class="form-control" id="reactantSearch" placeholder="履歴から原料を検索...">
+                                <div id="reactantSearchResults" class="search-results-container"></div>
+                            </div>
                             <div id="reactant-inputs">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" value="CaCO3" list="reactant-formula-list">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Sm2O3" list="reactant-formula-list">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" value="Mn2O3" list="reactant-formula-list">
-                                <input type="text" class="form-control mb-1" name="reactantFormula" placeholder="(オプション)" list="reactant-formula-list">
-                                <input type="text" class="form-control" name="reactantFormula" placeholder="(オプション)" list="reactant-formula-list">
+                                <div class="input-group mb-1">
+                                    <input type="text" class="form-control" name="reactantFormula" value="CaCO3" list="reactant-formula-list">
+                                    <button class="btn btn-outline-secondary btn-clear-input" type="button" title="入力内容をクリア">×</button>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <input type="text" class="form-control" name="reactantFormula" value="Sm2O3" list="reactant-formula-list">
+                                    <button class="btn btn-outline-secondary btn-clear-input" type="button" title="入力内容をクリア">×</button>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <input type="text" class="form-control" name="reactantFormula" value="Mn2O3" list="reactant-formula-list">
+                                    <button class="btn btn-outline-secondary btn-clear-input" type="button" title="入力内容をクリア">×</button>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <input type="text" class="form-control" name="reactantFormula" placeholder="(オプション)" list="reactant-formula-list">
+                                    <button class="btn btn-outline-secondary btn-clear-input" type="button" title="入力内容をクリア">×</button>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="reactantFormula" placeholder="(オプション)" list="reactant-formula-list">
+                                    <button class="btn btn-outline-secondary btn-clear-input" type="button" title="入力内容をクリア">×</button>
+                                </div>
                             </div>
                             <datalist id="reactant-formula-list"></datalist>
                             <small class="form-text text-muted">目的元素を含む原料を1つずつ入力します。</small>
@@ -235,6 +263,9 @@
                              <div class="card-header">元画像 (Before)</div>
                              <div class="card-body text-center">
                                 <canvas id="canvas-before" class="img-fluid"></canvas>
+                                <div class="mt-2">
+                                    <button class="btn btn-warning btn-sm d-none" id="revertImageBtn">最初の画像に戻す</button>
+                                </div>
                              </div>
                         </div>
                     </div>

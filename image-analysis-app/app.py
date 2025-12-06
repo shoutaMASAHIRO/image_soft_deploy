@@ -44,6 +44,13 @@ def init_db():
                 formula TEXT NOT NULL UNIQUE
             )
         ''')
+        # Create table for the original image (will only ever hold one entry)
+        cur.execute('''
+            CREATE TABLE IF NOT EXISTS original_image (
+                id INTEGER PRIMARY KEY,
+                image_data TEXT NOT NULL
+            )
+        ''')
         con.commit()
         con.close()
         print(f"Database initialized at {DATABASE_FILE}")
@@ -98,6 +105,49 @@ def save_formulas():
         return jsonify(status="success"), 201
     except Exception as e:
         return jsonify(status="error", message=str(e)), 500
+
+# --- NEW: Image Save/Load Endpoints ---
+@app.route('/api/image/save', methods=['POST'])
+def save_image():
+    """Endpoint to save the original image data (as base64)."""
+    data = request.get_json()
+    if not data or 'image_data' not in data:
+        return jsonify(status="error", message="No image data provided"), 400
+    
+    image_data = data['image_data']
+
+    try:
+        con = sqlite3.connect(DATABASE_FILE)
+        cur = con.cursor()
+
+        # There should only ever be one image, so clear the table first, then insert.
+        cur.execute("DELETE FROM original_image")
+        cur.execute("INSERT INTO original_image (id, image_data) VALUES (?, ?)", (1, image_data))
+        
+        con.commit()
+        con.close()
+        return jsonify(status="success"), 201
+    except Exception as e:
+        return jsonify(status="error", message=str(e)), 500
+
+@app.route('/api/image/load', methods=['GET'])
+def load_image():
+    """Endpoint to load the original image data."""
+    try:
+        con = sqlite3.connect(DATABASE_FILE)
+        cur = con.cursor()
+        
+        cur.execute("SELECT image_data FROM original_image WHERE id = 1")
+        row = cur.fetchone()
+        
+        con.close()
+        
+        if row:
+            return jsonify(image_data=row[0])
+        else:
+            return jsonify(image_data=None), 404
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
 # --- Flask Routes ---
 @app.route('/')

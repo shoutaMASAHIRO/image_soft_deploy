@@ -10,12 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const data = await response.json();
 
+            // Store for new search feature
+            allProductFormulas = data.products || [];
+            allReactantFormulas = data.reactants || [];
+
             const productDatalist = document.getElementById('product-formula-list');
             const reactantDatalist = document.getElementById('reactant-formula-list');
 
             if (productDatalist) {
                 productDatalist.innerHTML = ''; // Clear existing options
-                data.products.forEach(formula => {
+                allProductFormulas.forEach(formula => {
                     const option = document.createElement('option');
                     option.value = formula;
                     productDatalist.appendChild(option);
@@ -24,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (reactantDatalist) {
                 reactantDatalist.innerHTML = ''; // Clear existing options
-                data.reactants.forEach(formula => {
+                allReactantFormulas.forEach(formula => {
                     const option = document.createElement('option');
                     option.value = formula;
                     reactantDatalist.appendChild(option);
@@ -94,6 +98,160 @@ document.addEventListener('DOMContentLoaded', () => {
         resProdMass: document.getElementById('res-prod-mass'),
         reactantResultsContainer: document.getElementById('reactant-results-container'),
     };
+
+    // ===== NEW: Formula Search Functionality =====
+    let allProductFormulas = [];
+    let allReactantFormulas = [];
+    let lastFocusedReactantInput = null;
+
+    function renderSearchResults(searchTerm, formulaList, resultsContainer) {
+        resultsContainer.innerHTML = '';
+        if (!searchTerm) {
+            resultsContainer.classList.remove('d-block');
+            return;
+        }
+
+        const filtered = formulaList.filter(f => f.toLowerCase().includes(searchTerm.toLowerCase()));
+        
+        if (filtered.length === 0) {
+            resultsContainer.classList.remove('d-block');
+            return;
+        }
+
+        const list = document.createElement('div');
+        list.className = 'list-group search-results-list';
+
+        filtered.forEach(formula => {
+            const item = document.createElement('a');
+            item.href = '#';
+            item.className = 'list-group-item list-group-item-action search-result-item';
+            item.textContent = formula;
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (resultsContainer.id === 'productSearchResults') {
+                    weighingElements.productFormula.value = formula;
+                } else if (resultsContainer.id === 'reactantSearchResults') {
+                    let targetInput = lastFocusedReactantInput;
+                    
+                    // If the last focused input is empty, use it.
+                    // Otherwise, try to find the first empty reactant input.
+                    if (!targetInput || targetInput.value.trim() !== '') {
+                        const allReactantInputs = document.querySelectorAll('[name="reactantFormula"]');
+                        for (const input of allReactantInputs) {
+                            if (input.value.trim() === '') {
+                                targetInput = input;
+                                break;
+                            }
+                        }
+                    }
+
+                    // If still no empty input found, and lastFocusedReactantInput exists, use it as a fallback (will overwrite)
+                    if (!targetInput && lastFocusedReactantInput) {
+                        targetInput = lastFocusedReactantInput;
+                    }
+                    
+                    if (targetInput) {
+                        targetInput.value = formula;
+                        // Optionally, move focus to the next empty input or a new one
+                        const allReactantInputs = Array.from(document.querySelectorAll('[name="reactantFormula"]'));
+                        const currentIndex = allReactantInputs.indexOf(targetInput);
+                        const nextEmptyInput = allReactantInputs.find((input, index) => index > currentIndex && input.value.trim() === '');
+                        if (nextEmptyInput) {
+                            nextEmptyInput.focus();
+                            lastFocusedReactantInput = nextEmptyInput; // Update last focused
+                        } else if (currentIndex < allReactantInputs.length - 1) {
+                             // If no more empty inputs, but not the last one, focus the next for potential overwrite
+                             allReactantInputs[currentIndex + 1].focus();
+                             lastFocusedReactantInput = allReactantInputs[currentIndex + 1];
+                        }
+                    }
+                }
+                // Clear search and hide
+                resultsContainer.previousElementSibling.value = '';
+                resultsContainer.innerHTML = '';
+                resultsContainer.classList.remove('d-block');
+            });
+            list.appendChild(item);
+        });
+
+        resultsContainer.appendChild(list);
+        resultsContainer.classList.add('d-block');
+    }
+
+    function setupFormulaSearch() {
+        const productSearch = document.getElementById('productSearch');
+        const productSearchResults = document.getElementById('productSearchResults');
+        const reactantSearch = document.getElementById('reactantSearch');
+        const reactantSearchResults = document.getElementById('reactantSearchResults');
+        const reactantInputsContainer = document.getElementById('reactant-inputs');
+
+        const handleKeyDown = (e, resultsContainer) => {
+            const items = resultsContainer.querySelectorAll('.search-result-item');
+            if (items.length === 0) return;
+
+            let activeItem = resultsContainer.querySelector('.search-result-item.active');
+            let activeIndex = Array.from(items).indexOf(activeItem);
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (activeItem) {
+                    activeItem.classList.remove('active');
+                    activeIndex = (activeIndex + 1) % items.length;
+                } else {
+                    activeIndex = 0;
+                }
+                items[activeIndex].classList.add('active');
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (activeItem) {
+                    activeItem.classList.remove('active');
+                    activeIndex = (activeIndex - 1 + items.length) % items.length;
+                } else {
+                    activeIndex = items.length - 1;
+                }
+                items[activeIndex].classList.add('active');
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (activeItem) {
+                    activeItem.click();
+                }
+            } else if (e.key === 'Escape') {
+                resultsContainer.innerHTML = '';
+                resultsContainer.classList.remove('d-block');
+            }
+        };
+
+        productSearch.addEventListener('input', () => {
+            renderSearchResults(productSearch.value, allProductFormulas, productSearchResults);
+        });
+        productSearch.addEventListener('keydown', (e) => handleKeyDown(e, productSearchResults));
+
+
+        reactantSearch.addEventListener('input', () => {
+            renderSearchResults(reactantSearch.value, allReactantFormulas, reactantSearchResults);
+        });
+        reactantSearch.addEventListener('keydown', (e) => handleKeyDown(e, reactantSearchResults));
+
+
+        reactantInputsContainer.addEventListener('focusin', (e) => {
+            if (e.target && e.target.name === 'reactantFormula') {
+                lastFocusedReactantInput = e.target;
+            }
+        });
+        
+        // Hide results if clicking outside
+        document.addEventListener('click', (e) => {
+            if (!productSearch.contains(e.target) && !productSearchResults.contains(e.target)) {
+                 productSearchResults.classList.remove('d-block');
+                 productSearchResults.innerHTML = '';
+            }
+            if (!reactantSearch.contains(e.target) && !reactantSearchResults.contains(e.target)) {
+                 reactantSearchResults.classList.remove('d-block');
+                 reactantSearchResults.innerHTML = '';
+            }
+        });
+    }
+    // ============================================
 
     function updateAmountLabel() {
         if (weighingElements.modeMass.checked) {
@@ -261,8 +419,21 @@ document.addEventListener('DOMContentLoaded', () => {
     weighingElements.modeMol.addEventListener('change', updateAmountLabel);
     weighingElements.calculateBtn.addEventListener('click', runGenericCalculation);
 
+    // --- NEW: Add event delegation for clear buttons ---
+    const weighingTabContent = document.getElementById('weighing-calc-content');
+    weighingTabContent.addEventListener('click', (e) => {
+        if (e.target && e.target.classList.contains('btn-clear-input')) {
+            const inputToClear = e.target.previousElementSibling;
+            if (inputToClear && inputToClear.tagName === 'INPUT') {
+                inputToClear.value = '';
+                inputToClear.focus(); // Optionally focus the input after clearing
+            }
+        }
+    });
+
     // ===== NEW: Initial Load =====
     loadFormulaHistory();
+    setupFormulaSearch(); // Activate search feature
     updateAmountLabel();
     runGenericCalculation();
 
@@ -284,6 +455,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return; // Exit if already active
         }
 
+        // Update navbar title
+        const navbarTitle = document.getElementById('navbar-title');
+        if (navbarTitle && clickedTab.textContent) {
+            navbarTitle.textContent = clickedTab.textContent;
+        }
+
         // Deactivate all tabs and hide all content
         sidebarTabs.querySelectorAll('.nav-link').forEach(tab => tab.classList.remove('active'));
         tabContents.forEach(content => {
@@ -298,6 +475,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetContent) {
             targetContent.classList.remove('d-none');
         }
+
+        // --- 画像表示エリアの表示/非表示を制御 ---
+        const imageDisplayArea = document.getElementById('image-display-area');
+        if (imageDisplayArea) {
+            if (targetContentId === 'weighing-calc-content') {
+                imageDisplayArea.classList.add('d-none'); // 秤量計算タブの時は非表示
+            } else {
+                imageDisplayArea.classList.remove('d-none'); // それ以外のタブの時は表示
+            }
+        }
+        // ------------------------------------------
     });
 
     const ASPECT_RATIO_THRESHOLD = 1.2; // Particles with aspect ratio between 1/1.2 (approx 0.83) and 1.2
@@ -311,6 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const roiSelectModeBtn = document.getElementById('roiSelectModeBtn');
     const downloadBtn = document.getElementById('downloadBtn');
     const resetBtn = document.getElementById('resetBtn');
+    const revertImageBtn = document.getElementById('revertImageBtn'); // New Button
 
     // Canvas
     const canvasBefore = document.getElementById('canvas-before');
@@ -574,6 +763,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetApp() {
         if (!originalImage) return;
         
+        // Hide revert button by default
+        revertImageBtn.classList.add('d-none');
+
         // Reset image and canvas size
         canvasAfter.width = originalImageWidth;
         canvasAfter.height = originalImageHeight;
@@ -773,6 +965,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctxBefore.drawImage(originalImage, 0, 0);
             
             resetApp();
+            revertImageBtn.classList.remove('d-none'); // --- NEW: Show the revert button
         };
         newImage.src = tempCropCanvas.toDataURL();
     }
@@ -783,7 +976,25 @@ document.addEventListener('DOMContentLoaded', () => {
     imageLoader.addEventListener('change', e => {
         if (!e.target.files[0]) return;
         const reader = new FileReader();
-        reader.onload = event => {
+        reader.onload = async event => {
+            const imageDataUrl = event.target.result;
+            
+            // --- NEW: Save image to DB ---
+            try {
+                const response = await fetch('/api/image/save', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ image_data: imageDataUrl })
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to save image to database.');
+                }
+            } catch (error) {
+                console.error('Error saving image:', error);
+                alert('元の画像をデータベースに保存できませんでした。');
+            }
+            // --- END NEW ---
+
             originalImage = new Image();
             originalImage.onload = () => {
                 originalImageWidth = originalImage.width;
@@ -795,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 resetApp();
             };
-            originalImage.src = event.target.result;
+            originalImage.src = imageDataUrl;
         };
         reader.readAsDataURL(e.target.files[0]);
     });
@@ -809,6 +1020,40 @@ document.addEventListener('DOMContentLoaded', () => {
     resetBtn.addEventListener('click', resetApp);
     clearMeasurementBtn.addEventListener('click', clearMeasurements);
     clearParticlesBtn.addEventListener('click', resetParticleSizeState);
+
+    // --- NEW: Revert Image Button Listener ---
+    revertImageBtn.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/api/image/load');
+            if (!response.ok) {
+                if (response.status === 404) {
+                    alert('保存されている画像が見つかりません。');
+                } else {
+                    throw new Error('Failed to load image from database.');
+                }
+                return;
+            }
+            const data = await response.json();
+            if (data.image_data) {
+                const newImage = new Image();
+                newImage.onload = () => {
+                    originalImage = newImage; // Set the loaded image as the new original
+                    originalImageWidth = originalImage.width;
+                    originalImageHeight = originalImage.height;
+
+                    canvasBefore.width = originalImageWidth;
+                    canvasBefore.height = originalImageHeight;
+                    ctxBefore.drawImage(originalImage, 0, 0);
+                    
+                    resetApp(); // Reset all states and redraw
+                };
+                newImage.src = data.image_data;
+            }
+        } catch (error) {
+            console.error('Error loading original image:', error);
+            alert('元の画像を読み込めませんでした。');
+        }
+    });
 
     // New Listeners for Modal
     setCroppedAsNewBtnModal.addEventListener('click', setCroppedAsNew);
