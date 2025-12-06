@@ -1,310 +1,6 @@
 ('C:\\Users\\RYZEN5 '
  '5500\\Desktop\\gemini開発\\画像解析もろもろ\\image-analysis-app\\build\\app\\PYZ-00.pyz',
- [('PIL',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\__init__.py',
-   'PYMODULE'),
-  ('PIL.AvifImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\AvifImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.BlpImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\BlpImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.BmpImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\BmpImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.BufrStubImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.CurImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\CurImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.DcxImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\DcxImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.DdsImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\DdsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.EpsImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\EpsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.ExifTags',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ExifTags.py',
-   'PYMODULE'),
-  ('PIL.FitsImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FitsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.FliImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FliImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.FpxImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FpxImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.FtexImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\FtexImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.GbrImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GbrImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.GifImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GifImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.GimpGradientFile',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GimpGradientFile.py',
-   'PYMODULE'),
-  ('PIL.GimpPaletteFile',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GimpPaletteFile.py',
-   'PYMODULE'),
-  ('PIL.GribStubImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\GribStubImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.Hdf5StubImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.IcnsImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\IcnsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.IcoImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\IcoImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.ImImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.Image',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\Image.py',
-   'PYMODULE'),
-  ('PIL.ImageChops',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageChops.py',
-   'PYMODULE'),
-  ('PIL.ImageCms',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageCms.py',
-   'PYMODULE'),
-  ('PIL.ImageColor',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageColor.py',
-   'PYMODULE'),
-  ('PIL.ImageFile',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageFile.py',
-   'PYMODULE'),
-  ('PIL.ImageFilter',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageFilter.py',
-   'PYMODULE'),
-  ('PIL.ImageMath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageMath.py',
-   'PYMODULE'),
-  ('PIL.ImageMode',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageMode.py',
-   'PYMODULE'),
-  ('PIL.ImageOps',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageOps.py',
-   'PYMODULE'),
-  ('PIL.ImagePalette',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImagePalette.py',
-   'PYMODULE'),
-  ('PIL.ImageQt',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageQt.py',
-   'PYMODULE'),
-  ('PIL.ImageSequence',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageSequence.py',
-   'PYMODULE'),
-  ('PIL.ImageShow',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageShow.py',
-   'PYMODULE'),
-  ('PIL.ImageTk',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageTk.py',
-   'PYMODULE'),
-  ('PIL.ImageWin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImageWin.py',
-   'PYMODULE'),
-  ('PIL.ImtImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\ImtImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.IptcImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\IptcImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.Jpeg2KImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.JpegImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\JpegImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.JpegPresets',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\JpegPresets.py',
-   'PYMODULE'),
-  ('PIL.McIdasImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\McIdasImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MicImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MicImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MpegImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MpegImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MpoImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MpoImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MspImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\MspImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PaletteFile',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PaletteFile.py',
-   'PYMODULE'),
-  ('PIL.PalmImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PalmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PcdImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PcdImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PcxImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PcxImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PdfImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PdfImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PdfParser',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PdfParser.py',
-   'PYMODULE'),
-  ('PIL.PixarImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PixarImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PngImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PngImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PpmImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PpmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PsdImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\PsdImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.QoiImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\QoiImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.SgiImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\SgiImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.SpiderImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\SpiderImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.SunImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\SunImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.TgaImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\TgaImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.TiffImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\TiffImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.TiffTags',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\TiffTags.py',
-   'PYMODULE'),
-  ('PIL.WebPImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\WebPImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.WmfImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\WmfImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XVThumbImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XbmImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\XbmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XpmImagePlugin',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\XpmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL._binary',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_binary.py',
-   'PYMODULE'),
-  ('PIL._deprecate',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_deprecate.py',
-   'PYMODULE'),
-  ('PIL._typing',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_typing.py',
-   'PYMODULE'),
-  ('PIL._util',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_util.py',
-   'PYMODULE'),
-  ('PIL._version',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\_version.py',
-   'PYMODULE'),
-  ('PIL.features',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\PIL\\features.py',
-   'PYMODULE'),
-  ('__future__',
+ [('__future__',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\__future__.py',
    'PYMODULE'),
@@ -488,10 +184,6 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\base64.py',
    'PYMODULE'),
-  ('bdb',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bdb.py',
-   'PYMODULE'),
   ('bisect',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\bisect.py',
@@ -515,38 +207,6 @@
   ('calendar',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\calendar.py',
-   'PYMODULE'),
-  ('charset_normalizer',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\__init__.py',
-   'PYMODULE'),
-  ('charset_normalizer.api',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\api.py',
-   'PYMODULE'),
-  ('charset_normalizer.cd',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\cd.py',
-   'PYMODULE'),
-  ('charset_normalizer.constant',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\constant.py',
-   'PYMODULE'),
-  ('charset_normalizer.legacy',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\legacy.py',
-   'PYMODULE'),
-  ('charset_normalizer.models',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\models.py',
-   'PYMODULE'),
-  ('charset_normalizer.utils',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\utils.py',
-   'PYMODULE'),
-  ('charset_normalizer.version',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\charset_normalizer\\version.py',
    'PYMODULE'),
   ('click',
    'C:\\Users\\RYZEN5 '
@@ -616,10 +276,6 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\click\\utils.py',
    'PYMODULE'),
-  ('cmd',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\cmd.py',
-   'PYMODULE'),
   ('code',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\code.py',
@@ -651,10 +307,6 @@
   ('colorama.winterm',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\colorama\\winterm.py',
-   'PYMODULE'),
-  ('colorsys',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\colorsys.py',
    'PYMODULE'),
   ('concurrent',
    'C:\\Users\\RYZEN5 '
@@ -696,33 +348,9 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\__init__.py',
    'PYMODULE'),
-  ('ctypes._aix',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\_aix.py',
-   'PYMODULE'),
   ('ctypes._endian',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\_endian.py',
-   'PYMODULE'),
-  ('ctypes.macholib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\__init__.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dyld',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\dyld.py',
-   'PYMODULE'),
-  ('ctypes.macholib.dylib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\dylib.py',
-   'PYMODULE'),
-  ('ctypes.macholib.framework',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\macholib\\framework.py',
-   'PYMODULE'),
-  ('ctypes.util',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\ctypes\\util.py',
    'PYMODULE'),
   ('ctypes.wintypes',
    'C:\\Users\\RYZEN5 '
@@ -747,10 +375,6 @@
   ('dis',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dis.py',
-   'PYMODULE'),
-  ('doctest',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\doctest.py',
    'PYMODULE'),
   ('dotenv',
    'C:\\Users\\RYZEN5 '
@@ -851,10 +475,6 @@
   ('email.utils',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\email\\utils.py',
-   'PYMODULE'),
-  ('fileinput',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\fileinput.py',
    'PYMODULE'),
   ('flask',
    'C:\\Users\\RYZEN5 '
@@ -972,6 +592,10 @@
   ('glob',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\glob.py',
+   'PYMODULE'),
+  ('greenlet',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\greenlet\\__init__.py',
    'PYMODULE'),
   ('gzip',
    'C:\\Users\\RYZEN5 '
@@ -1337,567 +961,6 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\numbers.py',
    'PYMODULE'),
-  ('numpy',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\__init__.py',
-   'PYMODULE'),
-  ('numpy.__config__',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\__config__.py',
-   'PYMODULE'),
-  ('numpy._array_api_info',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_array_api_info.py',
-   'PYMODULE'),
-  ('numpy._core',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\__init__.py',
-   'PYMODULE'),
-  ('numpy._core._add_newdocs',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_add_newdocs.py',
-   'PYMODULE'),
-  ('numpy._core._add_newdocs_scalars',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_add_newdocs_scalars.py',
-   'PYMODULE'),
-  ('numpy._core._asarray',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_asarray.py',
-   'PYMODULE'),
-  ('numpy._core._dtype',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_dtype.py',
-   'PYMODULE'),
-  ('numpy._core._dtype_ctypes',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_dtype_ctypes.py',
-   'PYMODULE'),
-  ('numpy._core._exceptions',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_exceptions.py',
-   'PYMODULE'),
-  ('numpy._core._internal',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_internal.py',
-   'PYMODULE'),
-  ('numpy._core._machar',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_machar.py',
-   'PYMODULE'),
-  ('numpy._core._methods',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_methods.py',
-   'PYMODULE'),
-  ('numpy._core._string_helpers',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_string_helpers.py',
-   'PYMODULE'),
-  ('numpy._core._type_aliases',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_type_aliases.py',
-   'PYMODULE'),
-  ('numpy._core._ufunc_config',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\_ufunc_config.py',
-   'PYMODULE'),
-  ('numpy._core.arrayprint',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\arrayprint.py',
-   'PYMODULE'),
-  ('numpy._core.defchararray',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\defchararray.py',
-   'PYMODULE'),
-  ('numpy._core.einsumfunc',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\einsumfunc.py',
-   'PYMODULE'),
-  ('numpy._core.fromnumeric',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\fromnumeric.py',
-   'PYMODULE'),
-  ('numpy._core.function_base',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\function_base.py',
-   'PYMODULE'),
-  ('numpy._core.getlimits',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\getlimits.py',
-   'PYMODULE'),
-  ('numpy._core.memmap',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\memmap.py',
-   'PYMODULE'),
-  ('numpy._core.multiarray',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\multiarray.py',
-   'PYMODULE'),
-  ('numpy._core.numeric',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\numeric.py',
-   'PYMODULE'),
-  ('numpy._core.numerictypes',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\numerictypes.py',
-   'PYMODULE'),
-  ('numpy._core.overrides',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\overrides.py',
-   'PYMODULE'),
-  ('numpy._core.printoptions',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\printoptions.py',
-   'PYMODULE'),
-  ('numpy._core.records',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\records.py',
-   'PYMODULE'),
-  ('numpy._core.shape_base',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\shape_base.py',
-   'PYMODULE'),
-  ('numpy._core.strings',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\strings.py',
-   'PYMODULE'),
-  ('numpy._core.tests', '-', 'PYMODULE'),
-  ('numpy._core.tests._natype',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\tests\\_natype.py',
-   'PYMODULE'),
-  ('numpy._core.umath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_core\\umath.py',
-   'PYMODULE'),
-  ('numpy._distributor_init',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_distributor_init.py',
-   'PYMODULE'),
-  ('numpy._expired_attrs_2_0',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_expired_attrs_2_0.py',
-   'PYMODULE'),
-  ('numpy._globals',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_globals.py',
-   'PYMODULE'),
-  ('numpy._pytesttester',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_pytesttester.py',
-   'PYMODULE'),
-  ('numpy._typing',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\__init__.py',
-   'PYMODULE'),
-  ('numpy._typing._add_docstring',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_add_docstring.py',
-   'PYMODULE'),
-  ('numpy._typing._array_like',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_array_like.py',
-   'PYMODULE'),
-  ('numpy._typing._char_codes',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_char_codes.py',
-   'PYMODULE'),
-  ('numpy._typing._dtype_like',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_dtype_like.py',
-   'PYMODULE'),
-  ('numpy._typing._nbit',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_nbit.py',
-   'PYMODULE'),
-  ('numpy._typing._nbit_base',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_nbit_base.py',
-   'PYMODULE'),
-  ('numpy._typing._nested_sequence',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_nested_sequence.py',
-   'PYMODULE'),
-  ('numpy._typing._scalars',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_scalars.py',
-   'PYMODULE'),
-  ('numpy._typing._shape',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_shape.py',
-   'PYMODULE'),
-  ('numpy._typing._ufunc',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_typing\\_ufunc.py',
-   'PYMODULE'),
-  ('numpy._utils',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_utils\\__init__.py',
-   'PYMODULE'),
-  ('numpy._utils._convertions',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_utils\\_convertions.py',
-   'PYMODULE'),
-  ('numpy._utils._inspect',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\_utils\\_inspect.py',
-   'PYMODULE'),
-  ('numpy.char',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\char\\__init__.py',
-   'PYMODULE'),
-  ('numpy.core',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\core\\__init__.py',
-   'PYMODULE'),
-  ('numpy.core._utils',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\core\\_utils.py',
-   'PYMODULE'),
-  ('numpy.ctypeslib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ctypeslib.py',
-   'PYMODULE'),
-  ('numpy.dtypes',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\dtypes.py',
-   'PYMODULE'),
-  ('numpy.exceptions',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\exceptions.py',
-   'PYMODULE'),
-  ('numpy.f2py',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\__init__.py',
-   'PYMODULE'),
-  ('numpy.f2py.__version__',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\__version__.py',
-   'PYMODULE'),
-  ('numpy.f2py._backends',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\__init__.py',
-   'PYMODULE'),
-  ('numpy.f2py._backends._backend',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\_backend.py',
-   'PYMODULE'),
-  ('numpy.f2py._backends._distutils',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\_distutils.py',
-   'PYMODULE'),
-  ('numpy.f2py._backends._meson',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_backends\\_meson.py',
-   'PYMODULE'),
-  ('numpy.f2py._isocbind',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\_isocbind.py',
-   'PYMODULE'),
-  ('numpy.f2py.auxfuncs',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\auxfuncs.py',
-   'PYMODULE'),
-  ('numpy.f2py.capi_maps',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\capi_maps.py',
-   'PYMODULE'),
-  ('numpy.f2py.cb_rules',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\cb_rules.py',
-   'PYMODULE'),
-  ('numpy.f2py.cfuncs',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\cfuncs.py',
-   'PYMODULE'),
-  ('numpy.f2py.common_rules',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\common_rules.py',
-   'PYMODULE'),
-  ('numpy.f2py.crackfortran',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\crackfortran.py',
-   'PYMODULE'),
-  ('numpy.f2py.diagnose',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\diagnose.py',
-   'PYMODULE'),
-  ('numpy.f2py.f2py2e',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\f2py2e.py',
-   'PYMODULE'),
-  ('numpy.f2py.f90mod_rules',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\f90mod_rules.py',
-   'PYMODULE'),
-  ('numpy.f2py.func2subr',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\func2subr.py',
-   'PYMODULE'),
-  ('numpy.f2py.rules',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\rules.py',
-   'PYMODULE'),
-  ('numpy.f2py.symbolic',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\symbolic.py',
-   'PYMODULE'),
-  ('numpy.f2py.use_rules',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\f2py\\use_rules.py',
-   'PYMODULE'),
-  ('numpy.fft',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\__init__.py',
-   'PYMODULE'),
-  ('numpy.fft._helper',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\_helper.py',
-   'PYMODULE'),
-  ('numpy.fft._pocketfft',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\_pocketfft.py',
-   'PYMODULE'),
-  ('numpy.fft.helper',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\fft\\helper.py',
-   'PYMODULE'),
-  ('numpy.lib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\__init__.py',
-   'PYMODULE'),
-  ('numpy.lib._array_utils_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_array_utils_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._arraypad_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_arraypad_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._arraysetops_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_arraysetops_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._arrayterator_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_arrayterator_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._datasource',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_datasource.py',
-   'PYMODULE'),
-  ('numpy.lib._function_base_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_function_base_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._histograms_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_histograms_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._index_tricks_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_index_tricks_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._iotools',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_iotools.py',
-   'PYMODULE'),
-  ('numpy.lib._nanfunctions_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_nanfunctions_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._npyio_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_npyio_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._polynomial_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_polynomial_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._scimath_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_scimath_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._shape_base_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_shape_base_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._stride_tricks_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_stride_tricks_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._twodim_base_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_twodim_base_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._type_check_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_type_check_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._ufunclike_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_ufunclike_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._utils_impl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_utils_impl.py',
-   'PYMODULE'),
-  ('numpy.lib._version',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\_version.py',
-   'PYMODULE'),
-  ('numpy.lib.array_utils',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\array_utils.py',
-   'PYMODULE'),
-  ('numpy.lib.format',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\format.py',
-   'PYMODULE'),
-  ('numpy.lib.introspect',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\introspect.py',
-   'PYMODULE'),
-  ('numpy.lib.mixins',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\mixins.py',
-   'PYMODULE'),
-  ('numpy.lib.npyio',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\npyio.py',
-   'PYMODULE'),
-  ('numpy.lib.recfunctions',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\recfunctions.py',
-   'PYMODULE'),
-  ('numpy.lib.scimath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\scimath.py',
-   'PYMODULE'),
-  ('numpy.lib.stride_tricks',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\lib\\stride_tricks.py',
-   'PYMODULE'),
-  ('numpy.linalg',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\linalg\\__init__.py',
-   'PYMODULE'),
-  ('numpy.linalg._linalg',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\linalg\\_linalg.py',
-   'PYMODULE'),
-  ('numpy.linalg.linalg',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\linalg\\linalg.py',
-   'PYMODULE'),
-  ('numpy.ma',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\__init__.py',
-   'PYMODULE'),
-  ('numpy.ma.core',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\core.py',
-   'PYMODULE'),
-  ('numpy.ma.extras',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\extras.py',
-   'PYMODULE'),
-  ('numpy.ma.mrecords',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\ma\\mrecords.py',
-   'PYMODULE'),
-  ('numpy.matlib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\matlib.py',
-   'PYMODULE'),
-  ('numpy.matrixlib',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\matrixlib\\__init__.py',
-   'PYMODULE'),
-  ('numpy.matrixlib.defmatrix',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\matrixlib\\defmatrix.py',
-   'PYMODULE'),
-  ('numpy.polynomial',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\__init__.py',
-   'PYMODULE'),
-  ('numpy.polynomial._polybase',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\_polybase.py',
-   'PYMODULE'),
-  ('numpy.polynomial.chebyshev',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\chebyshev.py',
-   'PYMODULE'),
-  ('numpy.polynomial.hermite',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\hermite.py',
-   'PYMODULE'),
-  ('numpy.polynomial.hermite_e',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\hermite_e.py',
-   'PYMODULE'),
-  ('numpy.polynomial.laguerre',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\laguerre.py',
-   'PYMODULE'),
-  ('numpy.polynomial.legendre',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\legendre.py',
-   'PYMODULE'),
-  ('numpy.polynomial.polynomial',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\polynomial.py',
-   'PYMODULE'),
-  ('numpy.polynomial.polyutils',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\polynomial\\polyutils.py',
-   'PYMODULE'),
-  ('numpy.random',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\__init__.py',
-   'PYMODULE'),
-  ('numpy.random._pickle',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\random\\_pickle.py',
-   'PYMODULE'),
-  ('numpy.rec',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\rec\\__init__.py',
-   'PYMODULE'),
-  ('numpy.strings',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\strings\\__init__.py',
-   'PYMODULE'),
-  ('numpy.testing',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\__init__.py',
-   'PYMODULE'),
-  ('numpy.testing._private',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\_private\\__init__.py',
-   'PYMODULE'),
-  ('numpy.testing._private.extbuild',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\_private\\extbuild.py',
-   'PYMODULE'),
-  ('numpy.testing._private.utils',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\_private\\utils.py',
-   'PYMODULE'),
-  ('numpy.testing.overrides',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\testing\\overrides.py',
-   'PYMODULE'),
-  ('numpy.typing',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\typing\\__init__.py',
-   'PYMODULE'),
-  ('numpy.version',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\numpy\\version.py',
-   'PYMODULE'),
   ('opcode',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\opcode.py',
@@ -1909,10 +972,6 @@
   ('pathlib',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pathlib.py',
-   'PYMODULE'),
-  ('pdb',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pdb.py',
    'PYMODULE'),
   ('pickle',
    'C:\\Users\\RYZEN5 '
@@ -1929,14 +988,6 @@
   ('pprint',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pprint.py',
-   'PYMODULE'),
-  ('profile',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\profile.py',
-   'PYMODULE'),
-  ('pstats',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\pstats.py',
    'PYMODULE'),
   ('py_compile',
    'C:\\Users\\RYZEN5 '
@@ -2002,6 +1053,774 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\socketserver.py',
    'PYMODULE'),
+  ('sqlalchemy',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\connectors\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors.aioodbc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\connectors\\aioodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors.asyncio',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\connectors\\asyncio.py',
+   'PYMODULE'),
+  ('sqlalchemy.connectors.pyodbc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\connectors\\pyodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.cyextension',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\cyextension\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects._typing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\_typing.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mssql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.aioodbc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mssql\\aioodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mssql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.information_schema',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mssql\\information_schema.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.json',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mssql\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.pymssql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mssql\\pymssql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mssql.pyodbc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mssql\\pyodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.aiomysql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\aiomysql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.asyncmy',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\asyncmy.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.cymysql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\cymysql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.dml',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.enumerated',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\enumerated.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.expression',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\expression.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.json',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mariadb',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mariadb.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mariadbconnector',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mariadbconnector.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mysqlconnector',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mysqlconnector.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.mysqldb',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\mysqldb.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.pymysql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\pymysql.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.pyodbc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\pyodbc.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.reflection',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\reflection.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.reserved_words',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\reserved_words.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.mysql.types',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\mysql\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\oracle\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\oracle\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.cx_oracle',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\oracle\\cx_oracle.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.dictionary',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\oracle\\dictionary.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.oracledb',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\oracle\\oracledb.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.types',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\oracle\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.oracle.vector',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\oracle\\vector.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql._psycopg_common',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\_psycopg_common.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.array',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\array.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.asyncpg',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\asyncpg.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.dml',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.ext',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ext.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.hstore',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\hstore.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.json',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.named_types',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\named_types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.operators',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\operators.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.pg8000',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\pg8000.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.pg_catalog',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\pg_catalog.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.psycopg',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\psycopg.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.psycopg2',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\psycopg2.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.psycopg2cffi',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\psycopg2cffi.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.ranges',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\ranges.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.postgresql.types',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\postgresql\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.aiosqlite',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\aiosqlite.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.dml',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.json',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\json.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.pysqlcipher',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\pysqlcipher.py',
+   'PYMODULE'),
+  ('sqlalchemy.dialects.sqlite.pysqlite',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\dialects\\sqlite\\pysqlite.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine._py_processors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\_py_processors.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine._py_row',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\_py_row.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine._py_util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\_py_util.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.characteristics',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\characteristics.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.create',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\create.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.cursor',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\cursor.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.default',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\default.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.events',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.interfaces',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\interfaces.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.mock',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\mock.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.processors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\processors.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.reflection',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\reflection.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.result',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\result.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.row',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\row.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.url',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\url.py',
+   'PYMODULE'),
+  ('sqlalchemy.engine.util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\engine\\util.py',
+   'PYMODULE'),
+  ('sqlalchemy.event',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\event\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.api',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\event\\api.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.attr',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\event\\attr.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\event\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.legacy',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\event\\legacy.py',
+   'PYMODULE'),
+  ('sqlalchemy.event.registry',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\event\\registry.py',
+   'PYMODULE'),
+  ('sqlalchemy.exc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\exc.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\asyncio\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\asyncio\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.engine',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\asyncio\\engine.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.exc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\asyncio\\exc.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.result',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\asyncio\\result.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.scoping',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\asyncio\\scoping.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.asyncio.session',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\asyncio\\session.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.baked',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\baked.py',
+   'PYMODULE'),
+  ('sqlalchemy.ext.compiler',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\ext\\compiler.py',
+   'PYMODULE'),
+  ('sqlalchemy.future',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\future\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.future.engine',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\future\\engine.py',
+   'PYMODULE'),
+  ('sqlalchemy.inspection',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\inspection.py',
+   'PYMODULE'),
+  ('sqlalchemy.log',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\log.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm._orm_constructors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\_orm_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm._typing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\_typing.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.attributes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\attributes.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.bulk_persistence',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\bulk_persistence.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.clsregistry',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\clsregistry.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.collections',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\collections.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.context',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\context.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.decl_api',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\decl_api.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.decl_base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\decl_base.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.dependency',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\dependency.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.descriptor_props',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\descriptor_props.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.dynamic',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\dynamic.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.evaluator',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\evaluator.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.events',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.exc',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\exc.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.identity',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\identity.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.instrumentation',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\instrumentation.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.interfaces',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\interfaces.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.loading',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\loading.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.mapped_collection',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\mapped_collection.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.mapper',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\mapper.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.path_registry',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\path_registry.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.persistence',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\persistence.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.properties',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\properties.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.query',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\query.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.relationships',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\relationships.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.scoping',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\scoping.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.session',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\session.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.state',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\state.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.state_changes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\state_changes.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.strategies',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\strategies.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.strategy_options',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\strategy_options.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.sync',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\sync.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.unitofwork',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\unitofwork.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\util.py',
+   'PYMODULE'),
+  ('sqlalchemy.orm.writeonly',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\orm\\writeonly.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\pool\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\pool\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool.events',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\pool\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.pool.impl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\pool\\impl.py',
+   'PYMODULE'),
+  ('sqlalchemy.schema',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\schema.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._dml_constructors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\_dml_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._elements_constructors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\_elements_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._orm_types',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\_orm_types.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._py_util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\_py_util.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._selectable_constructors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\_selectable_constructors.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql._typing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\_typing.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.annotation',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\annotation.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.base',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\base.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.cache_key',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\cache_key.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.coercions',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\coercions.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.compiler',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\compiler.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.crud',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\crud.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.ddl',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\ddl.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.default_comparator',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\default_comparator.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.dml',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\dml.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.elements',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\elements.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.events',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\events.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.expression',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\expression.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.functions',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\functions.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.lambdas',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\lambdas.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.naming',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\naming.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.operators',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\operators.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.roles',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\roles.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.schema',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\schema.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.selectable',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\selectable.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.sqltypes',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\sqltypes.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.traversals',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\traversals.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.type_api',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\type_api.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\util.py',
+   'PYMODULE'),
+  ('sqlalchemy.sql.visitors',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\sql\\visitors.py',
+   'PYMODULE'),
+  ('sqlalchemy.types',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\types.py',
+   'PYMODULE'),
+  ('sqlalchemy.util',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\__init__.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._collections',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\_collections.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._concurrency_py3k',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\_concurrency_py3k.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._has_cy',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\_has_cy.py',
+   'PYMODULE'),
+  ('sqlalchemy.util._py_collections',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\_py_collections.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.compat',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\compat.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.concurrency',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\concurrency.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.deprecations',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\deprecations.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.langhelpers',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\langhelpers.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.preloaded',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\preloaded.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.queue',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\queue.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.topological',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\topological.py',
+   'PYMODULE'),
+  ('sqlalchemy.util.typing',
+   'C:\\Users\\RYZEN5 '
+   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\sqlalchemy\\util\\typing.py',
+   'PYMODULE'),
   ('sqlite3',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\sqlite3\\__init__.py',
@@ -2054,10 +1873,6 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\threading.py',
    'PYMODULE'),
-  ('threadpoolctl',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\threadpoolctl.py',
-   'PYMODULE'),
   ('token',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\token.py',
@@ -2081,50 +1896,6 @@
   ('typing_extensions',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\typing_extensions.py',
-   'PYMODULE'),
-  ('unittest',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\__init__.py',
-   'PYMODULE'),
-  ('unittest._log',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\_log.py',
-   'PYMODULE'),
-  ('unittest.async_case',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\async_case.py',
-   'PYMODULE'),
-  ('unittest.case',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\case.py',
-   'PYMODULE'),
-  ('unittest.loader',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\loader.py',
-   'PYMODULE'),
-  ('unittest.main',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\main.py',
-   'PYMODULE'),
-  ('unittest.result',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\result.py',
-   'PYMODULE'),
-  ('unittest.runner',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\runner.py',
-   'PYMODULE'),
-  ('unittest.signals',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\signals.py',
-   'PYMODULE'),
-  ('unittest.suite',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\suite.py',
-   'PYMODULE'),
-  ('unittest.util',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\unittest\\util.py',
    'PYMODULE'),
   ('urllib',
    'C:\\Users\\RYZEN5 '
@@ -2153,62 +1924,6 @@
   ('uuid',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\uuid.py',
-   'PYMODULE'),
-  ('waitress',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\__init__.py',
-   'PYMODULE'),
-  ('waitress.adjustments',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\adjustments.py',
-   'PYMODULE'),
-  ('waitress.buffers',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\buffers.py',
-   'PYMODULE'),
-  ('waitress.channel',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\channel.py',
-   'PYMODULE'),
-  ('waitress.compat',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\compat.py',
-   'PYMODULE'),
-  ('waitress.parser',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\parser.py',
-   'PYMODULE'),
-  ('waitress.proxy_headers',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\proxy_headers.py',
-   'PYMODULE'),
-  ('waitress.receiver',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\receiver.py',
-   'PYMODULE'),
-  ('waitress.rfc7230',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\rfc7230.py',
-   'PYMODULE'),
-  ('waitress.server',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\server.py',
-   'PYMODULE'),
-  ('waitress.task',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\task.py',
-   'PYMODULE'),
-  ('waitress.trigger',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\trigger.py',
-   'PYMODULE'),
-  ('waitress.utilities',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\utilities.py',
-   'PYMODULE'),
-  ('waitress.wasyncore',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\waitress\\wasyncore.py',
    'PYMODULE'),
   ('webbrowser',
    'C:\\Users\\RYZEN5 '
@@ -2402,26 +2117,6 @@
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\__init__.py',
    'PYMODULE'),
-  ('xml.etree',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\__init__.py',
-   'PYMODULE'),
-  ('xml.etree.ElementInclude',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\ElementInclude.py',
-   'PYMODULE'),
-  ('xml.etree.ElementPath',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\ElementPath.py',
-   'PYMODULE'),
-  ('xml.etree.ElementTree',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\ElementTree.py',
-   'PYMODULE'),
-  ('xml.etree.cElementTree',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\etree\\cElementTree.py',
-   'PYMODULE'),
   ('xml.parsers',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xml\\parsers\\__init__.py',
@@ -2461,74 +2156,6 @@
   ('xmlrpc.client',
    'C:\\Users\\RYZEN5 '
    '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\xmlrpc\\client.py',
-   'PYMODULE'),
-  ('yaml',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\__init__.py',
-   'PYMODULE'),
-  ('yaml.composer',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\composer.py',
-   'PYMODULE'),
-  ('yaml.constructor',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\constructor.py',
-   'PYMODULE'),
-  ('yaml.cyaml',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\cyaml.py',
-   'PYMODULE'),
-  ('yaml.dumper',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\dumper.py',
-   'PYMODULE'),
-  ('yaml.emitter',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\emitter.py',
-   'PYMODULE'),
-  ('yaml.error',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\error.py',
-   'PYMODULE'),
-  ('yaml.events',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\events.py',
-   'PYMODULE'),
-  ('yaml.loader',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\loader.py',
-   'PYMODULE'),
-  ('yaml.nodes',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\nodes.py',
-   'PYMODULE'),
-  ('yaml.parser',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\parser.py',
-   'PYMODULE'),
-  ('yaml.reader',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\reader.py',
-   'PYMODULE'),
-  ('yaml.representer',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\representer.py',
-   'PYMODULE'),
-  ('yaml.resolver',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\resolver.py',
-   'PYMODULE'),
-  ('yaml.scanner',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\scanner.py',
-   'PYMODULE'),
-  ('yaml.serializer',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\serializer.py',
-   'PYMODULE'),
-  ('yaml.tokens',
-   'C:\\Users\\RYZEN5 '
-   '5500\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\yaml\\tokens.py',
    'PYMODULE'),
   ('zipfile',
    'C:\\Users\\RYZEN5 '
