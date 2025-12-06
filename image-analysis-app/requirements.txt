@@ -1,3 +1,5 @@
 Flask
 Pillow
-waitress
+gunicorn
+Flask-SQLAlchemy
+psycopg2-binary
