@@ -1,6 +1,7 @@
 import os
 import sys
 import base64
+import logging
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
@@ -32,10 +33,6 @@ else:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Create tables if they don't exist
-with app.app_context():
-    db.create_all()
-
 # --- Database Models ---
 class ProductFormula(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,6 +46,10 @@ class OriginalImage(db.Model):
     # This table will only ever hold one entry
     id = db.Column(db.Integer, primary_key=True)
     image_data = db.Column(db.LargeBinary, nullable=False)
+
+# Create tables if they don't exist, *after* all models are defined.
+with app.app_context():
+    db.create_all()
 
 # --- API Endpoints ---
 @app.route('/api/formulas', methods=['GET'])
@@ -110,6 +111,7 @@ def save_image():
         db.session.commit()
         return jsonify(status="success"), 201
     except Exception as e:
+        app.logger.error(f"Error saving image to database: {e}", exc_info=True)
         db.session.rollback()
         return jsonify(status="error", message=str(e)), 500
 
@@ -133,8 +135,7 @@ def index():
 
 # --- Main execution ---
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()  # Create tables from models if they don't exist
+    # The global `db.create_all()` is now responsible for table creation.
     # The `debug=True` is useful for local development.
     # The host '0.0.0.0' makes the server accessible from other devices on the same network.
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
