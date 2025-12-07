@@ -1,5 +1,6 @@
 import os
 import sys
+import base64
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
@@ -47,7 +48,7 @@ class ReactantFormula(db.Model):
 class OriginalImage(db.Model):
     # This table will only ever hold one entry
     id = db.Column(db.Integer, primary_key=True)
-    image_data = db.Column(db.Text, nullable=False)
+    image_data = db.Column(db.LargeBinary, nullable=False)
 
 # --- API Endpoints ---
 @app.route('/api/formulas', methods=['GET'])
@@ -102,7 +103,9 @@ def save_image():
         # There should only ever be one image. Clear the table first.
         OriginalImage.query.delete()
         # Add the new image
-        new_image = OriginalImage(id=1, image_data=image_data)
+        # Decode the base64 string. The string might contain a prefix e.g. "data:image/png;base64,".
+        image_binary = base64.b64decode(image_data.split(',')[1])
+        new_image = OriginalImage(id=1, image_data=image_binary)
         db.session.add(new_image)
         db.session.commit()
         return jsonify(status="success"), 201
@@ -116,7 +119,8 @@ def load_image():
     try:
         image_record = OriginalImage.query.first()
         if image_record:
-            return jsonify(image_data=image_record.image_data)
+            image_base64 = base64.b64encode(image_record.image_data).decode('utf-8')
+            return jsonify(image_data=f"data:image/png;base64,{image_base64}")
         else:
             return jsonify(image_data=None), 404
     except Exception as e:
