@@ -1,6 +1,212 @@
+// 🧪 秤量計算まわり
+
+// DBに保存されている化学式の履歴を読み込んで、入力補完候補に反映する役
+// （loadFormulaHistory）
+
+// 履歴を保存する
+// （saveFormulaHistory）
+
+// 履歴からインクリメンタル検索して候補リストを表示する係
+// （renderSearchResults）
+
+// 検索 UI 全体の初期化＋イベント配線をまとめてやる関数
+// （setupFormulaSearch）
+
+// 入力単位ラベル（g / mol）の切り替え
+// （updateAmountLabel）
+
+// "(1-x)" などの係数文字列を、xを代入して数値に変換する
+// （evaluateCoefficient）
+
+// "Ca2Sm(1-x)MnO4" → { Ca: "2", Sm: "1-x", Mn: "1", O: "4" } のように分解する関数
+// （parseFormula）
+
+// parseFormula の結果から、xを代入してモル質量を計算する
+// （calculateMolarMass）
+
+// 「秤量計算の本体」
+// 入力値を集める → 化学式をパースしてモル質量を出す → 希望する生成物量から各原料の必要量（mol, g）を計算する → 画面に結果を表示する → その組み合わせを履歴に保存する
+// （runGenericCalculation）
+
+// 「秤量タブのイベント登録」
+// ラジオボタンの切り替え & 計算ボタンのクリックに、処理を紐づけている部分
+// （modeMass/modeMol/calculateBtn の addEventListener 群）
+
+// 「×」ボタンで直前の入力欄をクリアするためのイベント委譲
+// （秤量タブ内の btn-clear-input クリックリスナー）
+
+// ===== NEW: Initial Load =====
+// ブラウザがHTMLの読み込みとDOMの構築を終えたタイミングで
+// 履歴読み込み / 検索有効化 / g/molラベル初期化 / デモ計算を行う
+
+// ===== Tab Switching =====
+// サイドバーのタブをクリックしたときに、表示する内容を切り替える処理
+// （sidebarTabs.addEventListener('click', ...)）
+
+// 🖼 画像解析 UI・状態準備
+
+// ===== DOM Elements =====
+// 画像解析タブで使う全部のUIパーツ & 状態（state）をまとめて準備している部分
+// （ボタン・スライダー・キャンバス等の getElementById）
+
+// ボタン類を全部変数に取ってる
+// （imageLoader, 各モードボタン, downloadBtn, resetBtn, revertImageBtn など）
+
+// Canvas キャンバスと描画コンテキスト
+// （canvas-before / canvas-after と ctxBefore / ctxAfter）
+
+// オフスクリーンキャンバス（処理用の作業場）
+// （tempCanvas, tempCtx）
+
+// Modal Elements（切り抜き結果表示用）
+// （切り抜きプレビュー用モーダル・キャンバス）
+
+// Controls - Contrast
+// コントラスト調整の UI パーツ
+
+// Controls - Sharpen
+// シャープネス調整の UI パーツ
+
+// Controls - Measurement
+// 通常の長さ測定（scale 設定・測定）の UI パーツ
+
+// Controls - Particle Size
+// 粒径解析の UI パーツ
+
+// Controls - Particle Size Scale
+// 粒子解析用のスケール設定（通常測長とは別口）の UI
+
+// Inputs & Displays
+// 通常測長用の入力＆結果表示
+
+// ===== State =====
+// アプリ内部の状態（State）を持つ変数群
+// （元画像、現在モード、スケール情報、粒子配列、ROI状態など）
+
+// 🧮 画像処理ロジック・ヘルパー
+
+// コントラスト調整をする処理そのもの。
+// シグモイド関数（S字カーブ）を使って、暗いところはもっと暗く・明るいところはもっと明るく
+// （applyThresholdContrast）
+
+// 3×3のカーネルシャープネスフィルタ（画像をクッキリさせる処理）
+// 「中心を強調・周囲を減算」するカーネルを畳み込み → エッジを強くしてシャープに見せる
+// （applySharpening）
+
+// 「元画像＋コントラスト＋シャープ＋モードに応じたオーバーレイ」までをまとめて描画
+// 画面に表示する最終画像を毎回まとめて描き直すメイン関数
+// （redrawAfterCanvas）
+
+// ものさしリセットボタン
+// 画像上で長さを測る機能（スケール設定＋測定）の状態を全部初期化する処理
+// （resetMeasurementState）
+
+// 画像処理ツール全体の「総リセットボタン」用の関数
+// （resetApp）
+
+// 測定した線だけ消す。スケール情報は残したままに
+// （clearMeasurements）
+
+// 今どのモードで画像を触るか（コントラスト / シャープ / 測長 / 粒径 / 範囲選択）を切り替えるための中枢関数
+// （switchMode）
+
+// キャンバス上に「測定点の●マーカー」を描くための関数
+// （drawMarker）
+
+// キャンバス上に「2点を結ぶ線」を描くための関数
+// （drawLine）
+
+// 検出した粒子の「外枠（四角い枠）」をキャンバスに描く関数
+// （drawParticlesOutlines）
+
+// 粒径測定タブをまっさらにリセットする
+// （resetParticleSizeState）
+
+// ===== NEW ROI FUNCTIONS =====
+// ROI（範囲選択）関連の処理まとめ
+
+// ドラッグして選んだ範囲を、四角形の情報に整理する関数
+// （getSelectionRect）
+
+// 選択した範囲を切り抜いて、モーダルでプレビュー表示する関数
+// （cropImageAndShowModal）
+
+// 切り抜き用の一時データを全部捨てて、モーダル側のキャンバスを空にするリセット関数
+// （resetCroppedImageState）
+
+// 切り抜いた範囲を“新しい元画像”として採用する処理
+// （setCroppedAsNew）
+
+// 🖱 イベントリスナーまわり
+
+// ユーザーが画像ファイルを選んだときに、その画像を①DBに保存して、②キャンバスに表示し、③アプリ状態を初期化する処理
+// （imageLoader.addEventListener('change', ...)）
+
+// 各モード切り替えボタン
+// （コントラスト・シャープ・測長・粒径・ROI 選択のボタン）
+
+// リセット・クリアボタン
+// （全体リセット / 測長クリア / 粒子解析リセット）
+
+// 「元画像に戻す」ボタンを押したときに、DBから画像を取り出してキャンバスを初期状態に戻す処理
+// （revertImageBtn のクリックリスナー）
+
+// 「切り抜きモーダルのボタンと閉じたときの後始末」をイベントでつないでいる部分
+// （setCroppedAsNewBtnModal, hidden.bs.modal）
+
+// コントラスト・シャープ・閾値のリセットボタン
+// （それぞれの reset...Btn）
+
+// --- Measurement Button Listeners ---
+// スケール設定開始ボタン / スケールリセット / 長さ測定ボタン
+
+// --- Particle Size Button Listeners ---
+// 「粒径を測定する」ボタンが押されたときに、粒子解析モードの“測定開始”状態に入るための処理
+// ＋ 粒子解析結果をリセットして ROI 指定からやり直す処理
+
+// 閾値スライダーを動かしたときに二値化をリアルタイム更新
+// （thresholdSlider の input）
+
+// --- Particle Size Scale Button Listeners ---
+// 「粒子径測定用のスケール（ピクセル→実長さ変換）を設定し始めるボタン」のクリック処理
+// ＋ 「粒子径用スケール設定を全部リセットするボタン」のクリック処理
+
+// --- Canvas Click & Drag Handler ---
+// 画面上のマウス座標 → キャンバス上のピクセル座標に変換
+// ROI範囲選択の開始（マウス押下）
+// ROI範囲選択中（ドラッグ中は矩形を更新して再描画）
+// ROI選択完了（マウスを離したタイミングでトリミング＆モーダル表示）
+
+// 「afterキャンバスをクリックしたときの共通処理」
+// ① クリックしていい状況かどうかチェック
+// ② 通常測長モード（スケール設定 / 測長）
+// ③ 粒子用スケール設定フェーズ
+// ④ 粒子解析用の ROI（測定範囲）指定フェーズ
+
+// --- Other Listeners ---
+// コントラスト・シャープのスライダー操作時に再描画
+// 加工後画像のダウンロード
+// 初期モードはコントラスト
+// ページを閉じる際にサーバーへ「終了リクエスト」を投げる
+
+// 🔬 粒径測定ロジック
+
+// 「画像をグレースケール（白黒）」に変換する関数
+// （grayscale）
+
+// 閾値による二値化処理（brightness > threshold ? 白 : 黒）
+// （applyThreshold）
+
+// 画像全体を対象に粒子解析を行う
+// （analyzeAllParticles）
+
+// ROIと処理済ImageDataをもとに
+// 「指定した範囲(ROI)の中で粒子をラベリングして、1粒子ごとの情報を particles 配列に詰める」中核の関数
+// （analyzeParticlesInRegion）
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ===== NEW: Weighing History Functions =====
+    // ===== NEW: Weighing History Functions =====：DBに保存されている化学式の履歴を読み込んで、入力補完候補に反映する役
 
     async function loadFormulaHistory() {
         try {
@@ -46,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    //履歴を保存する
     async function saveFormulaHistory(product, reactants) {
         // 原料の配列から「空欄 or 空白だけ」のものを削除
         const validReactants = reactants.map(r => r.trim()).filter(r => r);
@@ -115,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let allReactantFormulas = [];
     let lastFocusedReactantInput = null; // 最後にフォーカスしていた原料入力欄
 
+    //履歴からインクリメンタル検索して候補リストを表示する係
     function renderSearchResults(searchTerm, formulaList, resultsContainer) {
         // 毎回中身をクリアしてから描画
         resultsContainer.innerHTML = '';
@@ -203,6 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsContainer.classList.add('d-block');
     }
 
+    //検索 UI 全体の初期化＋イベント配線をまとめてやる関数
     function setupFormulaSearch() {
         const productSearch = document.getElementById('productSearch');
         const productSearchResults = document.getElementById('productSearchResults');
@@ -367,6 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return totalMass;
     }
 
+    // 「秤量計算の本体」入力値を集める → 化学式をパースしてモル質量を出す → 希望する生成物量から各原料の必要量（mol, g）を計算する → 画面に結果を表示する → その組み合わせを履歴に保存する
     function runGenericCalculation() {
         try {
             // --- 1. 入力値の取得 ---
@@ -382,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // モード判定（質量指定かモル指定か）
             const mode = weighingElements.modeMass.checked ? 'mass' : 'mol';
 
-            // --- 2. 基本的なバリデーション ---
+            // --- 2. バリデーション ---
             if (!productFormulaStr) {
                 alert('生成物の化学式を入力してください。');
                 return;
@@ -465,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // --- 7. 結果の画面表示 ---
 
-            // 生成物側の情報
+            //「計算結果を画面に反映している4行」上で計算した値を、結果表示用の <span> や <div> に書き込んでいる。
             weighingElements.resProdFormula.textContent = productFormulaStr;
             weighingElements.resProdMolarMass.textContent = productMolarMass.toFixed(4);
             weighingElements.resProdMoles.textContent = n_prod.toFixed(6);
@@ -493,7 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 秤量タブのイベント登録
+    // 「秤量タブのイベント登録」ラジオボタンの切り替え & 計算ボタンのクリックに、処理を紐づけている部分
     weighingElements.modeMass.addEventListener('change', updateAmountLabel);
     weighingElements.modeMol.addEventListener('change', updateAmountLabel);
     weighingElements.calculateBtn.addEventListener('click', runGenericCalculation);
@@ -510,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ===== NEW: Initial Load =====
+    // ===== NEW: Initial Load ===== ブラウザがHTMLの読み込みとDOMの構築を終えたタイミング
     loadFormulaHistory();    // 初回表示時に履歴読み込み
     setupFormulaSearch();    // 検索機能の有効化
     updateAmountLabel();     // g/molラベル初期化
@@ -520,6 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebarTabs = document.getElementById('sidebar-tabs');
     const tabContents = document.querySelectorAll('[data-tab-content]');
 
+    // サイドバーのタブをクリックしたときに、表示する内容を切り替える処理
     sidebarTabs.addEventListener('click', e => {
         e.preventDefault();
         const clickedTab = e.target;
@@ -566,9 +777,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const ASPECT_RATIO_THRESHOLD = 1.2; // アスペクト比がこれ以下の粒子を有効候補とする
+    const ASPECT_RATIO_THRESHOLD = 1.1; // アスペクト比がこれ以下の粒子を有効候補とする
 
-    // ===== DOM Elements =====
+    // ===== DOM Elements ===== 
+    // 画像解析タブで使う全部のUIパーツ & 状態（state）をまとめて準備している部分
+    // 上半分：HTML のボタン・スライダー・キャンバスを document.getElementById で JS の変数に紐付け
+    //　→これをやることで、HTML側の<input id="imageLoader" …>, <canvas id="canvas-before">等に対してJS側でアクセスできるように
+    // 下半分：アプリ内で使う「状態」を保存するための変数（今のモード・スケール・粒子情報・ROI など）
+
+    // ボタン類を全部変数に取ってる
     const imageLoader = document.getElementById('imageLoader');
     const contrastModeBtn = document.getElementById('contrastModeBtn');
     const sharpenModeBtn = document.getElementById('sharpenModeBtn');
@@ -579,11 +796,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.getElementById('resetBtn');
     const revertImageBtn = document.getElementById('revertImageBtn'); // 元画像に戻すボタン
 
-    // Canvas
-    const canvasBefore = document.getElementById('canvas-before');   // 元画像
-    const canvasAfter = document.getElementById('canvas-after');     // 処理結果表示
-    const ctxBefore = canvasBefore.getContext('2d', { willReadFrequently: true });
-    const ctxAfter = canvasAfter.getContext('2d', { willReadFrequently: true });
+    // Canvas キャンバスと描画コンテキスト
+    const canvasBefore = document.getElementById('canvas-before');   // 元画像を描画するキャンバス（オリジナル画像用）
+    const canvasAfter = document.getElementById('canvas-after');     // コントラスト調整・シャープ・二値化・粒子輪郭描画などの結果を表示するキャンバス
+    const ctxBefore = canvasBefore.getContext('2d', { willReadFrequently: true }); //それぞれの 2D 描画コンテキスト
+    const ctxAfter = canvasAfter.getContext('2d', { willReadFrequently: true });  //画面には出さない裏方用キャンバス
     
     // オフスクリーンキャンバス（処理用の作業場）
     const tempCanvas = document.createElement('canvas');
@@ -596,58 +813,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctxCroppedModal = canvasCroppedModal.getContext('2d');
     const setCroppedAsNewBtnModal = document.getElementById('setCroppedAsNewBtnModal');
 
-    // Controls - Contrast
-    const contrastControls = document.getElementById('contrast-controls');
-    const contrastSlider = document.getElementById('contrastSlider');
-    const contrastValue = document.getElementById('contrastValue');
-    const resetContrastBtn = document.getElementById('resetContrastBtn');
+    // Controls - Contrast コントラスト調整の UI パーツ
+    const contrastControls = document.getElementById('contrast-controls'); //コントラスト関連の UI 全体を包んだ <div>（モード切り替えで表示/非表示にする）
+    const contrastSlider = document.getElementById('contrastSlider'); //コントラストを調整するスライダー（0–200 とか）
+    const contrastValue = document.getElementById('contrastValue'); //「今の値」を表示するところ（例：100） 
+    const resetContrastBtn = document.getElementById('resetContrastBtn'); //コントラストをデフォルト（100）に戻すボタン
 
-    // Controls - Sharpen
-    const sharpenControls = document.getElementById('sharpen-controls');
-    const sharpenSlider = document.getElementById('sharpenSlider');
-    const sharpenValue = document.getElementById('sharpenValue');
-    const resetSharpenBtn = document.getElementById('resetSharpenBtn');
+    // Controls - Sharpen シャープネス調整の UI パーツ
+    const sharpenControls = document.getElementById('sharpen-controls'); //シャープ関連の UI コンテナ
+    const sharpenSlider = document.getElementById('sharpenSlider'); //シャープの強さ（0–100 みたいな）
+    const sharpenValue = document.getElementById('sharpenValue'); //表示用
+    const resetSharpenBtn = document.getElementById('resetSharpenBtn'); //シャープ量を 0 に戻すボタン
     
-    // Controls - Measurement
-    const measureControls = document.getElementById('measure-controls');
-    const scaleActionButton = document.getElementById('scaleActionButton');
-    const resetScaleContainer = document.getElementById('resetScaleContainer');
-    const resetScaleButton = document.getElementById('resetScaleButton');
-    const measureActionButton = document.getElementById('measureActionButton');
-    const clearMeasurementBtn = document.getElementById('clearMeasurementBtn');
+    // Controls - Measurement 通常の長さ測定（scale 設定・測定）の UI パーツ
+    const measureControls = document.getElementById('measure-controls'); //測長機能の UI 一式
+    const scaleActionButton = document.getElementById('scaleActionButton'); //「スケール設定開始」ボタン
+    const resetScaleContainer = document.getElementById('resetScaleContainer'); //設定したスケールをリセットする部分
+    const resetScaleButton = document.getElementById('resetScaleButton'); //設定したスケールをリセットする部分
+    const measureActionButton = document.getElementById('measureActionButton'); //実際に「任意の 2 点を測定する」モードに入るボタン
+    const clearMeasurementBtn = document.getElementById('clearMeasurementBtn'); //描画中の測定線・結果を消すボタン
 
-    // Controls - Particle Size
-    const particleSizeControls = document.getElementById('particle-size-controls');
-    const thresholdSlider = document.getElementById('thresholdSlider');
-    const thresholdValue = document.getElementById('thresholdValue');
-    const resetThresholdBtn = document.getElementById('resetThresholdBtn');
-    const analyzeParticlesBtn = document.getElementById('analyzeParticlesBtn');
-    const particleCount = document.getElementById('particleCount');
-    const averageDiameterPx = document.getElementById('averageDiameterPx');
-    const averageDiameterReal = document.getElementById('averageDiameterReal');
-    const averageDiameterUnit = document.getElementById('averageDiameterUnit');
-    const clearParticlesBtn = document.getElementById('clearParticlesBtn');
-    const remapParticlesBtn = document.getElementById('remapParticlesBtn');
-    const remapParticlesContainer = document.getElementById('remapParticlesContainer');
-    const roiRealLength = document.getElementById('roiRealLength');
-    const roiRealUnit = document.getElementById('roiRealUnit');
-    const analyzeMultipleParticlesBtn = document.getElementById('analyzeMultipleParticlesBtn');
+    // Controls - Particle Size 粒径解析の UI パーツ
+    const particleSizeControls = document.getElementById('particle-size-controls'); //粒子解析モードの UI 全体
+    const thresholdSlider = document.getElementById('thresholdSlider'); //二値化のしきい値（threshold）を調整する UI
+    const thresholdValue = document.getElementById('thresholdValue'); //二値化のしきい値（threshold）を調整する UI
+    const resetThresholdBtn = document.getElementById('resetThresholdBtn'); //二値化のしきい値（threshold）を調整する UI
+    const analyzeParticlesBtn = document.getElementById('analyzeParticlesBtn'); //「この ROI 内の粒子を解析開始」ボタン
+    const particleCount = document.getElementById('particleCount'); //検出された粒子数
+    const averageDiameterPx = document.getElementById('averageDiameterPx'); //ピクセルベースの平均粒径
+    const averageDiameterReal = document.getElementById('averageDiameterReal'); //実スケール（μm など）での平均粒径と、その単位
+    const averageDiameterUnit = document.getElementById('averageDiameterUnit'); //実スケール（μm など）での平均粒径と、その単位
+    const clearParticlesBtn = document.getElementById('clearParticlesBtn'); //粒子解析結果のリセット
+    const remapParticlesBtn = document.getElementById('remapParticlesBtn'); //粒子の再マッピング（しきい値を変えて再解析など）の UI
+    const remapParticlesContainer = document.getElementById('remapParticlesContainer'); //粒子の再マッピング（しきい値を変えて再解析など）の UI
+    const roiRealLength = document.getElementById('roiRealLength'); //粒子解析用の ROI の実長さと単位
+    const roiRealUnit = document.getElementById('roiRealUnit'); //粒子解析用の ROI の実長さと単位
+    const analyzeMultipleParticlesBtn = document.getElementById('analyzeMultipleParticlesBtn'); //全画面を対象に粒子解析するボタン（analyzeAllParticles())
 
-    // Controls - Particle Size Scale
-    const particleScaleLengthInput = document.getElementById('particleScaleLengthInput');
-    const particleScaleUnitInput = document.getElementById('particleScaleUnitInput');
-    const particleScaleActionButton = document.getElementById('particleScaleActionButton');
-    const particleResetScaleContainer = document.getElementById('particleResetScaleContainer');
-    const particleResetScaleButton = document.getElementById('particleResetScaleButton');
-    const particleScaleDisplay = document.getElementById('particleScaleDisplay');
+    // Controls - Particle Size Scale 粒子解析用のスケール設定（通常測長とは別口）
+    const particleScaleLengthInput = document.getElementById('particleScaleLengthInput'); //スケールバーの実長さと単位（例：10 μm）
+    const particleScaleUnitInput = document.getElementById('particleScaleUnitInput'); //スケールバーの実長さと単位（例：10 μm）
+    const particleScaleActionButton = document.getElementById('particleScaleActionButton'); //「粒子スケール設定開始」ボタン（キャンバス上で 2 点クリック）
+    const particleResetScaleContainer = document.getElementById('particleResetScaleContainer'); //粒子スケールをリセット
+    const particleResetScaleButton = document.getElementById('particleResetScaleButton'); //粒子スケールをリセット
+    const particleScaleDisplay = document.getElementById('particleScaleDisplay'); //「10 μm = 100 px」のような表示
 
-    // Inputs & Displays（通常測長用）
-    const scaleLengthInput = document.getElementById('scaleLengthInput');
-    const scaleUnitInput = document.getElementById('scaleUnitInput');
-    const scaleDisplay = document.getElementById('scaleDisplay');
-    const measureResult = document.getElementById('measureResult');
+    // Inputs & Displays 通常測長用の入力＆結果表示
+    const scaleLengthInput = document.getElementById('scaleLengthInput'); //通常測長用のスケールバーの実長＆単位
+    const scaleUnitInput = document.getElementById('scaleUnitInput'); //通常測長用のスケールバーの実長＆単位
+    const scaleDisplay = document.getElementById('scaleDisplay'); //「10 μm = 80 px」などの表示
+    const measureResult = document.getElementById('measureResult'); //測定結果（例：「2.35 μm」）
 
-    // ===== State =====
+    // ===== State ===== アプリ内部の状態（State）を持つ変数群
     let originalImage = null; // 読み込んだ元画像
     let currentMode = 'contrast'; // 現在のモード: 'contrast', 'sharpen', 'measure', 'particle_size', 'roi_select'
     let measurementPoints = [];   // 測長のためにクリックされた点の配列
@@ -671,7 +888,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== LOGIC & HELPER FUNCTIONS =====
 
-    // シグモイド関数を用いたコントラスト強調
+    // コントラスト調整をする処理そのもの。
+    // シグモイド関数（S字カーブ）を使って、暗いところはもっと暗く・明るいところはもっと明るく
     function applyThresholdContrast(imageData, value) {
         if (!imageData) return null;
 
@@ -701,7 +919,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return new ImageData(data, imageData.width, imageData.height);
     }
 
-    // 3×3カーネルによるシャープフィルタ
+    // 3×3のカーネルシャープネスフィルタ（画像をクッキリさせる処理）
+    //「中心を強調・周囲を減算」するカーネルを畳み込み → エッジを強くしてシャープに見せる
     function applySharpening(imageData, amount) {
         if (!imageData) return null;
 
@@ -754,6 +973,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // 「元画像＋コントラスト＋シャープ＋モードに応じたオーバーレイ」までをまとめて描画
+    // 画面に表示する最終画像を毎回まとめて描き直すメイン関数
+    // 元画像 ＋ コントラスト ＋ シャープ ＋（モードごとの線やマーカー）を合成できるように「あとがけ方式」 で重ねあわせ ← ★工夫したところ
     function redrawAfterCanvas() {
         if (!originalImage) return null;
 
@@ -831,6 +1052,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // それぞれの if / ループ / 状態変更の行の上に短めコメントを入れる形で構成しています。
     // （長くなるのでここから先は必要なところをピンポイントで増補していく運用を想定）
 
+    // ものさしリセットボタン
+    // 画像上で長さを測る機能（スケール設定＋測定） の状態を全部初期化する処理
     function resetMeasurementState() {
         // 測長用の点とスケール情報を初期化
         measurementPoints = [];
@@ -861,6 +1084,7 @@ document.addEventListener('DOMContentLoaded', () => {
         redrawAfterCanvas();
     }
     
+    // 画像処理ツール全体の「総リセットボタン」用の関数
     function resetApp() {
         if (!originalImage) return;
         
@@ -889,6 +1113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         switchMode('contrast');
     }
     
+    // 測定した線だけ消す。スケール情報は残したままに
     function clearMeasurements() {
         if (!originalImage) return;
         // 測定点を消すだけ（スケール情報は残す）
@@ -898,6 +1123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         redrawAfterCanvas();
     }
 
+    // 今どのモードで画像を触るか（コントラスト / シャープ / 測長 / 粒径 / 範囲選択）を切り替えるための中枢関数
     function switchMode(mode) {
         // ROIモードを再押下したときはコントラストへ戻すトグル動作
         if (currentMode === 'roi_select' && mode === 'roi_select') {
@@ -956,7 +1182,8 @@ document.addEventListener('DOMContentLoaded', () => {
             redrawAfterCanvas();
         }
     }
-    
+
+    // キャンバス上に「測定点の●マーカー」を描くための関数
     function drawMarker(x, y, color = '#ffc107') {
         ctxAfter.beginPath();
         ctxAfter.arc(x, y, 5, 0, 2 * Math.PI);
@@ -964,6 +1191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctxAfter.fill();
     }
     
+    // キャンバス上に「2点を結ぶ線」を描くための関数
     function drawLine(p1, p2, color = '#ffc107') {
         ctxAfter.beginPath();
         ctxAfter.moveTo(p1.x, p1.y);
@@ -973,6 +1201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctxAfter.stroke();
     }
 
+    // 検出した粒子の「外枠（四角い枠）」をキャンバスに描く関数
     function drawParticlesOutlines(particlesToDraw) {
         if (!originalImage || !particlesToDraw || particlesToDraw.length === 0) return;
 
@@ -982,12 +1211,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // アスペクト比が一定以下（ほぼ円形〜正方形）の粒子だけを描画
             if (aspectRatio <= ASPECT_RATIO_THRESHOLD) {
                 ctxAfter.strokeStyle = '#00FF00';
-                ctxAfter.lineWidth = 1;
+                ctxAfter.lineWidth = 1.2;
                 ctxAfter.strokeRect(p.minX, p.minY, p.maxX - p.minX + 1, p.maxY - p.minY + 1);
             }
         });
     }
 
+    // 粒径測定タブをまっさらにリセットする
     function resetParticleSizeState() {
         // 粒子一覧と各種表示を初期化
         particles = [];
@@ -1021,6 +1251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== NEW ROI FUNCTIONS =====
 
+    // ドラッグして選んだ範囲を、四角形の情報に整理する関数
     function getSelectionRect() {
         // ドラッグ開始・終了座標から左上x,yと幅・高さを算出
         const x = Math.min(selectionRect.startX, selectionRect.endX);
@@ -1030,6 +1261,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return { x, y, w, h };
     }
 
+    // 選択した範囲を切り抜いて、モーダルでプレビュー表示する関数
     function cropImageAndShowModal() {
         if (!originalImage) return;
         const rect = getSelectionRect();
@@ -1050,12 +1282,14 @@ document.addEventListener('DOMContentLoaded', () => {
         cropResultModal.show();
     }
     
+    // 切り抜き用の一時データを全部捨てて、モーダル側のキャンバスを空にするリセット関数
     function resetCroppedImageState() {
         // 切り抜き結果を破棄＆モーダルキャンバスをクリア
         croppedImageData = null;
         ctxCroppedModal.clearRect(0, 0, canvasCroppedModal.width, canvasCroppedModal.height);
     }
     
+    // 切り抜いた範囲を“新しい元画像”として採用する処理
     function setCroppedAsNew() {
         if (!croppedImageData) return;
         
@@ -1090,7 +1324,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== EVENT LISTENERS =====
 
-    // 画像読み込み時の処理
+    // ユーザーが画像ファイルを選んだときに、その画像を①DBに保存して、②キャンバスに表示し、③アプリ状態を初期化する処理
     imageLoader.addEventListener('change', e => {
         if (!e.target.files[0]) return;
         const reader = new FileReader();
@@ -1147,7 +1381,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearMeasurementBtn.addEventListener('click', clearMeasurements);
     clearParticlesBtn.addEventListener('click', resetParticleSizeState);
 
-    // 元画像に戻すボタン（DBから再ロード）
+    // 「元画像に戻す」ボタンを押したときに、DBから画像を取り出してキャンバスを初期状態に戻す処理
     revertImageBtn.addEventListener('click', async () => {
         try {
             const response = await fetch('/api/image/load');
@@ -1181,7 +1415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // モーダルのボタンと閉じたときの処理
+    // 「切り抜きモーダルのボタンと閉じたときの後始末」をイベントでつないでいる部分
     setCroppedAsNewBtnModal.addEventListener('click', setCroppedAsNew);
     cropResultModalEl.addEventListener('hidden.bs.modal', resetCroppedImageState);
 
@@ -1215,6 +1449,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // スケールリセット
     resetScaleButton.addEventListener('click', () => {
         resetMeasurementState();
     });
@@ -1229,6 +1464,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Particle Size Button Listeners ---
+    // 「粒径を測定する」ボタンが押されたときに、粒子解析モードの“測定開始”状態に入るための処理
     analyzeParticlesBtn.addEventListener('click', () => {
         if (!originalImage) {
             alert('画像を読み込んでください。');
@@ -1250,6 +1486,7 @@ document.addEventListener('DOMContentLoaded', () => {
         analyzeAllParticles();
     });
 
+    // 「粒子解析の結果をリセットして、ROI（測定範囲）の指定からやり直すためのボタンの処理」
     remapParticlesBtn.addEventListener('click', () => {
         if (currentMode !== 'particle_size') return;
         // ROI指定をやり直すためのリセット
@@ -1275,7 +1512,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Particle Size Scale Button Listeners ---
 
-    // 粒子解析用スケール設定
+    // 「粒子径測定用のスケール（ピクセル→実長さ変換）を設定し始めるボタン」のクリック処理
     particleScaleActionButton.addEventListener('click', () => {
         if (particleCalibrationState === 'idle') {
             particleCalibrationState = 'in_progress';
@@ -1287,6 +1524,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // 「粒子径用スケール設定を全部リセットするボタン」のクリック処理
     particleResetScaleButton.addEventListener('click', () => {
         particleScale = { pixels: null, realLength: null, unit: null };
         resetParticleSizeState();
@@ -1338,7 +1576,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // キャンバスクリック（測長/粒子スケール設定/粒子ROI指定に使う）
+    // 「afterキャンバスをクリックしたときの共通処理」
+    // ① クリックしていい状況かどうかチェック
     canvasAfter.addEventListener('click', e => {
         if (!originalImage) return;
         // ROIドラッグ完了直後のクリックイベントは無視
@@ -1346,9 +1585,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const { x, y } = getCanvasCoordinates(e);
 
-        // --- 通常測長モード ---
+        // ② 通常測長モード（currentMode === 'measure'）
         if (currentMode === 'measure') {
-            // スケール設定中 or 測定中 以外なら何もしない
+            // ②-1. スケール設定フェーズ
             if (calibrationState !== 'in_progress' && measurementState !== 'in_progress') return;
 
             measurementPoints.push({ x, y });
@@ -1383,7 +1622,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // 少し表示したあと線を消す
                     setTimeout(clearMeasurements, 500);
 
-                // --- 実際の測長フェーズ ---
+                // ②-2. 実際の測長フェーズ
                 } else if (measurementState === 'in_progress') {
                     if (scale.pixels) {
                         const realDistance = (pixelDistance / scale.pixels) * scale.realLength;
@@ -1398,7 +1637,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-        // --- 粒子用スケール設定フェーズ ---
+        // ③ 粒子用スケール設定フェーズ
         } else if (currentMode === 'particle_size' && particleCalibrationState === 'in_progress') {
             measurementPoints.push({ x, y });
             drawMarker(x, y, '#dc3545');
@@ -1429,7 +1668,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 measurementPoints = []; 
             }
 
-        // --- 粒子解析用のROI指定フェーズ ---
+        // ④ 粒子解析用の ROI（測定範囲）指定フェーズ
         } else if (currentMode === 'particle_size' && particleMeasurementState === 'in_progress') {
             measurementPoints.push({ x, y });
             drawMarker(x, y, '#0000FF');
@@ -1497,7 +1736,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Particle Size Measurement Functions ---
 
-    // グレースケール変換
+    // 「画像をグレースケール（白黒）」に変換する関数
     function grayscale(imageData) {
         const data = imageData.data;
         for (let i = 0; i < data.length; i += 4) {
@@ -1553,7 +1792,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drawParticlesOutlines(particles);
     }
     
-    // ROIと処理済ImageDataをもとに粒子を検出・径計算
+    // ROIと処理済ImageDataをもとに「指定した範囲(ROI)の中で粒子をラベリングして、1粒子ごとの情報を particles 配列に詰める」中核の関数
     function analyzeParticlesInRegion(p1, p2, processedImageData) {
         if (!originalImage || !processedImageData) {
             alert('画像を読み込んでください。');
@@ -1644,7 +1883,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // ROI内の全ピクセルを走査して、白(255)かつ未訪問ならフラッドフィル
+        // 「ROI の中を走査して、まだ見つかっていない白い粒子を見つけたら floodFill で 1 粒子としてラベリングする」ループ
         for (let y = Math.floor(roiMinY); y <= Math.ceil(roiMaxY); y++) {
             for (let x = Math.floor(roiMinX); x <= Math.ceil(roiMaxX); x++) {
                 const index = y * width + x;
@@ -1662,7 +1901,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const goodParticles = [];
         const mergedBlobs = [];
 
-        // 1stパス: 円形度・直径を計算して「単粒子」と「複数粒子ブロブ」に分類
+        // 「見つけた粒子ごとに 円っぽさを評価して、単粒子か、くっついた複数粒子っぽいかを分類する処理」
         rawParticles.forEach(p => {
             if (p.perimeter === 0) {
                 p.circularity = 0;
@@ -1684,7 +1923,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let finalParticles = [...goodParticles];
 
-        // 単粒子の平均面積から、mergedBlobs内の「粒子数」を推定して分割
+        // 「くっついてる塊（mergedBlobs）があったら、それを何個分の粒がくっついているのか推定して、仮想的に“複数粒子”として数え直す」
         if (goodParticles.length > 0) {
             let totalGoodArea = 0;
             goodParticles.forEach(p => { totalGoodArea += p.pixelCount; });
