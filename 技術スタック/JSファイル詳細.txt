@@ -1,0 +1,161 @@
+2. 秤量計算＋履歴機能（DB との連携）
+2-1. 履歴の読み込み：loadFormulaHistory()
+const response = await fetch('/api/formulas'); // ← Flask の /api/formulas (GET)
+const data = await response.json();
+allProductFormulas = data.products || [];
+allReactantFormulas = data.reactants || [];
+
+
+Flask 側の /api/formulas (GET)
+→ さっきの ProductFormula / ReactantFormula テーブルから
+すべての formula を SELECT して返しているエンドポイント
+
+それを JS で受け取って、
+
+product-formula-list / reactant-formula-list の <datalist> に流し込む
+
+あとで検索用配列（allProductFormulas / allReactantFormulas）として保持
+
+👉 DB に保存してある過去の化学式が、ブラウザ側でサジェスト候補として使えるようになっている。
+
+2-2. 履歴の保存：saveFormulaHistory(product, reactants)
+const response = await fetch('/api/formulas', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ product: product.trim(), reactants: validReactants }),
+});
+
+
+計算に成功した後、生成物と原料の化学式をまとめて /api/formulas に POST
+
+Flask 側の /api/formulas (POST) が
+
+ProductFormula / ReactantFormula テーブルに INSERT（重複はスキップ）
+
+DB に一意な履歴として追加
+
+2-3. 秤量計算の中身：完全にフロント（JS）で完結
+
+JS 内で
+
+元素の原子量テーブル ATOMIC_WEIGHTS
+
+化学式パーサ parseFormula
+
+係数に x を入れて評価する evaluateCoefficient
+
+モル質量計算 calculateMolarMass
+
+ストイキ計算 runGenericCalculation
+
+が全部定義されていて、計算処理自体は ブラウザで完結してる。
+
+const parsedProduct = parseFormula(productFormulaStr);
+const productMolarMass = calculateMolarMass(parsedProduct, x_val);
+...
+n_prod = mass_prod / productMolarMass;
+...
+reactantResults.push({
+  formula: supplyingReactant.formula,
+  moles: n_reactant,
+  mass: m_reactant
+});
+
+
+👉 計算だけならバックエンドは不要で、
+バックエンドは「履歴を DB に保存・復元する API」に専念している構成になってる。
+
+3. 画像周りと DB の関係
+3-1. 元画像の保存：/api/image/save
+
+ファイル選択時のリスナー：
+
+imageLoader.addEventListener('change', e => {
+  ...
+  const imageDataUrl = event.target.result; // base64 DataURL
+
+  // --- NEW: Save image to DB ---
+  await fetch('/api/image/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ image_data: imageDataUrl })
+  });
+  ...
+});
+
+
+画像を <input type="file"> から読み込み → base64 DataURL に変換
+
+それを /api/image/save に POST
+
+Flask 側の /api/image/save は
+
+OriginalImage テーブルを一旦全削除
+
+image_data カラムにバイナリとして保存（id=1 一件だけ）
+
+👉 DB 側には「元画像」のスナップショットが 1枚だけ保持される。
+
+3-2. 元画像への復帰：/api/image/load
+revertImageBtn.addEventListener('click', async () => {
+  const response = await fetch('/api/image/load');
+  const data = await response.json();
+  if (data.image_data) {
+    const newImage = new Image();
+    newImage.src = data.image_data; // data:image/png;base64,...
+    ...
+  }
+});
+
+
+Flask 側 /api/image/load が OriginalImage の中身を base64 に戻して JSON で返す
+
+JS で Image オブジェクトとして扱い直し、
+
+canvas-before に描画
+
+各種状態を resetApp() でリセット
+
+👉 「トリミングや処理をやりすぎたら、DB に保存してある元画像に戻せる」仕組み。
+
+3-3. 画像処理自体は全部フロント側（Canvas）
+
+ここも計算ロジックは全部 JS：
+
+コントラスト調整：applyThresholdContrast
+
+シャープ処理：applySharpening
+
+二値化：applyThreshold
+
+粒子のラベリング・輪郭抽出：analyzeParticlesInRegion
+
+円相当径の計算、外れ値除去、アスペクト比フィルタ…など
+
+全部 canvas.getContext('2d') で取得した ImageData を直接ゴリゴリ計算してる。
+
+バックエンドは一切画像処理してない。
+「保存・復元」だけやってて、画像処理の CPU コストはブラウザ側で負担している構成。
+
+4. 「フロントなのに計算できるの？」への答え方（例）
+
+面接とかで聞かれそうな質問に対しては、こんな感じで言える：
+
+このアプリでは、計算処理や画像処理のロジックはすべてフロントエンドの JavaScript で実行しています。
+ブラウザ上の JavaScript でも通常のプログラムと同様に数値計算や画像データの配列処理ができますし、Canvas API を使うことでピクセル単位の画像処理も可能です。
+バックエンド（Flask）は、化学式の履歴や元画像をデータベースに保存・復元する役割に絞っていて、
+/api/formulas や /api/image/save / /api/image/load などの API でフロントと連携しています。
+こうすることで、重い処理はクライアント側で完結させつつ、履歴や元データだけをサーバーで永続化する構成になっています。
+
+5. ざっくりまとめると
+
+DB 構造
+→ Flask の ProductFormula, ReactantFormula, OriginalImage 3テーブル（前に整理したやつ）
+
+JS がやっていること
+
+フロント側で 秤量計算・画像処理を全部やる
+
+計算で使った化学式を /api/formulas 経由で DB に保存 / 取得
+
+元画像を /api/image/save / /api/image/load 経由で DB に 1枚だけ保存 / 復元

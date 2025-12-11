@@ -1,0 +1,194 @@
+1. この Python ファイルの役割（ざっくり）
+
+一言で言うと：
+
+Flask を使って
+
+HTML を返すメインページ /
+
+化学式履歴用 API /api/formulas
+
+元画像保存・復元用 API /api/image/save /api/image/load
+を提供しつつ、
+そのデータを SQLite または PostgreSQL に保存するバックエンド
+
+として動いているファイル。
+
+PyInstaller で固めた exe でも、そのままスクリプト実行でも動くようにパス周りも工夫してある。
+
+2. 実行モードごとの Flask アプリ設定（PyInstaller 対応）
+if getattr(sys, 'frozen', False):
+    base_dir = sys._MEIPASS
+    template_folder = os.path.join(base_dir, 'templates')
+    static_folder = os.path.join(base_dir, 'static')
+    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
+else:
+    app = Flask(__name__)
+
+
+PyInstaller でバイナリ化したとき（sys.frozen == True）
+
+一時展開ディレクトリ sys._MEIPASS 配下の
+templates / static を見るように設定
+
+通常の python app.py 実行のとき
+
+普通の Flask(__name__) で起動
+
+👉 「ローカルでスクリプトとして動かしても、配布用 exe にしても同じテンプレート・静的ファイルが使える」ようにしている。
+
+3. データベース設定（環境変数で PostgreSQL / SQLite 切り替え）
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    if database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    local_db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'history.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{local_db_path}'
+
+
+DATABASE_URL が設定されているとき
+→ Render / Heroku などの PostgreSQL に接続
+
+古い形式 postgres:// を SQLAlchemy 用に postgresql:// に変換
+
+DATABASE_URL がないとき
+→ 同じフォルダの history.db を使う ローカル SQLite
+
+SQLALCHEMY_TRACK_MODIFICATIONS = False は、不要なオーバーヘッドを切るためのお約束設定。
+
+👉 同じコードで「ローカル開発（SQLite）」と「Render 本番（PostgreSQL）」を切り替え可能な構成。
+
+4. データベース構造（3つのテーブル）
+class ProductFormula(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    formula = db.Column(db.String(255), nullable=False, unique=True)
+
+class ReactantFormula(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    formula = db.Column(db.String(255), nullable=False, unique=True)
+
+class OriginalImage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image_data = db.Column(db.LargeBinary, nullable=False)
+
+4-1. product_formula テーブル
+
+主キー: id (Integer)
+
+カラム: formula (文字列, 255文字, NOT NULL, UNIQUE)
+
+役割: 生成物の化学式の履歴を一意に保存
+
+4-2. reactant_formula テーブル
+
+主キー: id
+
+カラム: formula (文字列, 255文字, NOT NULL, UNIQUE)
+
+役割: 原料（反応物）の化学式の履歴を一意に保存
+
+4-3. original_image テーブル
+
+主キー: id
+
+カラム: image_data (LargeBinary / Postgres なら bytea)
+
+役割:
+「元画像」を 1枚だけ 保存するためのテーブル
+→ コード上でも OriginalImage.query.delete() してから id=1 で毎回入れ直している
+
+4-4. テーブル作成タイミング
+with app.app_context():
+    db.create_all()
+
+
+アプリ起動時に、定義済みモデルに対応するテーブルが 存在しなければ作成される。
+
+5. API エンドポイントの役割
+5-1. 化学式履歴 API /api/formulas
+GET /api/formulas
+products = [item.formula for item in ProductFormula.query.order_by(ProductFormula.formula).all()]
+reactants = [item.formula for item in ReactantFormula.query.order_by(ReactantFormula.formula).all()]
+return jsonify(products=products, reactants=reactants)
+
+
+product_formula / reactant_formula から
+全ての化学式（formula）だけを取り出して昇順に返す
+
+フロント JS の
+
+サジェスト / 検索（allProductFormulas, allReactantFormulas）
+
+<datalist> の中身
+に使われる
+
+POST /api/formulas
+data = request.get_json()
+product_formula = data.get('product')
+reactant_formulas = data.get('reactants', [])
+...
+if product_formula and not ProductFormula.query.filter_by(formula=product_formula).first():
+    db.session.add(ProductFormula(formula=product_formula))
+...
+
+
+リクエストボディ { product: "...", reactants: ["...", ...] } を受け取り
+
+テーブルに 存在しない化学式だけ INSERT
+
+例外発生時は rollback() してエラーレスポンス
+
+👉 「秤量計算で使った化学式を履歴として DB に蓄える API」。
+
+5-2. 画像保存 API /api/image/save (POST)
+OriginalImage.query.delete()
+image_binary = base64.b64decode(image_data.split(',')[1])
+new_image = OriginalImage(id=1, image_data=image_binary)
+db.session.add(new_image)
+db.session.commit()
+
+
+フロントから送られてくる data:image/png;base64,.... 形式の文字列を受け取り、
+
+プレフィックスを除いて base64 デコード
+
+original_image テーブル内を一旦全部削除
+
+id=1 で一件だけ保存
+
+👉 「最新の元画像を一枚だけ DB にキャッシュしておく」ための API。
+
+5-3. 画像読み出し API /api/image/load (GET)
+image_record = OriginalImage.query.first()
+if image_record:
+    image_base64 = base64.b64encode(image_record.image_data).decode('utf-8')
+    return jsonify(image_data=f"data:image/png;base64,{image_base64}")
+else:
+    return jsonify(image_data=None), 404
+
+
+DB から最初の1件（＝元画像）を取り出し、再度 base64 にエンコード
+
+フロントに data:image/png;base64,... で返す
+
+JS 側で <img> や <canvas> に描画し直すことで「元に戻す」処理が可能になる
+
+5-4. メインページ /
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+単純に templates/index.html を返すエンドポイント
+
+ここにさっきの巨大な JS が読み込まれて、フロント側の UI とロジックが動く。
+
+6. 面接・説明用のまとめフレーズ例
+ややライトな説明
+
+バックエンドは Flask で軽量に構成していて、
+ローカルでは SQLite、本番の Render では環境変数 DATABASE_URL に応じて PostgreSQL を使うようにしています。
+データベースには、生成物と原料の化学式履歴を保存する 2つのテーブルと、元画像を 1枚だけバイナリで保存するテーブルの、合計 3テーブルを定義しています。
+フロントエンドの JavaScript からは、/api/formulas で履歴の保存・取得、/api/image/save と /api/image/load で元画像の保存・復元を行い、計算や画像処理自体はブラウザ側で完結する構成です。
