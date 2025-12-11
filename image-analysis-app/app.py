@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 
 # --- Path setup for PyInstaller ---
+# PyInstaller で exe 化したときでも Flask が正しく templates / static を読みに行けるようにするための分岐
 if getattr(sys, 'frozen', False):
     # Running in a bundle
     base_dir = sys._MEIPASS
@@ -20,6 +21,7 @@ else:
 # --- Database Configuration ---
 # Use DATABASE_URL from environment if available (for Render/Heroku),
 # otherwise, fall back to a local SQLite database.
+# Render などの本番環境では PostgreSQL を使い、ローカルでは history.db (SQLite) を使う
 database_url = os.environ.get('DATABASE_URL')
 if database_url:
     # Render's DATABASE_URL is for PostgreSQL, but SQLAlchemy expects postgresql://
@@ -30,6 +32,7 @@ else:
     local_db_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'history.db')
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{local_db_path}'
 
+# Flask に SQLAlchemy 拡張をセットアップする最初の2行
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -52,6 +55,8 @@ with app.app_context():
     db.create_all()
 
 # --- API Endpoints ---
+# JS から /api/formulas にアクセスしたときに、DB に入っている化学式の履歴をまとめて JSON で返す API
+# js:fetch('/api/formulas')が呼ばれるloadFormulaHistory() 内で実行される
 @app.route('/api/formulas', methods=['GET'])
 def get_formulas():
     """Endpoint to get all unique formulas from the database."""
@@ -62,6 +67,7 @@ def get_formulas():
     except Exception as e:
         return jsonify(error=str(e)), 500
 
+# JS から送られてきた化学式の履歴を DB に追記保存するための POST API
 @app.route('/api/formulas', methods=['POST'])
 def save_formulas():
     """Endpoint to save new formulas to the database."""
@@ -91,6 +97,7 @@ def save_formulas():
         db.session.rollback()
         return jsonify(status="error", message=str(e)), 500
 
+# 元画像を DB にバイナリとして１枚だけ保存するための POST API
 @app.route('/api/image/save', methods=['POST'])
 def save_image():
     """Endpoint to save the original image data (as base64)."""
@@ -115,6 +122,7 @@ def save_image():
         db.session.rollback()
         return jsonify(status="error", message=str(e)), 500
 
+# DB に保存してある“元画像”を取り出して、フロントに送り返す GET API
 @app.route('/api/image/load', methods=['GET'])
 def load_image():
     """Endpoint to load the original image data."""
