@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 履歴配列から部分一致（大文字小文字は無視）でフィルタ
+        // 履歴配列のformulaList（配列）の中から、searchTerm を“含む”要素だけを取り出して filtered に入れる（大文字小文字は無視）
         const filtered = formulaList.filter(f => f.toLowerCase().includes(searchTerm.toLowerCase()));
         
         // 該当なしなら閉じる
@@ -341,13 +341,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Bootstrapのlist-groupで候補リストを作成
+        // Bootstrapのlist-groupで候補リストを作成（HTMLの<div>要素を“新しく作る）
         const list = document.createElement('div');
         list.className = 'list-group search-results-list';
 
+        // filtered（検索で絞り込んだ候補）を1件ずつ表示用に <a> 要素として作って、クリックされたら入力欄に自動入力して、最後に検索候補リストを閉じる
         filtered.forEach(formula => {
             const item = document.createElement('a');
-            item.href = '#';
+            item.href = '#'; // ページ内の先頭へ移動するaタグ／同じページ
             item.className = 'list-group-item list-group-item-action search-result-item';
             item.textContent = formula;
 
@@ -379,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         targetInput = lastFocusedReactantInput;
                     }
                     
-                    if (targetInput) {
+                    if (targetInput) { // → ★工夫したところ
                         targetInput.value = formula;
 
                         // 次の空欄に自動でフォーカスを移す（なければ次の欄）
@@ -424,11 +425,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const items = resultsContainer.querySelectorAll('.search-result-item');
             if (items.length === 0) return;
 
+            // active → 選択中（フォーカス中）
             let activeItem = resultsContainer.querySelector('.search-result-item.active');
             let activeIndex = Array.from(items).indexOf(activeItem);
 
+            // ArrowDown → ↓キーを表す標準の名前
             if (e.key === 'ArrowDown') {
-                e.preventDefault();
+                e.preventDefault(); //「#へ移動」を無効化
                 // ↓キーで次の候補へ
                 if (activeItem) {
                     activeItem.classList.remove('active');
@@ -464,7 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // 入力のたびに検索結果を更新（生成物側）
+        // input イベント = 入力欄の値が変わった瞬間に発火
         productSearch.addEventListener('input', () => {
+            // productSearch.value → 検索ワード
+            // allProductFormulas → DBから読み込んだ「生成物の履歴配列」（検索対象）
+            // productSearchResults → 候補を表示するDOM（結果リストの入れ物）
             renderSearchResults(productSearch.value, allProductFormulas, productSearchResults);
         });
         productSearch.addEventListener('keydown', (e) => handleKeyDown(e, productSearchResults));
@@ -482,10 +489,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // 検索欄・結果以外をクリックしたら候補を閉じる
+        // 候補リストの外側をクリックしたら、候補リストを閉じる
+        // ページのどこをクリックしても発火するように、document 全体でクリックを監視
         document.addEventListener('click', (e) => {
+            // e.target は 実際にクリックされた要素（ボタン、div、inputなど）
             if (!productSearch.contains(e.target) && !productSearchResults.contains(e.target)) {
+                // 表示用クラスを外して非表示にする（Bootstrap想定）
                  productSearchResults.classList.remove('d-block');
+                 // 候補のDOMを全部消して中身を空にする
                  productSearchResults.innerHTML = '';
             }
             if (!reactantSearch.contains(e.target) && !reactantSearchResults.contains(e.target)) {
@@ -507,12 +518,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // "(1-x)" などの係数文字列を、xを代入して数値に変換する
     function evaluateCoefficient(coeff, x) {
         // 純粋な数値文字列ならそのまま数値化
+        // 「NaNじゃない」＝数値に変換できる なら true
         if (!isNaN(coeff)) {
+            // parse:（文字列などを）解析して、構造化されたデータに変換する
             return parseFloat(coeff);
         }
+        // 係数文字列 coeff（例: "1-x"）を「実際の数値」に変換するための“式評価パート”
         try {
             // "1-x" のような式を new Function で評価（xを引数に取る関数を作る）
             const func = new Function('x', `return ${coeff}`);
+            // 作った関数に、実際の x の値を入れて計算 例：coeff="1-x", x=0.2 → result=0.8
             const result = func(x);
             // 評価結果が数値でない場合は0扱い
             if (typeof result !== 'number' || isNaN(result)) {
@@ -527,24 +542,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // "Ca2Sm(1-x)MnO4" → { Ca: "2", Sm: "1-x", Mn: "1", O: "4" } のように分解する関数
     function parseFormula(formula) {
-        const elements = {};
+        const elements = {}; // 生成物
+
         // [元素記号][係数 or (1-x)など] のパターンで繰り返しマッチ
+        // g：繰り返し検索（execで順番に取れる）
+        // ([A-Z][a-z]*) → 元素記号（例：Ca, Sm, Mn, O)
+        // (\([^)]+\)|\d*\.?\d*)? → 係数部分（あれば）。
+        // \([^)]+\)：(1-x) みたいな括弧つき式
+        // \d*\.?\d*：数字や小数（例：2, 0.5）
         const regex = /([A-Z][a-z]*)(\([^)]+\)|\d*\.?\d*)?/g;
         
         // 空白削除
         const sanitizedFormula = formula.replace(/\s/g, '');
-        if (!sanitizedFormula) return null;
+        if (!sanitizedFormula) return null; // 入力が空なら null を返して終了
 
         let match;
+
+        // exec で「元素 + 係数」を順に抜き出す
+        // たとえば "Ca2Sm(1-x)MnO4" なら while が何回も回って、
+        // 1回目：element="Ca", count="2"
+        // 2回目：element="Sm", count="(1-x)"
+        // 3回目：element="Mn", count=（省略なので 1 扱いにしたい）
+        // 4回目：element="O", count="4"
+        // みたいに取れる
         while ((match = regex.exec(sanitizedFormula)) !== null) {
             const element = match[1];   // 元素記号
             let count = match[2];       // 係数 or (1-x) 部分
 
-            // 係数省略 → 1
+            // 係数省略 → 1："Mn" みたいに係数が無い元素は 1 とみなす。
             if (count === undefined) {
                 count = '1';
             }
-            // "(1-x)" → "1-x" のように括弧を外す
+            // "(1-x)" → "1-x" のように括弧を外す（後で evaluateCoefficient で計算するため）
             if (count.startsWith('(')) {
                 count = count.substring(1, count.length - 1);
             }
@@ -561,25 +590,33 @@ document.addEventListener('DOMContentLoaded', () => {
             // elements に "元素: 係数文字列" として登録
             elements[element] = count;
         }
-        return elements;
+        return elements; // parseFormula:{ Ca: "2", Sm: "1-x", Mn: "1", O: "4" }みたいな結果を返す
     }
 
-    // parseFormula の結果から、xを代入してモル質量を計算する
+    // 生成物の物質量を算出する関数
+    // parseFormula の結果(値は 文字列（"2" や "1-x"）)から、xを代入してモル質量を計算する
+    // x_val = 入力されるxの値
     function calculateMolarMass(parsedFormula, x_val) {
         let totalMass = 0;
+
         // 各元素について 原子量 × 係数 を足し合わせる
         for (const element in parsedFormula) {
-            const coeff = parsedFormula[element];             // "2" や "1-x" などの文字列
-            const count = evaluateCoefficient(coeff, x_val);  // 数値に変換
-            totalMass += ATOMIC_WEIGHTS[element] * count;     // 原子量 × 個数
+            const coeff = parsedFormula[element];             // coeff:係数の文字列。例：element = 'Sm'のときcoeff='1-x'
+            const count = evaluateCoefficient(coeff, x_val);  // count:係数を数値にしたもの
+            totalMass += ATOMIC_WEIGHTS[element] * count;     // 各々の原子量 × 係数
         }
         return totalMass;
     }
 
-    // 「秤量計算の本体」入力値を集める → 化学式をパースしてモル質量を出す → 希望する生成物量から各原料の必要量（mol, g）を計算する → 画面に結果を表示する → その組み合わせを履歴に保存する
+    // 「秤量計算の本体」入力値を集める 
+    // → 化学式をパースしてモル質量を出す 
+    // → 希望する生成物量から各原料の必要量（mol, g）を計算する 
+    // → 画面に結果を表示する 
+    // → その組み合わせを履歴に保存する
     function runGenericCalculation() {
         try {
-            // --- 1. 入力値の取得 ---
+            // --- 1. 入力値の取得 --- 画面入力から値を取る
+            // productFormulaStr：生成物の化学式文字列 例："Ca2Sm(1-x)MnO4"
             const productFormulaStr = weighingElements.productFormula.value;
 
             // 原料入力欄から文字列を集めて、空欄は除外
@@ -592,7 +629,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // モード判定（質量指定かモル指定か）
             const mode = weighingElements.modeMass.checked ? 'mass' : 'mol';
 
-            // --- 2. バリデーション ---
+            // --- 2. バリデーション --- 入力が正しいかチェック
             if (!productFormulaStr) {
                 alert('生成物の化学式を入力してください。');
                 return;
@@ -610,19 +647,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // --- 3. 化学式文字列をパースして元素ごとの係数に分解 ---
+            // --- 3. 化学式をパースして「元素→係数」にする ---
+            // parsedProduct：生成物をパースした結果（オブジェクト）例:{ Ca:"2", Sm:"1-x", Mn:"1", O:"4" }
             const parsedProduct = parseFormula(productFormulaStr);
+
             // 原料は配列なので、それぞれ parseFormula したオブジェクトを持たせる
+            // parsedReactants：原料ごとの情報をまとめた配列。各要素は { formula: "CaCO3", elements: {Ca:"1", C:"1", O:"3"}... } の形
             const parsedReactants = reactantFormulaStrs.map(formula => ({
                 formula,
                 elements: parseFormula(formula)
             }));
 
             // --- 4. モル質量の計算 ---
+            // productMolarMass：生成物のモル質量（数値）
             const productMolarMass = calculateMolarMass(parsedProduct, x_val);
             const reactantMolarMasses = parsedReactants.map(r => calculateMolarMass(r.elements, x_val));
 
-            // --- 5. 生成物モル数・質量の決定 ---
+            // --- 5. 生成物のモル数と質量を確定する ---
             let n_prod, mass_prod;
             if (mode === 'mass') {
                 // 生成物質量(g) → モル数
@@ -638,17 +679,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 mass_prod = n_prod * productMolarMass;
             }
 
-            // --- 6. 化学量論比から各原料の必要量を計算 ---
+            // --- 6. 元素比から各原料の必要モル数・質量を出す ---
             const reactantResults = [];
+
+            // targetElements：生成物に含まれる元素の配列 例：["Ca","Sm","Mn","O"]
             const targetElements = Object.keys(parsedProduct); // 生成物中の元素リスト
 
             for (const el of targetElements) {
-                // この元素 el を供給している原料を1つ探す（最初に見つかったもの）
+                // el：今見ている元素
+                // supplyingReactant：その元素を含む最初の原料
+                // 例："Ca" なら "CaCO3", "Sm" なら "Sm2O3"
+                // "O" はどれにも入ってるので、最初にヒットした原料が選ばれがち
                 const supplyingReactant = parsedReactants.find(r => r.elements[el]);
                 // 見つからなければ空気などから供給されるとみなしてスキップ
                 if (!supplyingReactant) continue;
 
                 // 生成物側の係数 a, 原料側の係数 b を数値にする
+                // prodCoeff：生成物側のその元素の係数（数値）例：Sm の係数 "1-x" に x=0.2 → 0.8
+                // reactantCoeff：原料側のその元素の係数（数値）例：Sm2O3 の Sm "2" → 2
                 const prodCoeff = evaluateCoefficient(parsedProduct[el], x_val);
                 const reactantCoeff = evaluateCoefficient(supplyingReactant.elements[el], x_val);
                 
@@ -657,13 +705,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // モル比 a:b = prodCoeff:reactantCoeff
+                // molarRatio：生成物:原料の元素係数の比
                 const molarRatio = prodCoeff / reactantCoeff;
                 // 生成物モル数から必要原料モル数を求める
+                // n_reactant：必要原料モル数
                 const n_reactant = n_prod * molarRatio;
                 // 原料のモル質量 × モル数 で必要質量を計算
+                // m_reactant：必要原料質量(g)
                 const m_reactant = n_reactant * calculateMolarMass(supplyingReactant.elements, x_val);
 
-                // 同じ原料が複数元素を供給していても、1回だけ結果に載せる
+                // 同じ原料を重複追加しない
                 if (!reactantResults.some(r => r.formula === supplyingReactant.formula)) {
                      reactantResults.push({
                         formula: supplyingReactant.formula,
@@ -673,17 +724,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // --- 7. 結果の画面表示 ---
+            // --- 7. 結果を画面に表示して履歴保存 ---
 
             //「計算結果を画面に反映している4行」上で計算した値を、結果表示用の <span> や <div> に書き込んでいる。
+            // 画面表示（この4行は “表示するだけ”）
             weighingElements.resProdFormula.textContent = productFormulaStr;
             weighingElements.resProdMolarMass.textContent = productMolarMass.toFixed(4);
             weighingElements.resProdMoles.textContent = n_prod.toFixed(6);
             weighingElements.resProdMass.textContent = mass_prod.toFixed(4);
 
             // 原料側の情報（リスト形式で表示）
+            // ここは表示用
+            // 結果表示エリア（DOM要素）を取ってくる
             const container = weighingElements.reactantResultsContainer;
+
+            // まず中身を空にする（前回の結果を消す）
             container.innerHTML = '';
+
+            // 計算結果の配列を1件ずつ表示する
             reactantResults.forEach(res => {
                 const resultHtml = `
                     <p class="mb-1 mt-2"><strong>原料: ${res.formula}</strong></p>
@@ -692,6 +750,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <li class="list-group-item py-1">必要質量: <span>${res.mass.toFixed(4)}</span> g</li>
                     </ul>
                 `;
+                // 画面に追加する
+                // 'beforeend' は 「containerの末尾に追加」reactantResults の順番に、下にどんどん表示
                 container.insertAdjacentHTML('beforeend', resultHtml);
             });
 
@@ -709,11 +769,30 @@ document.addEventListener('DOMContentLoaded', () => {
     weighingElements.calculateBtn.addEventListener('click', runGenericCalculation);
 
     // 「×」ボタンで直前の入力欄をクリアするためのイベント委譲
+    // 秤量タブの領域（親要素）を取る weighingTabContent には、HTMLのこの部分みたいな **大きいコンテナ要素（divなど）が入る
     const weighingTabContent = document.getElementById('weighing-calc-content');
+
+    // 親要素にクリックイベントを1つだけ付ける
+    // click は「その領域のどこかがクリックされたら発火」
+    // e はクリックイベントの情報
+    // e.target は 実際にクリックされた一番内側の要素 例：ボタンを押したなら、そのボタン要素
     weighingTabContent.addEventListener('click', (e) => {
+       
+        // クリックしたものが「クリアボタン」か判定
+        // e.targetが存在してクリックされた要素が btn-clear-input というクラスを持ってたら「クリアボタンが押された」とみなす
         if (e.target && e.target.classList.contains('btn-clear-input')) {
+            
+            // そのボタンの「直前の兄弟要素」を取る
+            // previousElementSibling は同じ親の中で、クリックされた要素の1個前にある要素を取るプロパティ
             const inputToClear = e.target.previousElementSibling;
+
+            // 本当に input かチェックしてから消す
+            // inputToClear が存在してそれが <input> 要素なら実行
             if (inputToClear && inputToClear.tagName === 'INPUT') {
+                
+                // 中身を消して、そこにカーソルを戻す
+                // value = ''：入力欄を空にする
+                // focus()：その入力欄にカーソルを当てる（次もすぐ打てる）
                 inputToClear.value = '';
                 inputToClear.focus();
             }
@@ -890,6 +969,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // コントラスト調整をする処理そのもの。
     // シグモイド関数（S字カーブ）を使って、暗いところはもっと暗く・明るいところはもっと明るく
+    // この関数ではシグモイド関数（S字カーブ）を使って明るいところと暗いところを固定しつつ、中間領域だけがどちらかによる
+    // ように画素値を変更し、最終的な描画はcanvasエンジンにより実現している
+    // あくまでこの関数では画素値だけを変更している
     function applyThresholdContrast(imageData, value) {
         if (!imageData) return null;
 
@@ -897,12 +979,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = new Uint8ClampedArray(imageData.data);
         const strength = (value - 100) / 10; // スライダー100を基準に強さを決める
         
+        // LUT（ルックアップテーブル）を作る箱
+        // lut[i] は「入力が i(0〜255) のとき、出力を何にするか」を入れる表
         const lut = new Uint8ClampedArray(256);
+
+        // 強さ0なら変換不要
+        // strength=0 だと LUT作っても意味ないので、コピーをそのまま返す
         if (strength === 0) {
             // 強さ0なら元の画像のまま返す
             return new ImageData(data, imageData.width, imageData.height);
         } else {
             // 0〜255を0〜1に正規化してシグモイドに通すルックアップテーブルを作る
+            // 0〜255 → 0〜255 の変換表(LUT)を作る
             for (let i = 0; i < 256; i++) {
                 const x = i / 255;
                 const y = 1 / (1 + Math.exp(-strength * (x - 0.5)));
@@ -910,7 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 各ピクセル(R/G/B)に対してLUTを適用してコントラストを変更
+        // 各ピクセル(R/G/B)に対してLUTを適用してコントラストを変更(ピクセル配列は RGBA の繰り返し)
         for (let i = 0; i < data.length; i += 4) {
             data[i] = lut[data[i]];       // R
             data[i + 1] = lut[data[i+1]]; // G
@@ -920,14 +1008,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3×3のカーネルシャープネスフィルタ（画像をクッキリさせる処理）
-    //「中心を強調・周囲を減算」するカーネルを畳み込み → エッジを強くしてシャープに見せる
+    //「中心を強調・周囲を減算」するカーネルを畳み込み → エッジを強くしてシャープに見せる → ★工夫したところ
+    // 3×3のシャープ（輪郭強調）フィルタを畳み込み（convolution）でかける関数
     function applySharpening(imageData, amount) {
         if (!imageData) return null;
 
+        // src: [R,G,B,A,R,G,B,A,...] の配列（元画像）
         const src = imageData.data;
         const width = imageData.width;
         const height = imageData.height;
 
+        // 強さを 0〜1 にする
+        // amount=0 → factor=0（加工しない）
+        // amount=100 → factor=1（最大）
         const factor = amount / 100.0;
         if (factor === 0) {
             // シャープ量0なら処理せずそのまま返す
@@ -936,10 +1029,15 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 出力用バッファを作成して元画像をコピー
         const outputData = new Uint8ClampedArray(src.length);
+        // dst は「加工結果を書き込む先」
         const dst = outputData;
         dst.set(src);
 
         // シャープ用カーネル
+        // 中心（自分）を 9倍
+        // 周囲8個を -1倍して足す
+        // これをやると、周囲と同じ値の場所（のっぺりした領域）→ 変化が少ない
+        // 周囲と違う場所（エッジ）→ 差が強調される → 輪郭がくっきり
         const kernel = [
             [-1, -1, -1],
             [-1,  9, -1],
@@ -947,13 +1045,21 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         // 画像の縁を1ピクセル残して、内側だけにカーネルを適用
+        // 端1px残す理由は、上下左右を見る3×3の方法では端近傍がおかしくなってしまうから
+        // dst.set(src) してるから端は元のまま
         for (let y = 1; y < height - 1; y++) {
             for (let x = 1; x < width - 1; x++) {
-                for (let c = 0; c < 3; c++) { // R,G,Bチャンネルのみ加工
+                for (let c = 0; c < 3; c++) { // RGBだけ処理する
+                    // (y * width + x) が「画素番号」
+                    // *4 で RGBA の先頭位置
+                    // +c で R/G/B を選ぶ
                     const i = (y * width + x) * 4 + c;
                     let total = 0;
 
-                    // 3x3近傍にカーネルを畳み込む
+                    // 3x3近傍にカーネルを畳み込む(この部分で total を作る)
+                    // src[...] は「近傍ピクセルの色(R/G/B)」
+                    // それに kernel の係数を掛けて足してる
+                    // 結果 total が「シャープカーネルを当てた後の値」
                     total += kernel[0][0] * src[((y - 1) * width + (x - 1)) * 4 + c];
                     total += kernel[0][1] * src[((y - 1) * width + x) * 4 + c];
                     total += kernel[0][2] * src[((y - 1) * width + (x + 1)) * 4 + c];
@@ -964,11 +1070,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     total += kernel[2][1] * src[((y + 1) * width + x) * 4 + c];
                     total += kernel[2][2] * src[((y + 1) * width + (x + 1)) * 4 + c];
 
-                    // 元の値 * (1-factor) + 畳み込み結果 * factor でブレンド
+                    // 元の値 * (1-factor) + 畳み込み結果 * factor でブレンド (元画像とブレンドして “効き具合” を調整)
+                    // factor=1 → dst[i] = total（シャープ結果100%）
+                    // factor=0.3 → 元 70% + シャープ 30%（控えめ）
                     dst[i] = src[i] * (1 - factor) + total * factor;
                 }
             }
         }
+        // 最後に ImageData で返す
         return new ImageData(outputData, width, height);
     }
     
