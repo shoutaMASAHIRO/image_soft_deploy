@@ -969,13 +969,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // コントラスト調整をする処理そのもの。
     // シグモイド関数（S字カーブ）を使って、暗いところはもっと暗く・明るいところはもっと明るく
-    // この関数ではシグモイド関数（S字カーブ）を使って明るいところと暗いところを固定しつつ、中間領域だけがどちらかによる
+    // この関数ではシグモイド関数（S字カーブ）を使って明るいところと暗いところを固定しつつ、中間領域だけがどちらかによる → ★工夫したポイント（フロントで実装した）
     // ように画素値を変更し、最終的な描画はcanvasエンジンにより実現している
     // あくまでこの関数では画素値だけを変更している
     function applyThresholdContrast(imageData, value) {
         if (!imageData) return null;
 
-        // 生データをコピーして加工用に使う
+        // 生データをコピーして加工用に使う（ImageDataのピクセル配列（RGBA）を“コピー”して、加工用の配列を作る）
         const data = new Uint8ClampedArray(imageData.data);
         const strength = (value - 100) / 10; // スライダー100を基準に強さを決める
         
@@ -991,9 +991,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // 0〜255を0〜1に正規化してシグモイドに通すルックアップテーブルを作る
             // 0〜255 → 0〜255 の変換表(LUT)を作る
+            // iは画素値
             for (let i = 0; i < 256; i++) {
                 const x = i / 255;
-                const y = 1 / (1 + Math.exp(-strength * (x - 0.5)));
+                const y = 1 / (1 + Math.exp(-strength * (x - 0.5))); // シグモイド本体
                 lut[i] = y * 255;
             }
         }
@@ -1004,6 +1005,9 @@ document.addEventListener('DOMContentLoaded', () => {
             data[i + 1] = lut[data[i+1]]; // G
             data[i + 2] = lut[data[i+2]]; // B
         }
+
+        // data の中の R/G/B が LUT によって置き換えられた後の配列を返す
+        // 120, 140 → 90, 170となるイメージ。コントラスト強調
         return new ImageData(data, imageData.width, imageData.height);
     }
 
