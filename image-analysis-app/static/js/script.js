@@ -550,6 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // (\([^)]+\)|\d*\.?\d*)? → 係数部分（あれば）。
         // \([^)]+\)：(1-x) みたいな括弧つき式
         // \d*\.?\d*：数字や小数（例：2, 0.5）
+        // g：文字列の中で見つかった 全部 を対象にする（global）
         const regex = /([A-Z][a-z]*)(\([^)]+\)|\d*\.?\d*)?/g;
         
         // 空白削除
@@ -558,13 +559,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let match;
 
-        // exec で「元素 + 係数」を順に抜き出す
         // たとえば "Ca2Sm(1-x)MnO4" なら while が何回も回って、
         // 1回目：element="Ca", count="2"
         // 2回目：element="Sm", count="(1-x)"
         // 3回目：element="Mn", count=（省略なので 1 扱いにしたい）
         // 4回目：element="O", count="4"
         // みたいに取れる
+        // exec の結果を match に入れて、その結果が null じゃない間ループする
+        // exec で「元素 + 係数」を順に抜き出す（exec:オブジェクトの正規表現（= 文字の並び方のルール）に合うものを探すメソッド）
         while ((match = regex.exec(sanitizedFormula)) !== null) {
             const element = match[1];   // 元素記号
             let count = match[2];       // 係数 or (1-x) 部分
@@ -574,7 +576,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 count = '1';
             }
             // "(1-x)" → "1-x" のように括弧を外す（後で evaluateCoefficient で計算するため）
+            // その文字列が、指定した文字（文字列）で“始まっているか”
             if (count.startsWith('(')) {
+                // substringメソッド：文字列の一部分を切り出して新しい文字列をつくる
                 count = count.substring(1, count.length - 1);
             }
             
@@ -621,9 +625,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 原料入力欄から文字列を集めて、空欄は除外
             const reactantFormulaStrs = Array.from(weighingElements.reactantInputs)
+                // input を受け取って、input.value.trim() を返す関数(=>:アロー関数)
+                // アロー関数：変数を入れる → returnまでやるもの
                 .map(input => input.value.trim())
+                // 「空文字 '' じゃない要素だけ」を残して、新しい配列を作る
                 .filter(val => val !== '');
 
+            // parseFloat文字列を 小数OKの数値に変換する（例: "0.2" → 0.2）
             const x_val = parseFloat(weighingElements.x_val.value);
             const amount = parseFloat(weighingElements.amount.value);
             // モード判定（質量指定かモル指定か）
@@ -663,7 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const productMolarMass = calculateMolarMass(parsedProduct, x_val);
             const reactantMolarMasses = parsedReactants.map(r => calculateMolarMass(r.elements, x_val));
 
-            // --- 5. 生成物のモル数と質量を確定する ---
+            // --- 5. 生成物のモル数(n_prod)と質量(mass_prod)を確定する ---
             let n_prod, mass_prod;
             if (mode === 'mass') {
                 // 生成物質量(g) → モル数
@@ -741,7 +749,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // まず中身を空にする（前回の結果を消す）
             container.innerHTML = '';
 
-            // 計算結果の配列を1件ずつ表示する
+            // 計算結果の配列を1件ずつ表示する(forEach：一件ずつ取り出す)
+            // res は **reactantResults 配列の「1件ぶんの要素」**を受け取るための変数名
+            // forEach のコールバック関数の引数として、その場で定義
             reactantResults.forEach(res => {
                 const resultHtml = `
                     <p class="mb-1 mt-2"><strong>原料: ${res.formula}</strong></p>
@@ -1012,7 +1022,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3×3のカーネルシャープネスフィルタ（画像をクッキリさせる処理）
-    //「中心を強調・周囲を減算」するカーネルを畳み込み → エッジを強くしてシャープに見せる → ★工夫したところ
+    // 最初はpythonのopencvのcv2.convertScaleAbs関数で実装しようとしたがやめた。
+    // 画像の畳み込み演算は、入力した画像内のある注目している画素の周辺情報をまとめて抽出(または除去)して新しい画像を作り出すという演算
+    //「中心を強調・周囲を減算」するカーネルを畳み込み → エッジを強くしてシャープに見せる → ★工夫したところ（フロントで実装した）
     // 3×3のシャープ（輪郭強調）フィルタを畳み込み（convolution）でかける関数
     function applySharpening(imageData, amount) {
         if (!imageData) return null;
@@ -1037,11 +1049,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const dst = outputData;
         dst.set(src);
 
-        // シャープ用カーネル
-        // 中心（自分）を 9倍
+        // シャープ用カーネル https://di-acc2.com/programming/python/19066/
+        // 中心（自分）を 9倍 → ★工夫したところ
         // 周囲8個を -1倍して足す
         // これをやると、周囲と同じ値の場所（のっぺりした領域）→ 変化が少ない
         // 周囲と違う場所（エッジ）→ 差が強調される → 輪郭がくっきり
+        // 畳み込み演算とは行列の各要素と基画像のそれに対応した画素値をかけて足すこと
         const kernel = [
             [-1, -1, -1],
             [-1,  9, -1],
@@ -1053,7 +1066,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // dst.set(src) してるから端は元のまま
         for (let y = 1; y < height - 1; y++) {
             for (let x = 1; x < width - 1; x++) {
-                for (let c = 0; c < 3; c++) { // RGBだけ処理する
+                for (let c = 0; c < 3; c++) { // RGBだけ処理する。
                     // (y * width + x) が「画素番号」
                     // *4 で RGBA の先頭位置
                     // +c で R/G/B を選ぶ
@@ -1102,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         processedImageData = applyThresholdContrast(processedImageData, contrastSlider.value);
         processedImageData = applySharpening(processedImageData, sharpenSlider.value);
 
-        // 処理結果をtempCanvasに貼り付け
+        // 処理結果をtempCanvasに貼り付け(ImageDataをキャンバスに“直貼り”している（描画）)
         tempCtx.putImageData(processedImageData, 0, 0);
 
         // afterキャンバスも元画像サイズにリサイズして、tempから描画
@@ -1119,6 +1132,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 二値化してafterキャンバスに描画
             let visualThresholdedImageData = applyThreshold(visualProcessedImageData, parseInt(thresholdSlider.value));
+
+            // 粒子解析モードのとき、二値化したピクセルを afterキャンバス に直接貼って表示してる。
             ctxAfter.putImageData(visualThresholdedImageData, 0, 0);
 
             // 検出済み粒子の外枠を重ねて表示
@@ -1207,6 +1222,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // afterキャンバスを元画像サイズに戻して再描画
         canvasAfter.width = originalImageWidth;
         canvasAfter.height = originalImageHeight;
+
+        // キャンバスからキャンバスへ描画している（描画）
         ctxAfter.drawImage(originalImage, 0, 0);
 
         // CSSのレスポンシブ表示を維持
@@ -1325,6 +1342,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (aspectRatio <= ASPECT_RATIO_THRESHOLD) {
                 ctxAfter.strokeStyle = '#00FF00';
                 ctxAfter.lineWidth = 1.2;
+
+                // 図形（矩形）を描いている（描画）
                 ctxAfter.strokeRect(p.minX, p.minY, p.maxX - p.minX + 1, p.maxY - p.minY + 1);
             }
         });
