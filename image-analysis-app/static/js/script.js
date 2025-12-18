@@ -742,9 +742,9 @@ document.addEventListener('DOMContentLoaded', () => {
             //「計算結果を画面に反映している4行」上で計算した値を、結果表示用の <span> や <div> に書き込んでいる。
             // 画面表示（この4行は “表示するだけ”）
             weighingElements.resProdFormula.textContent = productFormulaStr;
-            weighingElements.resProdMolarMass.textContent = productMolarMass.toFixed(4);
-            weighingElements.resProdMoles.textContent = n_prod.toFixed(6);
-            weighingElements.resProdMass.textContent = mass_prod.toFixed(4);
+            weighingElements.resProdMolarMass.textContent = productMolarMass.toFixed(5);
+            weighingElements.resProdMoles.textContent = n_prod.toFixed(5);
+            weighingElements.resProdMass.textContent = mass_prod.toFixed(5);
 
             // 原料側の情報（リスト形式で表示）
             // ここは表示用
@@ -761,8 +761,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultHtml = `
                     <p class="mb-1 mt-2"><strong>原料: ${res.formula}</strong></p>
                     <ul class="list-group list-group-flush mb-2">
-                        <li class="list-group-item py-1">必要モル数: <span>${res.moles.toFixed(6)}</span> mol</li>
-                        <li class="list-group-item py-1">必要質量: <span>${res.mass.toFixed(4)}</span> g</li>
+                        <li class="list-group-item py-1">必要モル数: <span>${res.moles.toFixed(5)}</span> mol</li>
+                        <li class="list-group-item py-1">必要質量: <span>${res.mass.toFixed(5)}</span> g</li>
                     </ul>
                 `;
                 // 画面に追加する
