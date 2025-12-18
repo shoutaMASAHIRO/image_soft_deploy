@@ -1,0 +1,224 @@
+:root {
+    --twitter-blue: #1DA1F2;
+    --twitter-dark-bg: #15202B;
+    --twitter-dark-card: #192734;
+    --twitter-text-color: #E0E0E0;
+    --twitter-border-color: #38444D;
+}
+
+body {
+    font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: var(--twitter-dark-bg) !important; /* Ensure dark background */
+    color: var(--twitter-text-color);
+}
+
+/* Override Bootstrap variables for a Twitter-like theme */
+.btn-primary {
+    --bs-btn-bg: var(--twitter-blue);
+    --bs-btn-border-color: var(--twitter-blue);
+    --bs-btn-hover-bg: #1A91DA; /* Slightly darker blue */
+    --bs-btn-hover-border-color: #1A91DA;
+    --bs-btn-active-bg: #1A91DA;
+    --bs-btn-active-border-color: #1A91DA;
+    --bs-btn-disabled-bg: var(--twitter-blue);
+    --bs-btn-disabled-border-color: var(--twitter-blue);
+    border-radius: 9999px; /* Pill-shaped buttons */
+}
+
+.btn-info {
+    --bs-btn-bg: var(--twitter-blue); /* Twitter primary blue for info */
+    --bs-btn-border-color: var(--twitter-blue);
+    --bs-btn-hover-bg: #1A91DA;
+    --bs-btn-hover-border-color: #1A91DA;
+    --bs-btn-active-bg: #1A91DA;
+    --bs-btn-active-border-color: #1A91DA;
+    border-radius: 9999px;
+}
+
+.btn-success { /* For measurement and download action */
+    --bs-btn-bg: #17BF63; /* A twitter-like green */
+    --bs-btn-border-color: #17BF63;
+    --bs-btn-hover-bg: #15A557;
+    --bs-btn-hover-border-color: #15A557;
+    border-radius: 9999px;
+}
+
+.btn-warning { /* For clear buttons */
+    --bs-btn-bg: #FFAD1F; /* A twitter-like yellow/orange */
+    --bs-btn-border-color: #FFAD1F;
+    --bs-btn-hover-bg: #E0981A;
+    --bs-btn-hover-border-color: #E0981A;
+    color: var(--twitter-dark-bg); /* Dark text on warning */
+    border-radius: 9999px;
+}
+
+.btn-danger { /* For reset all */
+    --bs-btn-bg: #E0245E; /* A twitter-like red */
+    --bs-btn-border-color: #E0245E;
+    --bs-btn-hover-bg: #C71F52;
+    --bs-btn-hover-border-color: #C71F52;
+    border-radius: 9999px;
+}
+
+/* New: Style for clear buttons on hover/focus */
+.btn-clear-input:hover,
+.btn-clear-input:focus {
+    background-color: #dc3545 !important; /* Bootstrap's danger red */
+    color: white !important;
+    border-color: #dc3545 !important;
+    outline: none; /* Remove default outline */
+}
+
+/* Ensure the default outline-secondary look is maintained when not hovered/focused */
+.btn-outline-secondary.btn-clear-input {
+    color: var(--bs-btn-color); /* Default text color */
+    border-color: var(--bs-btn-border-color); /* Default border color */
+    --bs-btn-color: var(--twitter-text-color);
+    --bs-btn-border-color: var(--twitter-border-color);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #6c757d;
+    --bs-btn-hover-border-color: #6c757d;
+    --bs-btn-focus-shadow-rgb: 108,117,125;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #6c757d;
+    --bs-btn-active-border-color: #6c757d;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #6c757d;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #6c757d;
+    --bs-gradient: none;
+}
+
+
+
+/* Navbar adjustments */
+.navbar {
+    background-color: var(--twitter-dark-card) !important; /* Darker navbar */
+    border-bottom: 1px solid var(--twitter-border-color);
+    padding: 0.5rem 1rem;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1020; /* Ensure it stays above other content */
+}
+
+.navbar-brand {
+    color: var(--twitter-blue) !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Card adjustments */
+.card {
+    background-color: var(--twitter-dark-card) !important;
+    border: 1px solid var(--twitter-border-color);
+    border-radius: 16px; /* More rounded than default Bootstrap */
+    box-shadow: none; /* Remove default shadow */
+}
+
+.card-header {
+    background-color: var(--twitter-dark-card) !important;
+    border-bottom: 1px solid var(--twitter-border-color);
+    color: var(--twitter-text-color);
+    font-weight: bold;
+}
+
+.card-body {
+    color: var(--twitter-text-color);
+}
+
+/* Form controls */
+.form-control, .form-select {
+    background-color: var(--twitter-dark-bg);
+    color: var(--twitter-text-color);
+    border: 1px solid var(--twitter-border-color);
+    border-radius: 8px;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--twitter-dark-bg);
+    color: var(--twitter-text-color);
+    border-color: var(--twitter-blue);
+    box-shadow: 0 0 0 0.25rem rgba(29, 161, 242, 0.25); /* Twitter blue glow */
+}
+
+/* Text and links */
+a {
+    color: var(--twitter-blue);
+}
+
+strong {
+    color: var(--twitter-blue); /* Highlight important text with blue */
+}
+
+/* Specific for measure section */
+#measureResult {
+    color: var(--twitter-blue);
+}
+
+.alert-primary {
+    --bs-alert-bg: rgba(29, 161, 242, 0.2);
+    --bs-alert-color: var(--twitter-blue);
+    --bs-alert-border-color: rgba(29, 161, 242, 0.4);
+    border-radius: 8px;
+}
+
+/* Styles for the sticky image display area */
+#image-display-area {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 20px; /* Adjust this value to set the distance from the top */
+    align-self: flex-start; /* Prevents stretching in the flex container */
+    height: calc(100vh - 40px); /* Optional: ensures it doesn't cause parent to overflow if content is taller than viewport */
+}
+
+/* Styles for search results dropdown */
+.search-results-container {
+    position: relative;
+}
+
+.search-results-list {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--twitter-dark-card);
+    border: 1px solid var(--twitter-border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-result-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: var(--twitter-text-color);
+}
+
+.search-result-item:hover,
+.search-result-item.active {
+    background-color: var(--twitter-blue);
+    color: white;
+}
+
+/* Override for search input fields to make them white */
+#productSearch,
+#reactantSearch {
+    background-color: white;
+    color: black;
+    border: 1px solid #ced4da; /* A light border for contrast */
+}
+
+#productSearch::placeholder,
+#reactantSearch::placeholder {
+    color: #6c757d; /* Darker placeholder text */
+}
+
+#productSearch:focus,
+#reactantSearch:focus {
+    border-color: #86b7fe; /* Standard focus blue border */
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}

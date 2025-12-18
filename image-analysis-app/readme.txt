@@ -1,0 +1,1 @@
+ 起動コマンド： C:\Users\RYZEN5 5500\desktop\gemini開発\研究画像解析\image-analysis-app>  python app.py
