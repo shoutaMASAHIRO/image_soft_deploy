@@ -10,6 +10,7 @@ body {
     font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     background-color: var(--twitter-dark-bg) !important; /* Ensure dark background */
     color: var(--twitter-text-color);
+    scroll-behavior: smooth;
 }
 
 /* Override Bootstrap variables for a Twitter-like theme */
@@ -169,7 +170,7 @@ strong {
     position: sticky;
     top: 20px; /* Adjust this value to set the distance from the top */
     align-self: flex-start; /* Prevents stretching in the flex container */
-    height: calc(100vh - 40px); /* Optional: ensures it doesn't cause parent to overflow if content is taller than viewport */
+    will-change: transform; /* Hint for GPU acceleration */
 }
 
 /* Styles for search results dropdown */
@@ -221,4 +222,61 @@ strong {
 #reactantSearch:focus {
     border-color: #86b7fe; /* Standard focus blue border */
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+}
+
+.calc-display {
+    background-color: var(--twitter-dark-bg);
+    border: 1px solid var(--twitter-border-color);
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 50px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.calc-buttons {
+    /* The layout is now handled by Bootstrap's row and col classes. */
+    /* Spacing is handled by g-2 on the row. */
+    margin-top: 10px;
+}
+
+.calc-btn {
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 8px !important; /* Override pill-shape */
+    background-color: #38444D; /* A neutral dark gray */
+    border: 1px solid #38444D;
+}
+
+.calc-btn:hover {
+    background-color: #4A5864;
+}
+
+.calc-btn.btn-info {
+    background-color: #1d5b8c;
+    border-color: #1d5b8c;
+}
+.calc-btn.btn-info:hover {
+    background-color: #2570ac;
+}
+
+.calc-btn.btn-danger {
+    background-color: #a12c4d;
+    border-color: #a12c4d;
+}
+.calc-btn.btn-danger:hover {
+    background-color: #c71f52;
+}
+
+.calc-btn.btn-success {
+    background-color: #157347;
+    border-color: #157347;
+}
+.calc-btn.btn-success:hover {
+    background-color: #178854;
 }

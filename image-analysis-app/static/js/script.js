@@ -1,209 +1,3 @@
-// 🧪 秤量計算まわり
-
-// DBに保存されている化学式の履歴を読み込んで、入力補完候補に反映する役
-// （loadFormulaHistory）
-
-// 履歴を保存する
-// （saveFormulaHistory）
-
-// 履歴からインクリメンタル検索して候補リストを表示する係
-// （renderSearchResults）
-
-// 検索 UI 全体の初期化＋イベント配線をまとめてやる関数
-// （setupFormulaSearch）
-
-// 入力単位ラベル（g / mol）の切り替え
-// （updateAmountLabel）
-
-// "(1-x)" などの係数文字列を、xを代入して数値に変換する
-// （evaluateCoefficient）
-
-// "Ca2Sm(1-x)MnO4" → { Ca: "2", Sm: "1-x", Mn: "1", O: "4" } のように分解する関数
-// （parseFormula）
-
-// parseFormula の結果から、xを代入してモル質量を計算する
-// （calculateMolarMass）
-
-// 「秤量計算の本体」
-// 入力値を集める → 化学式をパースしてモル質量を出す → 希望する生成物量から各原料の必要量（mol, g）を計算する → 画面に結果を表示する → その組み合わせを履歴に保存する
-// （runGenericCalculation）
-
-// 「秤量タブのイベント登録」
-// ラジオボタンの切り替え & 計算ボタンのクリックに、処理を紐づけている部分
-// （modeMass/modeMol/calculateBtn の addEventListener 群）
-
-// 「×」ボタンで直前の入力欄をクリアするためのイベント委譲
-// （秤量タブ内の btn-clear-input クリックリスナー）
-
-// ===== NEW: Initial Load =====
-// ブラウザがHTMLの読み込みとDOMの構築を終えたタイミングで
-// 履歴読み込み / 検索有効化 / g/molラベル初期化 / デモ計算を行う
-
-// ===== Tab Switching =====
-// サイドバーのタブをクリックしたときに、表示する内容を切り替える処理
-// （sidebarTabs.addEventListener('click', ...)）
-
-// 🖼 画像解析 UI・状態準備
-
-// ===== DOM Elements =====
-// 画像解析タブで使う全部のUIパーツ & 状態（state）をまとめて準備している部分
-// （ボタン・スライダー・キャンバス等の getElementById）
-
-// ボタン類を全部変数に取ってる
-// （imageLoader, 各モードボタン, downloadBtn, resetBtn, revertImageBtn など）
-
-// Canvas キャンバスと描画コンテキスト
-// （canvas-before / canvas-after と ctxBefore / ctxAfter）
-
-// オフスクリーンキャンバス（処理用の作業場）
-// （tempCanvas, tempCtx）
-
-// Modal Elements（切り抜き結果表示用）
-// （切り抜きプレビュー用モーダル・キャンバス）
-
-// Controls - Contrast
-// コントラスト調整の UI パーツ
-
-// Controls - Sharpen
-// シャープネス調整の UI パーツ
-
-// Controls - Measurement
-// 通常の長さ測定（scale 設定・測定）の UI パーツ
-
-// Controls - Particle Size
-// 粒径解析の UI パーツ
-
-// Controls - Particle Size Scale
-// 粒子解析用のスケール設定（通常測長とは別口）の UI
-
-// Inputs & Displays
-// 通常測長用の入力＆結果表示
-
-// ===== State =====
-// アプリ内部の状態（State）を持つ変数群
-// （元画像、現在モード、スケール情報、粒子配列、ROI状態など）
-
-// 🧮 画像処理ロジック・ヘルパー
-
-// コントラスト調整をする処理そのもの。
-// シグモイド関数（S字カーブ）を使って、暗いところはもっと暗く・明るいところはもっと明るく
-// （applyThresholdContrast）
-
-// 3×3のカーネルシャープネスフィルタ（画像をクッキリさせる処理）
-// 「中心を強調・周囲を減算」するカーネルを畳み込み → エッジを強くしてシャープに見せる
-// （applySharpening）
-
-// 「元画像＋コントラスト＋シャープ＋モードに応じたオーバーレイ」までをまとめて描画
-// 画面に表示する最終画像を毎回まとめて描き直すメイン関数
-// （redrawAfterCanvas）
-
-// ものさしリセットボタン
-// 画像上で長さを測る機能（スケール設定＋測定）の状態を全部初期化する処理
-// （resetMeasurementState）
-
-// 画像処理ツール全体の「総リセットボタン」用の関数
-// （resetApp）
-
-// 測定した線だけ消す。スケール情報は残したままに
-// （clearMeasurements）
-
-// 今どのモードで画像を触るか（コントラスト / シャープ / 測長 / 粒径 / 範囲選択）を切り替えるための中枢関数
-// （switchMode）
-
-// キャンバス上に「測定点の●マーカー」を描くための関数
-// （drawMarker）
-
-// キャンバス上に「2点を結ぶ線」を描くための関数
-// （drawLine）
-
-// 検出した粒子の「外枠（四角い枠）」をキャンバスに描く関数
-// （drawParticlesOutlines）
-
-// 粒径測定タブをまっさらにリセットする
-// （resetParticleSizeState）
-
-// ===== NEW ROI FUNCTIONS =====
-// ROI（範囲選択）関連の処理まとめ
-
-// ドラッグして選んだ範囲を、四角形の情報に整理する関数
-// （getSelectionRect）
-
-// 選択した範囲を切り抜いて、モーダルでプレビュー表示する関数
-// （cropImageAndShowModal）
-
-// 切り抜き用の一時データを全部捨てて、モーダル側のキャンバスを空にするリセット関数
-// （resetCroppedImageState）
-
-// 切り抜いた範囲を“新しい元画像”として採用する処理
-// （setCroppedAsNew）
-
-// 🖱 イベントリスナーまわり
-
-// ユーザーが画像ファイルを選んだときに、その画像を①DBに保存して、②キャンバスに表示し、③アプリ状態を初期化する処理
-// （imageLoader.addEventListener('change', ...)）
-
-// 各モード切り替えボタン
-// （コントラスト・シャープ・測長・粒径・ROI 選択のボタン）
-
-// リセット・クリアボタン
-// （全体リセット / 測長クリア / 粒子解析リセット）
-
-// 「元画像に戻す」ボタンを押したときに、DBから画像を取り出してキャンバスを初期状態に戻す処理
-// （revertImageBtn のクリックリスナー）
-
-// 「切り抜きモーダルのボタンと閉じたときの後始末」をイベントでつないでいる部分
-// （setCroppedAsNewBtnModal, hidden.bs.modal）
-
-// コントラスト・シャープ・閾値のリセットボタン
-// （それぞれの reset...Btn）
-
-// --- Measurement Button Listeners ---
-// スケール設定開始ボタン / スケールリセット / 長さ測定ボタン
-
-// --- Particle Size Button Listeners ---
-// 「粒径を測定する」ボタンが押されたときに、粒子解析モードの“測定開始”状態に入るための処理
-// ＋ 粒子解析結果をリセットして ROI 指定からやり直す処理
-
-// 閾値スライダーを動かしたときに二値化をリアルタイム更新
-// （thresholdSlider の input）
-
-// --- Particle Size Scale Button Listeners ---
-// 「粒子径測定用のスケール（ピクセル→実長さ変換）を設定し始めるボタン」のクリック処理
-// ＋ 「粒子径用スケール設定を全部リセットするボタン」のクリック処理
-
-// --- Canvas Click & Drag Handler ---
-// 画面上のマウス座標 → キャンバス上のピクセル座標に変換
-// ROI範囲選択の開始（マウス押下）
-// ROI範囲選択中（ドラッグ中は矩形を更新して再描画）
-// ROI選択完了（マウスを離したタイミングでトリミング＆モーダル表示）
-
-// 「afterキャンバスをクリックしたときの共通処理」
-// ① クリックしていい状況かどうかチェック
-// ② 通常測長モード（スケール設定 / 測長）
-// ③ 粒子用スケール設定フェーズ
-// ④ 粒子解析用の ROI（測定範囲）指定フェーズ
-
-// --- Other Listeners ---
-// コントラスト・シャープのスライダー操作時に再描画
-// 加工後画像のダウンロード
-// 初期モードはコントラスト
-// ページを閉じる際にサーバーへ「終了リクエスト」を投げる
-
-// 🔬 粒径測定ロジック
-
-// 「画像をグレースケール（白黒）」に変換する関数
-// （grayscale）
-
-// 閾値による二値化処理（brightness > threshold ? 白 : 黒）
-// （applyThreshold）
-
-// 画像全体を対象に粒子解析を行う
-// （analyzeAllParticles）
-
-// ROIと処理済ImageDataをもとに
-// 「指定した範囲(ROI)の中で粒子をラベリングして、1粒子ごとの情報を particles 配列に詰める」中核の関数
-// （analyzeParticlesInRegion）
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // ===== NEW: Weighing History Functions =====：DBに保存されている化学式の履歴を読み込んで、入力補完候補に反映する役
@@ -742,9 +536,9 @@ document.addEventListener('DOMContentLoaded', () => {
             //「計算結果を画面に反映している4行」上で計算した値を、結果表示用の <span> や <div> に書き込んでいる。
             // 画面表示（この4行は “表示するだけ”）
             weighingElements.resProdFormula.textContent = productFormulaStr;
-            weighingElements.resProdMolarMass.textContent = productMolarMass.toFixed(5);
-            weighingElements.resProdMoles.textContent = n_prod.toFixed(5);
-            weighingElements.resProdMass.textContent = mass_prod.toFixed(5);
+            weighingElements.resProdMolarMass.textContent = productMolarMass.toFixed(6);
+            weighingElements.resProdMoles.textContent = n_prod.toFixed(6);
+            weighingElements.resProdMass.textContent = mass_prod.toFixed(6);
 
             // 原料側の情報（リスト形式で表示）
             // ここは表示用
@@ -761,8 +555,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const resultHtml = `
                     <p class="mb-1 mt-2"><strong>原料: ${res.formula}</strong></p>
                     <ul class="list-group list-group-flush mb-2">
-                        <li class="list-group-item py-1">必要モル数: <span>${res.moles.toFixed(5)}</span> mol</li>
-                        <li class="list-group-item py-1">必要質量: <span>${res.mass.toFixed(5)}</span> g</li>
+                        <li class="list-group-item py-1">必要モル数: <span>${res.moles.toFixed(6)}</span> mol</li>
+                        <li class="list-group-item py-1">必要質量: <span>${res.mass.toFixed(6)}</span> g</li>
                     </ul>
                 `;
                 // 画面に追加する
@@ -860,10 +654,10 @@ document.addEventListener('DOMContentLoaded', () => {
             targetContent.classList.remove('d-none');
         }
 
-        // 画像表示エリアのON/OFF（秤量タブでは非表示）
+        // 画像表示エリアのON/OFF（秤量タブまたは関数電卓タブでは非表示）
         const imageDisplayArea = document.getElementById('image-display-area');
         if (imageDisplayArea) {
-            if (targetContentId === 'weighing-calc-content') {
+            if (targetContentId === 'weighing-calc-content' || targetContentId === 'calculator-content') {
                 imageDisplayArea.classList.add('d-none');
             } else {
                 imageDisplayArea.classList.remove('d-none');
@@ -957,6 +751,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const scaleUnitInput = document.getElementById('scaleUnitInput'); //通常測長用のスケールバーの実長＆単位
     const scaleDisplay = document.getElementById('scaleDisplay'); //「10 μm = 80 px」などの表示
     const measureResult = document.getElementById('measureResult'); //測定結果（例：「2.35 μm」）
+
+    // Chart Elements
+    const chartsRow = document.getElementById('charts-row');
+    const histogramChartCtx = document.getElementById('histogram-chart').getContext('2d');
+    const gaussianChartCtx = document.getElementById('gaussian-chart').getContext('2d');
+    let histogramChart = null;
+    let gaussianChart = null;
+
 
     // ===== State ===== アプリ内部の状態（State）を持つ変数群
     let originalImage = null; // 読み込んだ元画像
@@ -1383,8 +1185,163 @@ document.addEventListener('DOMContentLoaded', () => {
         analyzeParticlesBtn.disabled = true;
         remapParticlesContainer.classList.add('d-none');
 
+        // グラフを破棄して非表示に
+        if (histogramChart) {
+            histogramChart.destroy();
+            histogramChart = null;
+        }
+        if (gaussianChart) {
+            gaussianChart.destroy();
+            gaussianChart = null;
+        }
+        chartsRow.classList.add('d-none');
+
         redrawAfterCanvas(); 
     }
+
+    // ===== NEW Charting Functions =====
+    function renderParticleDistributionCharts() {
+        // 既存のグラフを破棄
+        if (histogramChart) {
+            histogramChart.destroy();
+        }
+        if (gaussianChart) {
+            gaussianChart.destroy();
+        }
+
+        // 粒子データまたはスケールがなければ何もしない
+        if (particles.length === 0 || !particleScale.pixels) {
+            chartsRow.classList.add('d-none');
+            return;
+        }
+        
+        // アスペクト比がしきい値以下の粒子のみをフィルタリング
+        const filteredParticles = particles.filter(p => {
+            const aspectRatio = Math.max(p.width, p.height) / Math.min(p.width, p.height);
+            return aspectRatio <= ASPECT_RATIO_THRESHOLD;
+        });
+
+        if (filteredParticles.length === 0) {
+            chartsRow.classList.add('d-none');
+            return;
+        }
+
+        // 粒子の直径（実単位）のリストを作成
+        const diameters = filteredParticles.map(p => {
+            const avgDiameterPx = (p.width + p.height) / 2;
+            return (avgDiameterPx / particleScale.pixels) * particleScale.realLength;
+        });
+
+        // --- ヒストグラムデータの計算 ---
+        const minDiameter = Math.min(...diameters);
+        const maxDiameter = Math.max(...diameters);
+        const numBins = 15; // 階級の数
+        const binSize = (maxDiameter - minDiameter) / numBins;
+        const bins = Array(numBins).fill(0);
+        const labels = [];
+
+        for (let i = 0; i < numBins; i++) {
+            const binStart = minDiameter + i * binSize;
+            const binEnd = binStart + binSize;
+            labels.push(`${binStart.toFixed(2)}-${binEnd.toFixed(2)}`);
+        }
+
+        diameters.forEach(d => {
+            let binIndex = Math.floor((d - minDiameter) / binSize);
+            // 最大値が最後のbinに正しく入るように調整
+            if (binIndex === numBins) {
+                binIndex--;
+            }
+            bins[binIndex]++;
+        });
+        
+        // --- ガウス分布データの計算 ---
+        const mean = diameters.reduce((a, b) => a + b, 0) / diameters.length;
+        const stdDev = Math.sqrt(diameters.map(x => Math.pow(x - mean, 2)).reduce((a, b) => a + b, 0) / diameters.length);
+        
+        const gaussianLabels = [];
+        const gaussianData = [];
+        // グラフ描画範囲を 平均±3σ に設定
+        const range = stdDev * 3;
+        const step = range * 2 / 50; // 50点で描画
+
+        for (let i = -range; i <= range; i += step) {
+            const x = mean + i;
+            gaussianLabels.push(x.toFixed(2));
+            // ガウス分布の確率密度関数
+            const y = (1 / (stdDev * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow((x - mean) / stdDev, 2));
+            gaussianData.push(y);
+        }
+
+        // --- グラフの描画 ---
+        chartsRow.classList.remove('d-none');
+
+        // ヒストグラム
+        histogramChart = new Chart(histogramChartCtx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: `粒径分布 (${particleScale.unit})`,
+                    data: bins,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '粒子数'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: `粒子径 (${particleScale.unit})`
+                        }
+                    }
+                }
+            }
+        });
+
+        // ガウス分布
+        gaussianChart = new Chart(gaussianChartCtx, {
+            type: 'line',
+            data: {
+                labels: gaussianLabels,
+                datasets: [{
+                    label: `ガウス分布 (μ=${mean.toFixed(2)}, σ=${stdDev.toFixed(2)})`,
+                    data: gaussianData,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                 scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '確率密度'
+                        }
+                    },
+                    x: {
+                         title: {
+                            display: true,
+                            text: `粒子径 (${particleScale.unit})`
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 
     // ===== NEW ROI FUNCTIONS =====
 
@@ -1871,6 +1828,198 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ===== NEW Calculator Functionality =====
+
+    /**
+     * Converts a decimal number to a fraction using the continued fraction algorithm.
+     * @param {number | string} decimal The decimal number to convert.
+     * @returns {string} The fractional or original string representation.
+     */
+    const toFraction = (decimal) => {
+        const number = parseFloat(decimal);
+        if (isNaN(number) || String(decimal).includes('/')) {
+            return String(decimal); // Not a valid number or already a fraction
+        }
+
+        const sign = number < 0 ? "-" : "";
+        const absNumber = Math.abs(number);
+        
+        // For integers or numbers very close to integers
+        if (Math.abs(absNumber - Math.round(absNumber)) < 1e-9) {
+            return `${sign}${Math.round(absNumber)}`;
+        }
+        
+        const tolerance = 1.0E-9;
+        let h1 = 1, h2 = 0, k1 = 0, k2 = 1;
+        let b = absNumber;
+        
+        // Continued fraction algorithm
+        do {
+            const a = Math.floor(b);
+            let aux = h1; h1 = a * h1 + h2; h2 = aux;
+            aux = k1; k1 = a * k1 + k2; k2 = aux;
+            b = 1 / (b - a);
+        } while (Math.abs(absNumber - h1 / k1) > absNumber * tolerance && k1 < 10000); // Limit denominator
+
+        // If a simple fraction is not found, return the original decimal
+        if (k1 >= 10000) {
+            return String(sign + absNumber);
+        }
+
+        return `${sign}${h1}/${k1}`;
+    };
+
+    function initializeCalculator() {
+        const display = document.getElementById('calc-display-input');
+        const panels = document.getElementById('calc-panels');
+
+        // Helper function to perform calculation
+        const calculate = () => {
+            try {
+                let expression = display.value
+                    .replace(/\^/g, '**')
+                    .replace(/√/g, '_sqrt')
+                    .replace(/sin\(/g, '_sin_deg(')
+                    .replace(/cos\(/g, '_cos_deg(')
+                    .replace(/tan\(/g, '_tan_deg(')
+                    .replace(/log\(/g, '_log10(')
+                    .replace(/ln\(/g, '_log(')
+                    .replace(/exp\(/g, '_exp(')
+                    .replace(/\be\b/g, '_E')    // Use word boundary to not replace 'exp'
+                    .replace(/π/g, '_PI');
+
+                const _sin_deg = (deg) => Math.sin(deg * Math.PI / 180);
+                const _cos_deg = (deg) => Math.cos(deg * Math.PI / 180);
+                const _tan_deg = (deg) => {
+                    if (Math.abs(deg % 180) === 90) return Infinity;
+                    return Math.tan(deg * Math.PI / 180);
+                };
+                const _sqrt = Math.sqrt;
+                const _log10 = Math.log10;
+                const _log = Math.log;
+                const _exp = Math.exp;
+                const _E = Math.E;
+                const _PI = Math.PI;
+
+                const func = new Function(
+                    '_sin_deg', '_cos_deg', '_tan_deg', 
+                    '_sqrt', '_log10', '_log', '_exp', '_E', '_PI',
+                    `return ${expression};`
+                );
+                const result = func(_sin_deg, _cos_deg, _tan_deg, _sqrt, _log10, _log, _exp, _E, _PI);
+
+                if (!isFinite(result) || isNaN(result)) {
+                    display.value = 'Error';
+                } else if (Math.abs(result) < 1e-10) {
+                    display.value = '0';
+                } else {
+                    display.value = String(result);
+                }
+
+            } catch (error) {
+                console.error("Calculator error:", error);
+                display.value = 'Error';
+            }
+        };
+
+        // Handle button clicks using event delegation on the parent container
+        panels.addEventListener('click', (e) => {
+            if (!e.target.matches('.calc-btn, .calc-btn *')) return;
+            
+            const button = e.target.closest('.calc-btn');
+            const value = button.dataset.value;
+            const currentValue = display.value;
+            
+            const shouldOverwrite = () => currentValue === '0' || currentValue === 'Error';
+
+            switch (value) {
+                case '=':
+                    calculate();
+                    break;
+                case 'C':
+                    display.value = '0';
+                    break;
+                case 'backspace':
+                    const start = display.selectionStart;
+                    const end = display.selectionEnd;
+                    if (start === end) { // No selection
+                        if (start > 0) {
+                            display.value = currentValue.slice(0, start - 1) + currentValue.slice(end);
+                            display.selectionStart = display.selectionEnd = start - 1;
+                        }
+                    } else { // Text selected
+                        display.value = currentValue.slice(0, start) + currentValue.slice(end);
+                        display.selectionStart = display.selectionEnd = start;
+                    }
+                    if(display.value === '') display.value = '0';
+                    break;
+                case 'frac':
+                    if (currentValue === 'Error' || currentValue === '') return;
+                    if (currentValue.includes('/')) {
+                        try {
+                            const parts = currentValue.split('/');
+                            if (parts.length === 2 && parts[1] !== '0') {
+                                const result = parseFloat(parts[0]) / parseFloat(parts[1]);
+                                display.value = String(result);
+                            } else {
+                                display.value = 'Error';
+                            }
+                        } catch { display.value = 'Error'; }
+                    } else {
+                        const decimalValue = parseFloat(currentValue);
+                        if (!isNaN(decimalValue)) {
+                            display.value = toFraction(decimalValue);
+                        }
+                    }
+                    break;
+                case 'sin':
+                case 'cos':
+                case 'tan':
+                case 'log':
+                case 'ln':
+                case 'sqrt':
+                case 'exp':
+                case '(':
+                case ')':
+                    if (shouldOverwrite()) {
+                        display.value = value + (['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'exp'].includes(value) ? '(' : '');
+                    } else {
+                        display.value += value + (['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'exp'].includes(value) ? '(' : '');
+                    }
+                    break;
+                case 'e':
+                case 'PI':
+                    if (shouldOverwrite()) {
+                        display.value = button.textContent; // 'e' or 'π'
+                    } else {
+                        display.value += button.textContent;
+                    }
+                    break;
+                default: // Numbers, operators
+                    if (shouldOverwrite()) {
+                        display.value = value;
+                    } else {
+                        display.value += value;
+                    }
+                    break;
+            }
+            display.focus();
+        });
+
+        // Handle keyboard input in the display
+        display.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                calculate();
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                display.value = '0';
+            }
+        });
+    }
+
+    initializeCalculator();
+
     // --- Particle Size Measurement Functions ---
 
     // 「画像をグレースケール（白黒）」に変換する関数
@@ -1927,6 +2076,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // 外枠描画も含めて再描画
         redrawAfterCanvas();
         drawParticlesOutlines(particles);
+
+        // グラフを描画
+        renderParticleDistributionCharts();
     }
     
     // ROIと処理済ImageDataをもとに「指定した範囲(ROI)の中で粒子をラベリングして、1粒子ごとの情報を particles 配列に詰める」中核の関数

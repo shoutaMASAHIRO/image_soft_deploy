@@ -1,0 +1,7 @@
+【dockerdesktopが起動していることが前提】
+
+ドッカーシャットダウン
+docker-compose down
+
+ドッカー起動
+docker-compose up --build
