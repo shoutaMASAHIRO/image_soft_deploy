@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // "Ca2Sm(1-x)MnO4" → { Ca: "2", Sm: "1-x", Mn: "1", O: "4" } のように分解する関数
+    // "Ca2Sm(1-x)MnO4" → オブジェクトリテラル：{ Ca: "2", Sm: "1-x", Mn: "1", O: "4" } のように分解する関数
     function parseFormula(formula) {
         const elements = {}; // 生成物
 
@@ -568,8 +568,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // exec の結果を match に入れて、その結果が null じゃない間ループする
         // exec で「元素 + 係数」を順に抜き出す（exec:オブジェクトの正規表現（= 文字の並び方のルール）に合うものを探すメソッド）
         while ((match = regex.exec(sanitizedFormula)) !== null) {
-            const element = match[1];   // 元素記号
-            let count = match[2];       // 係数 or (1-x) 部分
+
+            // match[0] = 正規表現にマッチした“全体”の文字列
+            // match[1] = 1つ目の (...)（キャプチャグループ）
+            // match[2] = 2つ目の (...)
+            // これはJSのルール
+            const element = match[1];   // 元素記号(regexの1つめのかっこ)
+            let count = match[2];       // 係数 or (1-x) 部分(tegexの2つめのかっこ)
 
             // 係数省略 → 1："Mn" みたいに係数が無い元素は 1 とみなす。
             if (count === undefined) {
