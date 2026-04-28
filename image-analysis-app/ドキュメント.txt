@@ -1,0 +1,278 @@
+# 画像解析ツール アプリケーション仕様書
+
+このドキュメントは、画像解析ツールアプリケーションの技術的な仕様について解説します。
+アプリケーションは、バックエンド(サーバー側)とフロントエンド(ブラウザ側)で役割が明確に分かれています。バックエンドはPythonのFlaskフレームワークが担当し、アプリケーションの骨格を提供します。一方、コントラスト調整や粒径測定といった**主要な画像演算処理は、すべてフロントエンドのJavaScriptによってユーザーのブラウザ上で直接実行されます。**
+
+---
+
+## 1. バックエンド (`app.py`)
+
+バックエンドはPythonで記述されており、Webアプリケーションの起動と基本的なリクエストの処理を担当します。
+
+### 1.1. 役割
+バックエンドの主な役割はWebサーバーとして機能することであり、**画像に対する演算処理そのものは担当しません。**
+- Flask Webサーバーを起動します。
+- メインのHTMLページ (`index.html`) をユーザーのブラウザに提供します。
+- アプリケーション起動時にブラウザを自動的に開きます。
+- ブラウザが閉じられた際にサーバーを安全にシャットダウンするためのエンドポイントを提供します。
+
+### 1.2. 使用ライブラリ
+- **Flask**: Webアプリケーションを構築するためのマイクロフレームワークです。ルーティング（URLと関数の紐付け）やテンプレートのレンダリングに使用されます。
+- **Waitress**: 本番環境グレードのWSGIサーバーです。開発用サーバーの代わりに、安定したアプリケーションの実行環境を提供します。
+- **Pillow (PIL Fork)**: Pythonの画像処理ライブラリです。現在のバージョンでは直接的な画像処理ロジックは実装されていませんが、将来的な拡張やPyInstallerでの実行ファイル化のために含まれています。
+- **webbrowser**: Pythonの標準ライブラリで、アプリケーション起動時にデフォルトのWebブラウザを自動で開くために使用されます。
+- **threading**: Pythonの標準ライブラリ。`Timer`を使用して、サーバー起動の少し後にブラウザを開く非同期処理を実現しています。
+- **os, sys, signal**: Pythonの標準ライブラリ。実行環境のパス解決（特にPyInstallerで実行ファイル化された場合）や、サーバープロセスを終了させるためのシグナル送信に使用されます。
+
+### 1.3. 主要なロジック
+- **Flaskアプリケーションの初期化**:
+  - `app = Flask(__name__, ...)`: Flaskアプリケーションのインスタンスを作成します。
+  - PyInstallerによって実行ファイル化された場合 (`sys.frozen`がTrueの場合) と、通常のPythonスクリプトとして実行された場合で、テンプレートと静的ファイルのパスを適切に解決するロジックが含まれています。
+- **ルーティング**:
+  - `@app.route('/')`: ルートURL (`http://127.0.0.1:8080/`) へのアクセスに対して`index()`関数を呼び出し、`index.html`をレンダリングして返します。
+  - `@app.route('/shutdown', methods=['POST'])`: フロントエンドからサーバーをシャットダウンするためのエンドポイントです。`os.kill`を使って自身のプロセスを終了させます。
+- **サーバーの起動**:
+  - `if __name__ == '__main__':`: このスクリプトが直接実行された場合に以下の処理を行います。
+  - `Timer(1, open_browser).start()`: 1秒後に`open_browser`関数を別スレッドで実行し、ブラウザを開きます。
+  - `serve(app, host='127.0.0.1', port=8080)`: `Waitress`サーバーをホスト`127.0.0.1`、ポート`8080`で起動します。
+
+---
+
+## 2. フロントエンド (`static/js/script.js`)
+
+フロントエンドは、**このアプリケーションにおける画像処理の心臓部です。** ユーザーインターフェースの操作から、負荷の高い画像演算処理まで、そのすべてを担当します。処理をサーバーに送信せず、すべてブラウザ内で完結させることで、**リアルタイムの操作感**と**サーバー負荷の軽減**を実現しています。
+外部のJavaScriptフレームワーク（ReactやVueなど）は使用せず、素のJavaScript（Vanilla JS）で記述されています。
+
+### 2.1. 役割
+- ユーザーによる画像ファイルの読み込みと表示。
+- 「コントラスト調整」「画像鮮明化」「寸法測定」「粒径測定」「パーセンテージリサイズ」などのモード切替機能。
+- 各モードに応じたUI（スライダーやボタン）の表示と制御。
+- Canvas APIを使用した画像処理アルゴリズムの実行と、結果のリアルタイム描画。
+- 処理後の画像のダウンロード機能。
+
+### 2.2. 主要なロジックと機能
+- **DOMの初期化とイベントリスナー**:
+  - `DOMContentLoaded`イベント内で、すべてのUI要素（ボタン、スライダー、Canvasなど）を取得し、変数に格納します。
+  - 各ボタンやスライダーにイベントリスナー（`click`, `input`など）を設定し、ユーザー操作に対応する関数を呼び出します。
+
+- **状態管理**:
+  - `currentMode`: 現在の操作モードを保持します (`'contrast'`, `'sharpen'`など)。
+  - `originalImage`: ユーザーが読み込んだ元の画像を保持します。
+  - `scale`: 寸法測定モードで設定されたスケール（ピクセルと実寸の比率）を保持します。
+  - `measurementPoints`: 測定のためにユーザーがクリックした座標を保持します。
+  - その他、各モードに特化した状態変数が定義されています。
+
+- **モード切替 (`switchMode`関数)**:
+  - 引数で指定されたモードに応じて`currentMode`変数を更新します。
+  - すべての操作パネルを一旦非表示にし、選択されたモードのパネルのみを表示します。
+  - モードボタンの見た目をアクティブ/非アクティブに切り替えます。
+  - `redrawAfterCanvas`を呼び出して、表示を更新します。
+
+- **画像処理とCanvas描画 (`redrawAfterCanvas`関数など)**:
+  - このアプリケーションの中核となる関数です。
+  - まず、元の画像をCanvasに描画します。
+  - その後、現在の各モードの設定値（コントラストのスライダー値など）に応じて、画像データに対してリアルタイムに演算処理を適用します。
+  - **コントラスト調整 (`applyThresholdContrast`)**: シグモイド関数を応用したLUT（ルックアップテーブル）を生成し、各ピクセルの輝度値を変換することでコントラストを調整します。
+  - **画像鮮明化 (`applySharpening`)**: 9近傍のピクセル値を利用した3x3の鮮明化カーネル（畳み込みフィルター）を適用し、画像のエッジを強調します。
+  - **粒径測定 (`analyzeParticlesInRegion`, `applyThreshold`)**:
+    1.  画像をグレースケールに変換します。
+    2.  `thresholdSlider`で指定された閾値で画像を二値化（白と黒の画像に変換）します。
+    3.  `floodFill`（洪水法）アルゴリズムを用いて、連結した白ピクセルの領域（＝粒子）を一つずつ識別します。
+    4.  識別した各粒子のバウンディングボックス（境界の四角）や直径を計算します。
+    5.  設定されたスケールに基づき、ピクセル単位の直径を実寸（µmなど）に変換して表示します。
+  - **寸法測定**: ユーザーがクリックした2点間のピクセル距離を計算し、スケール情報があれば実寸に換算して表示します。
+
+- **イベントハンドリング**:
+  - **画像読み込み**: `imageLoader`の`change`イベントで、`FileReader`を使って画像を読み込み、`Image`オブジェクトとして`originalImage`変数に格納します。その後、`resetApp`を呼び出してアプリケーション全体の状態を初期化します。
+  - **測定操作**: `canvasAfter`の`click`イベントで、クリックされた座標を取得します。現在のモードが「寸法測定」や「粒径測定のスケール設定」の場合、その座標を`measurementPoints`に保存し、2点揃ったら距離計算やスケール設定の処理を実行します。
+  - **ダウンロード**: `downloadBtn`の`click`イベントで、`canvasAfter`の表示内容を`toDataURL()`メソッドでPNG形式のデータURLに変換し、ダウンロード用のリンクを生成してクリックさせることで、画像を保存します。
+
+### 2.3. JavaScriptによるバックエンド実装について
+このアプリケーションのバックエンドはPythonで実装されていますが、JavaScriptを使ってバックエンドを構築することも可能です。
+**Node.js (ノード・ジェイエス)** という実行環境を用いることで、JavaScriptをサーバーサイドで動作させることができます。
+これにより、ファイルの読み書き、データベースとの通信、APIサーバーの構築など、従来サーバーサイド言語（Python, Java, PHPなど）で行われてきた処理をJavaScriptで記述できます。
+
+バックエンド開発で人気のJavaScriptフレームワークには以下のようなものがあります。
+- **Express.js**: 長年にわたり最も広く使われている、シンプルで柔軟なフレームワーク。
+- **Next.js**: Reactをベースとしたフレームワークで、フロントエンドとバックエンドを統一的に開発可能。
+- **NestJS**: TypeScriptをベースとした、構造的で大規模なアプリケーション開発に適したフレームワーク。
+
+### 2.4. コード品質 (一般的な開発プラクティス)
+JavaScriptのコード品質と保守性を高めるために、以下のようなツールが一般的に利用されます。(注: これらのツールはこのプロジェクトに現在導入されているわけではありません)
+
+- **リンター (Linter) とフォーマッター (Formatter)**:
+  - **ESLint**: コードを静的に解析し、潜在的なバグやコーディングスタイルの問題を検出するツールです。「こういう書き方は問題がある可能性がある」といったことを指摘してくれます。
+  - **Prettier**: コードの見た目（フォーマット）を自動で統一するツールです。インデントの深さ、シングルクォートかダブルクォートか、といったスタイルに関する論争をなくし、誰が書いても同じ見た目のコードを保ちます。
+
+- **静的解析ツール**:
+  - **CodeQL**: コードを「データ」として扱い、クエリ（問い合わせ）を実行することで、セキュリティ上の脆弱性やバグのパターンを検出する強力な静的解析エンジンです。例えば、「外部からの入力が、適切なチェックを経ずに危険な処理に使われている」といった複雑な問題を発見できます。
+
+---
+
+## 3. 関連技術メモ (Appendix: Related Technical Memos)
+
+以下は、本アプリケーションの直接的な機能とは異なりますが、関連技術として提供された情報のメモです。
+
+### 3.1. 音声処理: Utterance-level Mean and Variance Normalization
+
+```python
+import torch
+
+def utterance_mvn(x, y=None):
+    """
+    Apply utterance-level mean and variance normalization.
+    Args:
+        x (torch.Tensor): The input tensor of shape (..., T, D), where T is the time dimension and D is the feature dimension.
+        y (torch.Tensor, optional): The target tensor of the same shape as x. If provided, the normalization will be applied to y as well.
+    Returns:
+        A tensor of the same shape as x, with utterance-level mean and variance normalization applied.
+        If y is provided, a tuple of (normalized_x, normalized_y) is returned.
+    """
+    mean = x.mean(dim=-2, keepdim=True)
+    std = x.std(dim=-2, keepdim=True)
+    if y is not None:
+        return (x - mean) / std, (y - mean) / std
+    return (x - mean) / std
+
+def utterance_mvn_with_target(x, y):
+    """
+    Apply utterance-level mean and variance normalization to both input and target tensors.
+    Args:
+        x (torch.Tensor): The input tensor of shape (..., T, D), where T is the time dimension and D is the feature dimension.
+        y (torch.Tensor): The target tensor of the same shape as x.
+    Returns:
+        A tuple of (normalized_x, normalized_y), where both have utterance-level mean and variance normalization applied.
+    """
+    mean = x.mean(dim=-2, keepdim=True)
+    std = x.std(dim=-2, keepdim=True)
+    return (x - mean) / std, (y - mean) / std
+```
+
+### 3.2. UIコンポーネント: AI IDE連携タブ
+
+```python
+import streamlit as st
+
+def mcp_tab_windsurf():
+    st.header("Windsurf")
+    st.text_area(
+        "Enter your MCP configuration for Windsurf:",
+        value="...",
+        height=200,
+    )
+
+def mcp_tab_archon_ide():
+    with st.expander("Cursor"):
+        st.text_area(
+            "Enter your MCP configuration for Cursor:",
+            value="...",
+            height=200,
+        )
+    with st.expander("Cline"):
+        st.text_area(
+            "Enter your MCP configuration for Cline:",
+            value="...",
+            height=200,
+        )
+    with st.expander("Claude Code"):
+        st.text_area(
+            "Enter your MCP configuration for Claude Code:",
+            value="...",
+            height=200,
+        )
+```
+
+### 3.3. 音声処理: ログメルスペクトログラム
+
+```python
+import torch
+import numpy as np
+
+def log_mel_spectrogram(
+    x,
+    n_mels,
+    n_fft,
+    hop_length,
+    win_length,
+    window="hann",
+    center=True,
+    pad_mode="reflect",
+):
+    """
+    Compute the log-Mel spectrogram of a 1D Tensor.
+    Args:
+        x (torch.Tensor): The input tensor of shape (..., T).
+        n_mels (int): The number of Mel bands.
+        n_fft (int): The number of FFT components.
+        hop_length (int): The hop length.
+        win_length (int): The window length.
+        window (str, optional): The window function. Defaults to "hann".
+        center (bool, optional): Whether to center the frame. Defaults to True.
+        pad_mode (str, optional): The padding mode. Defaults to "reflect".
+    Returns:
+        A tensor of shape (..., T', n_mels), where T' is the number of frames.
+    """
+    # This is a simplified example. A real implementation would have the full mel filter bank creation logic.
+    # For brevity, we'll just show the main computation steps.
+    
+    # Compute the spectrogram
+    spec = torch.stft(
+        x,
+        n_fft=n_fft,
+        hop_length=hop_length,
+        win_length=win_length,
+        window=getattr(torch, f"{window}_window")(win_length).to(x.device),
+        center=center,
+        pad_mode=pad_mode,
+        return_complex=True,
+    ).abs()
+
+    # In a real implementation, you would apply a Mel filter bank here.
+    # mel_spec = torch.matmul(spec.transpose(-1, -2), mel_fb).transpose(-1, -2)
+    # For this example, we'll simulate it by taking a slice of the spectrogram
+    mel_spec = spec[..., :n_mels]
+
+    # Compute the log-Mel spectrogram
+    log_mel_spec = torch.log(torch.clamp(mel_spec, min=1e-10))
+
+    return log_mel_spec
+```
+
+### 3.4. Elasticsearchによるデータインデックス
+
+```
+Elasticsearch是一个分布式的、RESTful风格的搜索和数据分析引擎，它能够快速地存储、搜索和分析大量数据。
+以下是一个使用Python的`elasticsearch`库与Elasticsearch进行交互的示例。
+```
+```python
+from elasticsearch import Elasticsearch
+
+class ElasticsearchManager:
+    def __init__(self, hosts=None):
+        if hosts is None:
+            hosts = [{"host": "localhost", "port": 9200}]
+        self.es = Elasticsearch(hosts)
+
+    def index_data(self, index_name, doc_type, body, id=None):
+        """
+        Index data into Elasticsearch.
+        """
+        return self.es.index(index=index_name, doc_type=doc_type, body=body, id=id)
+
+# Example usage:
+# es_manager = ElasticsearchManager()
+# doc = {"author": "kimchy", "text": "Elasticsearch: cool. bonsai cool.", "timestamp": "2024-06-05T12:00:00"}
+# response = es_manager.index_data(index_name="my-index", doc_type="_doc", body=doc, id=1)
+# print(response)
+```
+
+### 3.5. エージェント軌跡の可視化モジュール
+
+このモジュールは、言語モデル（LLM）ベースのエージェントの思考と行動の軌跡を可視化し、保存するためのものです。
+エージェントがタスクを解決する過程（思考プロセス、ツールの使用、最終的な回答など）を解析し、人間が理解しやすい形式で出力します。
+
+**主な機能:**
+*   **軌跡の解析**: LLMの出力（思考の連鎖やツールの呼び出しを含む）を解析します。
+*   **多様な出力形式**: 結果をHTML、プレーンテキスト（.txt）、JSON形式で保存できます。
+*   **インタラクティブな可視化**: HTML形式では、各ステップを折りたたみ可能なセクションとして表示し、思考プロセスやツール出力を詳細に確認できます。
+*   **エラーのハイライト**: エージェントの軌跡で発生したエラーを視覚的に強調表示します。

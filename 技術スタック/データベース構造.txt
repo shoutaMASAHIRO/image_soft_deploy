@@ -1,0 +1,50 @@
+class ProductFormula(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    formula = db.Column(db.String(255), nullable=False, unique=True)
+
+class ReactantFormula(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    formula = db.Column(db.String(255), nullable=False, unique=True)
+
+class OriginalImage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image_data = db.Column(db.LargeBinary, nullable=False)
+
+テーブル1：product_formula
+
+用途：生成物の化学式の履歴を保存
+
+カラム
+
+id : 整数、主キー（自動採番）
+
+formula : 文字列（最大255文字）、NULL禁止・一意制約あり
+→ 同じ生成物の化学式が重複登録されない
+
+テーブル2：reactant_formula
+
+用途：出発原料（反応物）の化学式の履歴を保存
+
+カラム
+
+id : 整数、主キー（自動採番）
+
+formula : 文字列（最大255文字）、NULL禁止・一意制約あり
+→ 同じ反応物の化学式が重複登録されない
+
+テーブル3：original_image
+
+用途：直近でアップロードされた元画像を1枚だけ保持
+
+カラム
+
+id : 整数、主キー
+→ 実装上は常に id=1 の1レコードだけ使う想定
+
+image_data : バイナリデータ（LargeBinary / Postgresなら bytea）、NULL禁止
+→ フロントから送られた base64 画像をデコードして保存
+
+このアプリのデータベースは非常にシンプルで、テーブルは3つです。
+1つ目が生成物の化学式を保存する product_formula テーブル、2つ目が反応物の化学式を保存する reactant_formula テーブル、3つ目が元画像をバイナリで1件だけ保持する original_image テーブルです。
+どのテーブルも整数の主キー id を持っていて、product_formula と reactant_formula では formula カラムにユニーク制約をかけることで、同じ化学式が重複して登録されないようにしています。
+original_image では base64 で送られてきた画像を image_data というバイナリカラムに保存しておき、後から元画像を復元できるようにしています。

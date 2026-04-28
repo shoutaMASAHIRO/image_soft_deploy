@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像解析ツール</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">画像解析ツール</span>
+        </div>
+    </nav>
+
+    <main class="container-fluid mt-4">
+        <div class="row">
+            <!-- ===== 操作パネル ===== -->
+            <aside class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        操作パネル
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="imageLoader" class="form-label">画像を選択</label>
+                            <input class="form-control" type="file" id="imageLoader" accept="image/*">
+                        </div>
+                        <hr>
+                        <!-- モード切替 -->
+                        <h5>モード選択</h5>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="contrastModeBtn">コントラスト調整</button>
+                            <button class="btn btn-secondary" id="sharpenModeBtn">画像鮮明化</button>
+                            <button class="btn btn-secondary" id="measureModeBtn">寸法測定</button>
+                            <button class="btn btn-secondary" id="particleSizeModeBtn">粒径測定</button>
+                        </div>
+                        <hr>
+                        <!-- 各モードの操作エリア -->
+                        <div id="controls-panel">
+                            <!-- コントラスト調整 -->
+                            <div id="contrast-controls" class="control-group">
+                                <label for="contrastSlider" class="form-label">コントラスト: <span id="contrastValue">100</span>%</label>
+                                <button class="btn btn-sm btn-outline-secondary w-100 mb-2" id="resetContrastBtn">コントラストをリセット</button>
+                                <input type="range" class="form-range" min="0" max="300" value="100" id="contrastSlider">
+                            </div>
+                            <!-- 画像鮮明化 -->
+                            <div id="sharpen-controls" class="control-group d-none">
+                                <label for="sharpenSlider" class="form-label">鮮明化: <span id="sharpenValue">0</span>%</label>
+                                <button class="btn btn-sm btn-outline-secondary w-100 mb-2" id="resetSharpenBtn">鮮明化をリセット</button>
+                                <input type="range" class="form-range" min="0" max="100" value="0" id="sharpenSlider">
+                            </div>
+                            <!-- 寸法測定 (ステートフルUI) -->
+                            <div id="measure-controls" class="control-group d-none">
+
+                                <!-- 1. スケール設定 -->
+                                <div class="p-2 border rounded">
+                                    <h6 class="mb-2">1. スケール設定</h6>
+                                    <p class="form-text">画像上の基準（例: スケールバー）の実際の長さを入力してください。</p>
+                                    <div class="input-group input-group-sm">
+                                        <input type="number" class="form-control" id="scaleLengthInput" value="10">
+                                        <select class="form-select" id="scaleUnitInput">
+                                            <option value="m">メートル</option>
+                                            <option value="mm">ミリメートル</option>
+                                            <option value="µm" selected>マイクロメートル</option>
+                                            <option value="nm">ナノメートル</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-grid gap-2 mt-2">
+                                        <button class="btn btn-info" id="scaleActionButton">スケール設定開始</button>
+                                    </div>
+                                    <div class="d-grid gap-2 mt-1 d-none" id="resetScaleContainer">
+                                        <button class="btn btn-secondary btn-sm" id="resetScaleButton">スケール再設定</button>
+                                    </div>
+                                    <p class="form-text mb-0 mt-2 text-center">
+                                        現在のスケール: <strong id="scaleDisplay">未設定</strong>
+                                    </p>
+                                </div>
+                                
+                                <!-- 2. 測定 -->
+                                <div class="mt-3">
+                                     <h6 class="mb-2">2. 測定</h6>
+                                     <div class="d-grid gap-2 mb-2">
+                                        <button class="btn btn-success" id="measureActionButton" disabled>測定を開始する</button>
+                                     </div>
+                                     <p>測定結果: <strong id="measureResult">0 px</strong></p>
+                                     <button class="btn btn-warning btn-sm w-100" id="clearMeasurementBtn">測定クリア</button>
+                                </div>
+                            </div>
+                             <!-- 粒径測定 -->
+                            <div id="particle-size-controls" class="control-group d-none">
+                                <h6 class="mb-2">粒径測定</h6>
+                                                                <div class="mb-3">
+                                                                    <label for="thresholdSlider" class="form-label">二値化閾値: <span id="thresholdValue">128</span></label>
+                                                                    <input type="range" class="form-range" min="0" max="255" value="128" id="thresholdSlider">
+                                                                </div>
+                                                                <hr>
+                                                                <!-- スケール設定 (粒径測定用) -->
+                                                                <div class="p-2 border rounded">
+                                                                    <h6 class="mb-2">1. スケール設定</h6>
+                                                                    <p class="form-text">画像上の基準（例: スケールバー）の実際の長さを入力してください。</p>
+                                                                    <div class="input-group input-group-sm">
+                                                                        <input type="number" class="form-control" id="particleScaleLengthInput" value="10">
+                                                                        <select class="form-select" id="particleScaleUnitInput">
+                                                                            <option value="m">メートル</option>
+                                                                            <option value="mm">ミリメートル</option>
+                                                                            <option value="µm" selected>マイクロメートル</option>
+                                                                            <option value="nm">ナノメートル</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="d-grid gap-2 mt-2">
+                                                                        <button class="btn btn-info" id="particleScaleActionButton">スケール設定開始</button>
+                                                                    </div>
+                                                                    <div class="d-grid gap-2 mt-1 d-none" id="particleResetScaleContainer">
+                                                                        <button class="btn btn-secondary btn-sm" id="particleResetScaleButton">スケール再設定</button>
+                                                                    </div>
+                                                                    <p class="form-text mb-0 mt-2 text-center">
+                                                                        現在のスケール: <strong id="particleScaleDisplay">未設定</strong>
+                                                                    </p>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="d-grid gap-2">
+                                                                    <button class="btn btn-primary" id="analyzeParticlesBtn">粒径を測定する</button>
+                                                                </div>
+                                <div class="d-grid gap-2 mt-1 d-none" id="remapParticlesContainer">
+                                    <button class="btn btn-warning btn-sm" id="remapParticlesBtn">再測定</button>
+                                </div>
+                                <div class="">
+                                    <p>選択範囲の長さ (<span id="roiRealUnit">未設定</span>): <strong id="roiRealLength">未設定</strong></p>
+                                    <button class="btn btn-warning btn-sm w-100" id="clearParticlesBtn">結果をクリア</button>
+                                    <button class="btn btn-primary btn-sm w-100 mt-2" id="analyzeMultipleParticlesBtn">粒径を複数測定する</button>
+                                    <p class="mt-2">粒子数: <strong id="particleCount">0</strong></p>
+                                    <p>平均直径 (px): <strong id="averageDiameterPx">0.00</strong></p>
+                                    <p>平均直径 (<span id="averageDiameterUnit">未設定</span>): <strong id="averageDiameterReal">未設定</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                         <hr>
+                        <div class="d-grid gap-2 mt-3">
+                             <button class="btn btn-success" id="downloadBtn">編集後画像をダウンロード</button>
+                             <button class="btn btn-danger" id="resetBtn">画像と設定をリセット</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ===== 画像表示エリア ===== -->
+            <section class="col-md-9">
+                <div class="row">
+                    <!-- Before -->
+                    <div class="col-6">
+                        <div class="card">
+                             <div class="card-header">元画像 (Before)</div>
+                             <div class="card-body text-center">
+                                <canvas id="canvas-before" class="img-fluid"></canvas>
+                             </div>
+                        </div>
+                    </div>
+                    <!-- After -->
+                    <div class="col-6">
+                         <div class="card border-primary">
+                             <div class="card-header bg-primary text-white">編集後 (After)</div>
+                             <div class="card-body text-center">
+                                <canvas id="canvas-after" class="img-fluid"></canvas>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
